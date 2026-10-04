@@ -1,0 +1,27 @@
+{
+  "task_count": 24,
+  "synthetic_episode_count": 1440,
+  "cached_synthetic_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+  "cached_real_revision": "d42552e90f0f286a0e49ba89da9afdaa16152bc1",
+  "source_files": [
+    "/Users/zhangyixiao/cslearning/research/synGrader/data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/data/chunk-000/file-000.parquet",
+    "/Users/zhangyixiao/cslearning/research/synGrader/data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/meta/episodes/chunk-000/file-000.parquet",
+    "/Users/zhangyixiao/cslearning/research/synGrader/data/raw/huggingface/datasets--DAVIAN-Robotics--robocasa-MG_30/snapshots/d42552e90f0f286a0e49ba89da9afdaa16152bc1/meta/episodes/chunk-000/file-000.parquet"
+  ],
+  "time_alignment": "linear interpolation to 64 normalized-progress samples per episode",
+  "initial_state_var_mean": "Mean sample variance across all 16 initial observation.state channels; raw mixed units squared",
+  "action_sequence_var_mean": "Mean sample variance across episodes, 64 progress points and all 12 action channels; raw mixed units squared",
+  "motion_action_sequence_var_mean": "Same variance restricted to action channels 0:6, inferred motion channels from observed magnitudes; action names are generic",
+  "gripper_action_sequence_var": "Same variance for action channel 6 alone; interpreted as gripper-like from observed values, not explicit feature names",
+  "ee_pos_trajectory_var_m2": "Mean sample variance across episodes, progress points and the first three state channels (base-frame end-effector position)",
+  "ee_relative_path_var_m2": "Same end-effector position variance after subtracting each episode's initial position",
+  "pairwise_ee_trajectory_distance_mean_m": "Across all unordered pairs: RMS Euclidean separation of aligned base-frame end-effector positions, in meters",
+  "pairwise_ee_trajectory_distance_var_m2": "Sample variance of those pairwise distances",
+  "score": "Weighted within-24-task percentile ranks with tied ranks averaged: initial EE position 10%, motion-action sequence (channels 0:6) 25%, relative EE path 35%, pairwise EE distance 25%, episode-length std 5%. Constant metrics are omitted and remaining weights renormalized. Exploration aid, not utility/quality label.",
+  "real_matching_episodes": "Previous task-family overlap scan; exact instruction counts rechecked against cached real episode metadata",
+  "limitations": [
+    "No object pose/state channels in observation.state; appearance/object variation cannot be measured",
+    "Progress alignment hides timing differences; length spread is reported separately",
+    "State/action variance does not establish task success, semantic diversity, or training utility"
+  ]
+}

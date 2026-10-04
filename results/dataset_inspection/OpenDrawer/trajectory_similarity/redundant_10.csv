@@ -1,0 +1,11 @@
+rank,episode_id,cluster_id,distance_to_cluster_representative,length,video_path
+1,447,2,0.0,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_447.mp4
+2,446,2,0.44538578875387425,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_446.mp4
+3,461,2,0.4592686641845351,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_461.mp4
+4,449,2,0.48718364356102967,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_449.mp4
+5,448,2,0.5299464130127822,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_448.mp4
+6,462,2,0.5361435224477211,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_462.mp4
+7,435,2,0.5393514225894304,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_435.mp4
+8,436,2,0.5407850696629898,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_436.mp4
+9,452,2,0.5678039046649251,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_452.mp4
+10,434,2,0.6216835096288843,279,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_434.mp4

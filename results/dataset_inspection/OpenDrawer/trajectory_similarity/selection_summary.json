@@ -1,0 +1,257 @@
+{
+  "task": "OpenDrawer",
+  "synthetic_episode_count": 60,
+  "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+  "instruction": "open the left drawer",
+  "time_alignment": "Linear interpolation to 64 normalized-progress samples",
+  "normalization": "Per-channel z-score over all 60 aligned trajectories; channels with pooled standard deviation below 0.01 dropped",
+  "state_representation": "End-effector position, sign-invariant quaternion outer products, gripper position, robot base position and sign-invariant base quaternion outer products",
+  "action_representation": "First seven action channels; last five near-constant channels omitted",
+  "distance": "Square root of weighted mean squared differences across aligned normalized sequences; dimensionless",
+  "distance_block_weights": {
+    "absolute_state": 0.15,
+    "relative_state": 0.45,
+    "action": 0.4
+  },
+  "retained_channels": {
+    "absolute_state": {
+      "channels": [
+        "eef_pos_0",
+        "eef_pos_1",
+        "eef_pos_2",
+        "eef_quat_outer_0",
+        "eef_quat_outer_1",
+        "eef_quat_outer_2",
+        "eef_quat_outer_3",
+        "eef_quat_outer_4",
+        "eef_quat_outer_5",
+        "eef_quat_outer_6",
+        "eef_quat_outer_7",
+        "eef_quat_outer_8",
+        "eef_quat_outer_9",
+        "gripper_qpos_0",
+        "gripper_qpos_1",
+        "base_pos_0",
+        "base_pos_1",
+        "base_quat_outer_7",
+        "base_quat_outer_8",
+        "base_quat_outer_9"
+      ],
+      "pooled_std": [
+        0.0993818515142367,
+        0.41970648908604397,
+        0.16834562419486743,
+        0.23970266298441825,
+        0.2835804826173281,
+        0.07559701623198124,
+        0.19312286938082962,
+        0.1481606041824593,
+        0.22908538004563922,
+        0.10753698214658092,
+        0.07955372134011221,
+        0.15871816644468256,
+        0.08400580558632484,
+        0.013674483103237085,
+        0.013685111926987136,
+        0.8008589488947147,
+        0.4878821813939513,
+        0.24085307551648694,
+        0.2533489007855673,
+        0.2408533711302777
+      ]
+    },
+    "relative_state": {
+      "channels": [
+        "eef_pos_0",
+        "eef_pos_1",
+        "eef_pos_2",
+        "eef_quat_outer_0",
+        "eef_quat_outer_1",
+        "eef_quat_outer_2",
+        "eef_quat_outer_3",
+        "eef_quat_outer_4",
+        "eef_quat_outer_5",
+        "eef_quat_outer_6",
+        "eef_quat_outer_7",
+        "eef_quat_outer_8",
+        "eef_quat_outer_9",
+        "gripper_qpos_0",
+        "gripper_qpos_1",
+        "base_pos_0",
+        "base_pos_1",
+        "base_quat_outer_7",
+        "base_quat_outer_8",
+        "base_quat_outer_9"
+      ],
+      "pooled_std": [
+        0.10134733541924378,
+        0.415829236632603,
+        0.16644914278228268,
+        0.23960606882859642,
+        0.28344566261609777,
+        0.07809317160649548,
+        0.19606800834834145,
+        0.14823427952679197,
+        0.2288826694487274,
+        0.10753152004613963,
+        0.07977106154392279,
+        0.15896503257033384,
+        0.08404516233547263,
+        0.0135975969798745,
+        0.013875814285993087,
+        0.5086931492509938,
+        0.3874183793858903,
+        0.18112040892148745,
+        0.16124695708242023,
+        0.18111955764554125
+      ]
+    },
+    "action": {
+      "channels": [
+        "action_0",
+        "action_1",
+        "action_2",
+        "action_3",
+        "action_4",
+        "action_5",
+        "action_6"
+      ],
+      "pooled_std": [
+        0.2890482366335786,
+        0.2677699902924015,
+        0.17437556855284037,
+        0.06288426580300033,
+        0.06900135402735706,
+        0.08203971195597164,
+        0.9961795193940473
+      ]
+    }
+  },
+  "clustering": "Deterministic alternating k-medoids, 12 starts per k, k=2..8; highest silhouette among partitions with every cluster >=3 and at least one cluster >=10",
+  "cluster_candidates": [
+    {
+      "k": 2,
+      "silhouette": 0.3654964732162076,
+      "sizes": [
+        38,
+        22
+      ],
+      "cost": 42.67523042311079,
+      "valid": true
+    },
+    {
+      "k": 3,
+      "silhouette": 0.26775238198928497,
+      "sizes": [
+        38,
+        7,
+        15
+      ],
+      "cost": 40.79947175197155,
+      "valid": true
+    },
+    {
+      "k": 4,
+      "silhouette": 0.22979771002699365,
+      "sizes": [
+        37,
+        7,
+        15,
+        1
+      ],
+      "cost": 39.61353412771769,
+      "valid": false
+    },
+    {
+      "k": 5,
+      "silhouette": 0.14229106747734882,
+      "sizes": [
+        33,
+        7,
+        1,
+        4,
+        15
+      ],
+      "cost": 38.45890174104045,
+      "valid": false
+    },
+    {
+      "k": 6,
+      "silhouette": 0.0907370797581062,
+      "sizes": [
+        21,
+        7,
+        1,
+        3,
+        13,
+        15
+      ],
+      "cost": 37.381329917012685,
+      "valid": false
+    },
+    {
+      "k": 7,
+      "silhouette": 0.11344157793584689,
+      "sizes": [
+        12,
+        6,
+        1,
+        4,
+        1,
+        26,
+        10
+      ],
+      "cost": 36.006090585970014,
+      "valid": false
+    },
+    {
+      "k": 8,
+      "silhouette": 0.0937956005221264,
+      "sizes": [
+        21,
+        10,
+        4,
+        1,
+        1,
+        5,
+        12,
+        6
+      ],
+      "cost": 35.1518148992114,
+      "valid": false
+    }
+  ],
+  "chosen_k": 2,
+  "cluster_representatives": [
+    {
+      "cluster_id": 1,
+      "size": 22,
+      "representative_episode_id": 422,
+      "mean_pairwise_distance": 0.877220878995643,
+      "core_10_mean_pairwise_distance": 0.7473594603902419,
+      "mean_distance_to_representative": 0.7382830389770468,
+      "video_path": "/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_422.mp4"
+    },
+    {
+      "cluster_id": 2,
+      "size": 38,
+      "representative_episode_id": 447,
+      "mean_pairwise_distance": 0.8838695704926153,
+      "core_10_mean_pairwise_distance": 0.5931713205063864,
+      "mean_distance_to_representative": 0.6956053569898885,
+      "video_path": "/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_447.mp4"
+    }
+  ],
+  "densest_eligible_cluster": 2,
+  "densest_cluster_rule": "Smallest mean pairwise distance in the 10-member medoid-nearest core among clusters with at least 10 episodes",
+  "redundant_rule": "Ten closest episodes to the medoid of the densest eligible cluster",
+  "diverse_rule": "Farthest-point k-center greedy selection over all 60 episodes, seeded at the global medoid",
+  "selected_overlap_episode_ids": [
+    447
+  ],
+  "all_pairwise_distance_mean": 1.1212479842341814,
+  "redundant_pairwise_distance_mean": 0.5931713205063864,
+  "diverse_pairwise_distance_mean": 1.3022872283762081,
+  "diverse_coverage_radius": 0.9238483867471847,
+  "note": "These are geometric sequence selections, not validity, utility, success, or semantic diversity labels. No policy training or FPS resampling was performed."
+}

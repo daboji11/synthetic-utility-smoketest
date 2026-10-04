@@ -1,0 +1,5 @@
+repo_id: DAVIAN-Robotics/robocasa-MG_30
+source: real
+camera_key: robot0_agentview_left_image
+task_id: PnPCounterToCab
+task_pattern: '^pick the .+ from the counter and place it in the cabinet$'

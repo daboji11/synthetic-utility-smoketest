@@ -1,0 +1,3 @@
+defaults:
+  - ../base.yaml
+experiment_name: smoke_test_random

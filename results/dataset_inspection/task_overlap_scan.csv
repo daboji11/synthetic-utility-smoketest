@@ -1,0 +1,25 @@
+task_name,synthetic_instruction,synthetic_object_or_target,synthetic_episode_count,real_family_episode_count,real_exact_match_count,real_near_match_count,matching_real_episode_count,real_object_or_target_diversity,real_instruction_diversity
+CloseDoubleDoor,close the cabinet doors,cabinet doors,60,30,30,0,30,1,1
+CoffeePressButton,press the button on the coffee machine to serve coffee,button on the coffee machine to serve coffee,60,30,30,0,30,1,1
+CoffeeServeMug,pick the mug from under the coffee machine dispenser and place it on the counter,mug,60,30,30,0,30,1,1
+CoffeeSetupMug,pick the mug from the counter and place it under the coffee machine dispenser,mug,60,30,30,0,30,1,1
+OpenDoubleDoor,open the cabinet doors,cabinet doors,60,30,30,0,30,1,1
+TurnOffMicrowave,press the stop button on the microwave,stop button on the microwave,60,30,30,0,30,1,1
+TurnOffSinkFaucet,turn off the sink faucet,sink faucet,60,30,30,0,30,1,1
+TurnOnMicrowave,press the start button on the microwave,start button on the microwave,60,30,30,0,30,1,1
+TurnOnSinkFaucet,turn on the sink faucet,sink faucet,60,30,30,0,30,1,1
+TurnSinkSpout,turn the sink spout to the right,sink spout to the right,60,30,22,0,22,2,2
+OpenDrawer,open the left drawer,left drawer,60,30,21,0,21,2,2
+OpenSingleDoor,open the cabinet door,cabinet door,60,30,20,0,20,2,2
+CloseDrawer,close the left drawer,left drawer,60,30,17,0,17,2,2
+CloseSingleDoor,close the microwave door,microwave door,60,30,14,0,14,2,2
+TurnOffStove,turn off the rear right burner of the stove,rear right burner of the stove,60,30,8,0,8,5,5
+TurnOnStove,turn on the rear left burner of the stove,rear left burner of the stove,60,30,5,0,5,5,5
+PnPCounterToMicrowave,pick the sweet potato from the counter and place it in the microwave,sweet potato,60,30,3,0,3,14,14
+PnPCounterToSink,pick the avocado from the counter and place it in the sink,avocado,60,30,2,0,2,20,20
+PnPCounterToStove,pick the sweet potato from the plate and place it in the pan,sweet potato,60,30,2,0,2,15,15
+PnPCabToCounter,pick the egg from the cabinet and place it on the counter,egg,60,30,1,0,1,26,26
+PnPCounterToCab,pick the water bottle from the counter and place it in the cabinet,water bottle,60,30,1,0,1,23,23
+PnPMicrowaveToCounter,pick the sweet potato from the microwave and place it on plate located on the counter,sweet potato,60,30,1,0,1,14,14
+PnPSinkToCounter,pick the lime from the sink and place it on the plate located on the counter,lime,60,30,1,0,1,18,18
+PnPStoveToCounter,pick the tomato from the pan and place it on the plate,tomato,60,30,1,0,1,16,22

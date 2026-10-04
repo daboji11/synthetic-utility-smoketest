@@ -1,0 +1,24 @@
+seed: 0
+dataset:
+  real_dataset: placeholder_real
+  synthetic_dataset: placeholder_synthetic
+  evaluation_dataset: placeholder_evaluation
+  task_id: placeholder_task
+  real_size: 12
+  synthetic_size: 24
+  evaluation_size: 8
+  observation_dim: 4
+  action_dim: 2
+selection:
+  method: random
+  budget: 10
+policy:
+  name: small_policy
+  hidden_dim: 32
+training:
+  batch_size: 16
+  learning_rate: 0.0003
+  epochs: 3
+evaluation:
+  num_episodes: 8
+  toy_success_mse_threshold: 0.05

@@ -1,0 +1,3 @@
+cluster_id,size,representative_episode_id,mean_pairwise_distance,core_10_mean_pairwise_distance,mean_distance_to_representative,video_path
+1,22,422,0.877220878995643,0.7473594603902419,0.7382830389770468,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_422.mp4
+2,38,447,0.8838695704926153,0.5931713205063864,0.6956053569898885,/Users/zhangyixiao/cslearning/research/synGrader/results/dataset_inspection/OpenDrawer/synthetic/synthetic_episode_447.mp4

@@ -1,0 +1,9 @@
+real_dataset: placeholder_real
+synthetic_dataset: placeholder_synthetic
+evaluation_dataset: placeholder_evaluation
+task_id: placeholder_task
+real_size: 12
+synthetic_size: 24
+evaluation_size: 8
+observation_dim: 4
+action_dim: 2

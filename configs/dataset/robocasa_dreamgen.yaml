@@ -1,0 +1,5 @@
+repo_id: Keh0t0/dreamgen_robocasa_p3_init0_v2_droid
+source: synthetic
+camera_key: robot0_agentview_left_image
+task_id: PnPCounterToCab
+task_label: pick the water bottle from the counter and place it in the cabinet

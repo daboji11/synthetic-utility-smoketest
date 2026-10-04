@@ -1,0 +1,6 @@
+numpy>=1.24
+PyYAML>=6.0
+torch>=2.2
+huggingface_hub>=1.0,<2
+pyarrow>=18
+imageio-ffmpeg>=0.6
