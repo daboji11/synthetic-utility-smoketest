@@ -1,0 +1,23 @@
+# Formal H50 human left-drawer only ACT baseline; training is run manually.
+dataset:
+  repo_id: local/open_drawer_h50_human_left_16fps
+  root: data/processed/OpenDrawer/h50_human_left_16fps
+  video_backend: torchcodec
+  eval_split: 0.0
+policy:
+  type: act
+  device: cuda
+  push_to_hub: false
+output_dir: outputs/OpenDrawer/human_left_only/seed_0
+seed: 0
+batch_size: 4
+steps: 10000
+save_checkpoint: true
+save_freq: 2500
+log_freq: 10
+num_workers: 2
+prefetch_factor: 2
+env_eval_freq: 0
+eval_steps: 0
+wandb:
+  enable: false

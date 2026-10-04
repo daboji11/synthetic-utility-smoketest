@@ -2,7 +2,7 @@
 
 **Project question:** Does downstream learning utility vary among synthetic robot trajectories even when they have similar validity?
 
-**Current stage:** Phase 0: infrastructure and a placeholder smoke test. The generated trajectories are toy observation/action sequences. The reported `success_rate` is a **toy action-error threshold**, not robot task success. Use simulator rollouts for scientific comparisons.
+**Current stage:** Phase 0: infrastructure and a placeholder smoke test. **Data provenance correction:** DAVIAN-Robotics/robocasa-MG_30 is MimicGen synthetic simulator data, not human demonstrations. Formal OpenDrawer experiments use H50 human demonstrations plus DreamGen synthetic trajectories. The generated trajectories are toy observation/action sequences. The reported `success_rate` is a **toy action-error threshold**, not robot task success. Use simulator rollouts for scientific comparisons.
 
 ## Setup and run
 
@@ -18,19 +18,19 @@ To recreate the environment on macOS arm64 with Python 3.10, use `uv venv .venv 
 
 ## Phase 0 dataset inspection
 
-The [single-task config](configs/dataset/pnp_counter_to_cab.yaml) selects `PnPCounterToCab` from `DAVIAN-Robotics/robocasa-MG_30` and `Keh0t0/dreamgen_robocasa_p3_init0_v2_droid`. The real repository stores this task under 23 object-specific instructions, so the adapter matches only instructions of the form “pick the ... from the counter and place it in the cabinet.” There are 30 matching real episodes. The synthetic repository has 60 matching episodes, all with the water-bottle instruction. The original instruction is preserved in the CSV.
+The [single-task config](configs/dataset/pnp_counter_to_cab.yaml) selects `PnPCounterToCab` from `DAVIAN-Robotics/robocasa-MG_30` and `Keh0t0/dreamgen_robocasa_p3_init0_v2_droid`. The MG_30 repository stores this task under 23 object-specific instructions, so the adapter matches only instructions of the form “pick the ... from the counter and place it in the cabinet.” There are 30 matching MG_30 episodes. The synthetic repository has 60 matching episodes, all with the water-bottle instruction. The original instruction is preserved in the CSV.
 
 ```bash
 python scripts/inspect_datasets.py --skip-video
 python scripts/inspect_datasets.py
 ```
 
-The script reports only this task, checks action/state/camera/task-label/FPS compatibility, and exports five real and ten synthetic MP4 clips plus `episodes.csv` and `inspection.json` under `results/dataset_inspection/PnPCounterToCab/`. The adapter downloads task and episode metadata at construction, then fetches action/state and video shards lazily. Each repository stores multiple tasks in shared files. For this task the real data Parquet is approximately 19 MB and the real left-camera MP4 approximately 209 MB; the synthetic equivalents are approximately 88 MB and 148 MB. No other cameras were downloaded. Real videos remain at 20 fps and synthetic videos at 16 fps. The schema matches, but joint ACT training needs an explicit temporal handling decision before use.
+The script reports only this task, checks action/state/camera/task-label/FPS compatibility, and exports five MG_30 and ten DreamGen MP4 clips plus `episodes.csv` and `inspection.json` under `results/dataset_inspection/PnPCounterToCab/`. The adapter downloads task and episode metadata at construction, then fetches action/state and video shards lazily. Each repository stores multiple tasks in shared files. For this task the real data Parquet is approximately 19 MB and the MG_30 left-camera MP4 approximately 209 MB; the synthetic equivalents are approximately 88 MB and 148 MB. No other cameras were downloaded. MG_30 videos remain at 20 fps and synthetic videos at 16 fps. The schema matches, but joint ACT training needs an explicit temporal handling decision before use.
 
-The current Phase 0 candidate is `OpenDrawer`. A metadata/state-action scan of all 24 synthetic tasks is saved in `results/dataset_inspection/trajectory_variation_scan.csv`. The following commands export the 60 synthetic and 21 exact-instruction real previews, then cluster synthetic trajectories and select two ten-episode subsets. The cached Hugging Face shards can be reused with `--offline`; omit that flag on a new machine to download the required shared shards.
+The current Phase 0 candidate is `OpenDrawer`. A metadata/state-action scan of all 24 synthetic tasks is saved in `results/dataset_inspection/trajectory_variation_scan.csv`. The following commands export the 60 DreamGen and 21 exact-instruction MG_30 previews, then cluster synthetic trajectories and select two ten-episode subsets. The cached Hugging Face shards can be reused with `--offline`; omit that flag on a new machine to download the required shared shards.
 
 ```bash
-python scripts/inspect_datasets.py --config configs/dataset/open_drawer.yaml --real-count 21 --synthetic-count 60 --offline
+python scripts/inspect_datasets.py --config configs/dataset/open_drawer_mimicgen_debug.yaml --real-count 21 --synthetic-count 60 --offline
 python scripts/select_open_drawer_trajectories.py
 ```
 
@@ -69,38 +69,197 @@ For a real experiment, hold the real data, synthetic count, policy, optimization
 - Sophisticated diversity or policy-aware selection
 - Robot simulator rollout evaluation
 
-## Linux OpenDrawer real-only ACT baseline
+## Linux OpenDrawer MimicGen debug ACT run
 
-The raw OpenDrawer shards are cached under `data/raw/huggingface/`. The independent
-16 fps real dataset is under `data/processed/OpenDrawer/real_16fps/`; it contains
-21 episodes and 3,800 frames. `scripts/preprocess_open_drawer_real_16fps.py`
-builds it once from the original 20 fps real dataset with target timestamps
-`j / 16`. Each target chooses the nearest 20 fps source frame (earlier frame on
-an exact tie), and the image, state, and action all use that source index.
-The script refuses to overwrite either an existing output or staging directory.
+The earlier real_16fps directory and real_only ACT outputs are historical names.
+Their source is DAVIAN-Robotics/robocasa-MG_30, which contains MimicGen
+synthetic simulator demonstrations. The 21 episode, 16 fps dataset and both
+ACT runs are **debug_mimicgen_only** engineering checks, not human baselines.
+The completed 10,000 step checkpoint remains at
+outputs/OpenDrawer/real_only/seed_0/checkpoints/last/pretrained_model/.
+outputs/OpenDrawer/debug_mimicgen_only/ is an alias to the preserved output
+folder; each run also has EXPERIMENT_ROLE.json. These weights are not an
+H50 human-only baseline.
 
-Inside WSL Ubuntu, activate `synutility312` and run:
+Formal OpenDrawer human input is DAVIAN-Robotics/robocasa-H50: 54 episodes,
+28 left-drawer and 26 right-drawer, 20 fps. DreamGen OpenDrawer has 60
+left-drawer episodes at 16 fps. Both use 12-dimensional actions,
+16-dimensional state, and 128×128 left-camera images. The H50 raw shared
+Parquet and the single left-camera video shard containing OpenDrawer are
+cached under data/raw/huggingface/. configs/dataset/open_drawer.yaml
+selects only the H50 left-drawer instruction and DreamGen left-drawer instruction.
+No H50 resampling or formal ACT training has been performed.
 
-```bash
-conda activate synutility312
-python scripts/train_open_drawer_real_only_act.py
-```
+The debug runner writes metrics.jsonl, train.log, and the resolved
+train_config.json into the run directory. LeRobot saves complete
+pretrained_model/ checkpoints with model weights, policy configuration,
+training configuration, and processor configurations with normalization state.
+Dataset and training output directories are Git-ignored.
 
-The completed 50-step smoke run is at
-`outputs/OpenDrawer/real_only/smoke_seed_0_batch_4/`.
-The full command is prepared but has **not** been run. It trains LeRobot ACT on
-the 16 fps real dataset only, with one 128×128 left camera, batch size 4,
-10,000 steps, seed 0, and checkpoints every 2,500 steps. Its output path is
-`outputs/OpenDrawer/real_only/seed_0/`. If batch size 4 runs out of GPU memory,
-run `python scripts/train_open_drawer_real_only_act.py --batch-size 2`; that
-uses a separate `seed_0_batch_2/` output directory. Existing runs are never
-overwritten.
+## Formal OpenDrawer H50 human-left ACT baseline
 
-The runner writes `metrics.jsonl`, `train.log`, and the resolved
-`train_config.json` into the run directory. LeRobot saves complete
-`pretrained_model/` checkpoints with the model, policy configuration, training
-configuration, and both processor configurations plus their normalization
-state. LeRobot's six-digit checkpoint directories are also exposed as
-`checkpoints/2500/`, `/5000/`, `/7500/`, and `/10000/` links. `checkpoints/last/`
-points to the final checkpoint. Dataset and training output directories are
-Git-ignored.
+The fixed human base is exactly 28 H50 human demonstrations with instruction
+open the left drawer. The source remains in data/raw/huggingface/. The
+separate processed dataset is data/processed/OpenDrawer/h50_human_left_16fps/:
+4,744 frames at 16 fps with one 128×128 left camera, 12-dimensional actions,
+and 16-dimensional state. scripts/preprocess_open_drawer_h50_left_16fps.py
+uses target timestamps j/16 and the nearest 20 fps source timestep, breaking
+exact ties toward the earlier frame. Image, action, and state share that index.
+No action interpolation or scaling is applied. The resampling manifest records
+all 28 source episode IDs and selected frame indices.
+
+The formal training configuration is
+configs/experiment/open_drawer_h50_human_left_act.yaml. It uses the same ACT
+policy defaults as the MG_30 debug run, batch size 4, 10,000 steps, seed 0,
+CUDA, and checkpoints every 2,500 steps. The new run output will be
+outputs/OpenDrawer/human_left_only/seed_0/. The run directory is intentionally
+absent until training starts so the runner can protect against overwrite.
+
+From the repository root in WSL Ubuntu:
+
+    conda activate synutility312
+    python scripts/train_open_drawer_h50_left_act.py --preflight
+    python scripts/train_open_drawer_h50_left_act.py
+
+Only the last command starts training. The runner writes metrics.jsonl,
+train.log, the complete LeRobot pretrained_model checkpoint including
+normalization processors, and checkpoints/last. The MG_30 debug checkpoint
+remains under outputs/OpenDrawer/real_only/ and is marked
+debug_mimicgen_only. No formal training was run during dataset preparation.
+
+## H50 human-left three-camera ACT comparison
+
+This variant uses the same 28 H50 human episodes and exactly the same state,
+action, timestamp, and resampling indices as the single-camera baseline. It adds
+all three available 128x128 views: robot0_agentview_left_image,
+robot0_agentview_right_image, and robot0_eye_in_hand_image. All cameras use the
+same selected source timestep at 16 fps.
+
+Processed dataset: data/processed/OpenDrawer/h50_human_left_16fps_3cam.
+Training config: configs/experiment/open_drawer_h50_human_left_3cam_act.yaml.
+Output: outputs/OpenDrawer/human_left_only_3cam/seed_0/.
+
+The ACT settings match the original checkpoint, including chunk_size=100,
+n_action_steps=100 and no temporal ensembling. Batch size is 4, training steps
+are 10000, seed is 0, and checkpoints are saved every 2500 steps. This is a
+separate camera comparison; retain the single-camera run for comparison.
+
+Run manually from the repository in WSL Ubuntu:
+
+    conda activate synutility312
+    python -u scripts/train_open_drawer_h50_left_act.py --multicamera --preflight
+    python -u scripts/train_open_drawer_h50_left_act.py --multicamera
+
+The final command starts training. It prints training metrics and saves
+train.log, metrics.jsonl, requested_config.yaml, the resolved train_config.json,
+and complete LeRobot checkpoints with preprocessing/postprocessing state.
+Checkpoint aliases include 2500, 5000, 7500, 10000, and last.
+If batch size 4 fails with CUDA OOM, the explicit batch-size-2 option uses a
+separate seed_0_batch_2 directory:
+
+    python -u scripts/train_open_drawer_h50_left_act.py --multicamera --batch-size 2
+
+After the three-camera checkpoint has finished, evaluate it in the simulator
+environment with the original 100-step execution setting:
+
+    bash scripts/eval_open_drawer_h50_3cam.sh
+
+This manual launcher uses the WSL synutility-sim interpreter and EGL rendering.
+It requires the saved final checkpoint at training step 10000, pins the resolved
+checkpoint, and tests exactly left-drawer seeds 3, 4, and 5. Control is 16 Hz,
+ACT predicts 100 actions and executes all 100 before replanning, and temporal
+ensembling is disabled. It loads the saved preprocessor/postprocessor and checks
+all camera, state, and action normalization statistics against the training data.
+
+Terminal output includes per-100-step progress, per-episode success, drawer
+opening fraction, and per-dimension raw action/clipping statistics. Outputs are:
+
+    outputs/OpenDrawer/human_left_only_3cam/seed_0/robocasa_eval/three_camera_seed_3_4_5/
+        protocol.json
+        episodes.jsonl
+        summary.json
+        steps/seed_3.jsonl
+        steps/seed_4.jsonl
+        steps/seed_5.jsonl
+        videos/seed_3.mp4
+        videos/seed_4.mp4
+        videos/seed_5.mp4
+
+The console log is a sibling file named three_camera_seed_3_4_5_console.log.
+Videos stream to disk at 16 fps, with left, right, and wrist views in that order,
+plus a status strip showing step, reward, and success. Frames are not accumulated
+in RAM. The camera images supplied to ACT are preserved without video overlays.
+Existing output directories and console logs are protected from overwrite.
+For another run, provide a fresh name:
+
+    bash scripts/eval_open_drawer_h50_3cam.sh three_camera_repeat_1
+
+A CPU preflight can test the final checkpoint on a saved training observation
+without creating a simulator:
+
+    MUJOCO_GL=egl /home/dabozi/miniconda3/envs/synutility-sim/bin/python -u scripts/evaluate_open_drawer_h50_act_robocasa.py --multicamera --episodes 3 --start-seed 3 --seeds 3 4 5 --run-name three_camera_seed_3_4_5 --preflight
+
+To rebuild the dataset on another WSL machine with the single-camera reference
+and H50 metadata already cached:
+
+    conda activate synutility312
+    python -u scripts/preprocess_open_drawer_h50_left_16fps_3cam.py
+
+Only video shards referenced by the 28 selected episodes are downloaded, using
+the original pinned H50 revision. Shared shards may contain other tasks; only
+the selected left-drawer episodes are processed. The original H50 files and
+single-camera processed dataset are preserved.
+
+## Three-camera ACT with explicit camera identity
+
+The original three-camera model does consume all three images. The read-only
+audit in scripts/audit_open_drawer_h50_3cam.py traced three backbone calls and
+50 Transformer tokens (2 state/latent tokens plus 16 image tokens per camera).
+Across the 28 episodes, 84 frames per camera showed no black or duplicate views.
+Changing any view changes predicted actions. The saved audit is under
+results/robocasa_eval/camera_audit_3cam/.
+
+The installed ordinary ACT repeats the same 2D positional encoding for each
+view without an explicit camera identifier. Swapping left and right images
+changed the audited model's output by at most approximately 8e-7. This is a
+fusion limitation, not evidence that cameras were omitted, and does not establish
+the cause of rollout failure.
+
+The separate act_camera_id policy adds a learned camera identity to the visual
+positional encoding: one 512D vector per camera, 1536 extra parameters total.
+The implementation lives in src/policies/act_camera_id/ and leaves the installed
+LeRobot package intact. It uses the standard ACT trainer, shared ResNet18,
+processors, loss, optimizer and action execution. Camera order is saved in the
+model config and validated on load. Embeddings are saved with model.safetensors
+and automatically restored by the evaluator.
+
+This is an architecture comparison with the existing ordinary ACT runs.
+It uses the same 28 human-left episodes, three synchronized cameras, 16 fps,
+128x128 resolution, batch size 4, 10000 steps, seed 0, and 100-step replanning.
+It does not establish improved success rate until tested.
+
+Launch manually inside WSL:
+
+    conda activate synutility312
+    python -u scripts/train_open_drawer_h50_left_act.py --camera-id --preflight
+    python -u scripts/train_open_drawer_h50_left_act.py --camera-id
+
+Output: outputs/OpenDrawer/human_left_only_3cam_camera_id/seed_0/.
+Config: configs/experiment/open_drawer_h50_human_left_3cam_camera_id_act.yaml.
+The model is initialized for a new run; previous model weights are preserved.
+
+After this run finishes, test exact seeds 3, 4, and 5 with live stats and videos:
+
+    bash scripts/eval_open_drawer_h50_3cam_camera_id.sh
+
+The launcher checks final step 10000 and writes under the camera-identity run's
+robocasa_eval/three_camera_id_seed_3_4_5/ directory.
+
+Focused verification (CPU tests, no optimizer updates or simulator rollout):
+
+    python -m pytest -q tests/test_act_camera_identity.py
+
+Tests check gradients reaching all views and camera identities, removal of
+camera-swap invariance, and identical output after complete model/processor
+save and reload. The real uint8 multi-camera training batch and 100-action
+targets were also checked through the installed LeRobot dataset/policy factories.

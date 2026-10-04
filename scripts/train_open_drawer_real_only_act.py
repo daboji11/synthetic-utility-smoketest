@@ -1,4 +1,4 @@
-"""Run the real-only LeRobot ACT baseline or a separate 50-step smoke run."""
+"""Run the preserved MG_30 MimicGen debug ACT experiment, not the H50 human baseline."""
 
 from __future__ import annotations
 

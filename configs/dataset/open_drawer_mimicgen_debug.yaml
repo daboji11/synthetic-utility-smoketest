@@ -1,0 +1,10 @@
+task_id: OpenDrawer
+camera_key: robot0_agentview_left_image
+real:
+  repo_id: DAVIAN-Robotics/robocasa-MG_30
+  source: mimicgen_debug
+  task_label: open the left drawer
+synthetic:
+  repo_id: Keh0t0/dreamgen_robocasa_p3_init0_v2_droid
+  source: synthetic
+  task_label: open the left drawer

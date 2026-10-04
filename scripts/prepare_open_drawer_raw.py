@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,12 +71,20 @@ def verify_dataset(label: str, spec: dict, expected_fps: int, offline: bool) -> 
             assert (stream.width, stream.height) == (128, 128)
             assert float(stream.average_rate) == expected_fps
             assert next(container.decode(video=0), None) is not None
-    print(f"verified {label}: all {len(dataset)} episodes", flush=True)
+    instructions = Counter(task for episode_id in dataset.get_episode_ids()
+                           for task in dataset.get_episode_metadata(episode_id)["tasks"])
+    sides = {side: sum(count for task, count in instructions.items()
+                       if task == f"open the {side} drawer")
+             for side in ("left", "right")}
+    print(f"verified {label}: all {len(dataset)} episodes; instructions={dict(instructions)}", flush=True)
     return {
         "repo_id": dataset.repo_id,
         "revision": dataset.revision,
         "local_path": str(CACHE / f"datasets--{dataset.repo_id.replace('/', '--')}"),
         "episodes": len(dataset),
+        "source": dataset.source,
+        "instruction_distribution": dict(instructions),
+        "drawer_side_distribution": sides,
         "fps": expected_fps,
         "action_dim": 12,
         "state_dim": 16,
@@ -93,6 +102,9 @@ def main() -> None:
     args = parser.parse_args()
     config = yaml.safe_load(CONFIG.read_text())
     assert config["task_id"] == "OpenDrawer"
+    assert config["real"]["repo_id"] == "DAVIAN-Robotics/robocasa-H50"
+    assert config["real"]["source"] == "human"
+    assert config["synthetic"]["repo_id"] == "Keh0t0/dreamgen_robocasa_p3_init0_v2_droid"
     results = {
         "real": verify_dataset("real", config["real"], 20, args.offline),
         "synthetic": verify_dataset("synthetic", config["synthetic"], 16, args.offline),

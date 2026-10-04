@@ -1,0 +1,31 @@
+# Camera-identity ACT comparison; same human data and training settings, manual launch.
+dataset:
+  repo_id: local/open_drawer_h50_human_left_16fps_3cam
+  root: data/processed/OpenDrawer/h50_human_left_16fps_3cam
+  video_backend: torchcodec
+  eval_split: 0.0
+policy:
+  type: act_camera_id
+  device: cuda
+  push_to_hub: false
+  chunk_size: 100
+  n_action_steps: 100
+  temporal_ensemble_coeff: null
+  camera_order:
+    - observation.images.robot0_agentview_left_image
+    - observation.images.robot0_agentview_right_image
+    - observation.images.robot0_eye_in_hand_image
+  camera_embedding_init_std: 0.02
+output_dir: outputs/OpenDrawer/human_left_only_3cam_camera_id/seed_0
+seed: 0
+batch_size: 4
+steps: 10000
+save_checkpoint: true
+save_freq: 2500
+log_freq: 10
+num_workers: 2
+prefetch_factor: 2
+env_eval_freq: 0
+eval_steps: 0
+wandb:
+  enable: false

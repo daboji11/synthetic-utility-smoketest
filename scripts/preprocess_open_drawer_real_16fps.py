@@ -78,7 +78,7 @@ def main() -> None:
         return
     if DESTINATION.exists() or STAGING.exists():
         raise FileExistsError("Output already exists; preserve the previous dataset")
-    spec = yaml.safe_load((ROOT / "configs/dataset/open_drawer.yaml").read_text())
+    spec = yaml.safe_load((ROOT / "configs/dataset/open_drawer_mimicgen_debug.yaml").read_text())
     source = RoboCasaLeRobotDataset(
         **spec["real"], task_id="OpenDrawer", camera_key=CAMERA,
         cache_dir=RAW_CACHE, offline=True,

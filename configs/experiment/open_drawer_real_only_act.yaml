@@ -1,3 +1,4 @@
+# debug_mimicgen_only: source is MG_30 MimicGen simulator data, not H50 human demonstrations.
 dataset:
   repo_id: local/open_drawer_real_16fps
   root: data/processed/OpenDrawer/real_16fps
