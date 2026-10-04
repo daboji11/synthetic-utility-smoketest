@@ -63,8 +63,44 @@ For a real experiment, hold the real data, synthetic count, policy, optimization
 
 ## Not implemented yet
 
-- FPS alignment decision and ACT-ready dataset assembly
+- Mixed real/synthetic ACT-ready dataset assembly beyond the real-only 16 fps baseline
 - DreamGen/RoboCasa simulator rollout integration
 - Utility grader or learned trajectory valuation
 - Sophisticated diversity or policy-aware selection
 - Robot simulator rollout evaluation
+
+## Linux OpenDrawer real-only ACT baseline
+
+The raw OpenDrawer shards are cached under `data/raw/huggingface/`. The independent
+16 fps real dataset is under `data/processed/OpenDrawer/real_16fps/`; it contains
+21 episodes and 3,800 frames. `scripts/preprocess_open_drawer_real_16fps.py`
+builds it once from the original 20 fps real dataset with target timestamps
+`j / 16`. Each target chooses the nearest 20 fps source frame (earlier frame on
+an exact tie), and the image, state, and action all use that source index.
+The script refuses to overwrite either an existing output or staging directory.
+
+Inside WSL Ubuntu, activate `synutility312` and run:
+
+```bash
+conda activate synutility312
+python scripts/train_open_drawer_real_only_act.py
+```
+
+The completed 50-step smoke run is at
+`outputs/OpenDrawer/real_only/smoke_seed_0_batch_4/`.
+The full command is prepared but has **not** been run. It trains LeRobot ACT on
+the 16 fps real dataset only, with one 128×128 left camera, batch size 4,
+10,000 steps, seed 0, and checkpoints every 2,500 steps. Its output path is
+`outputs/OpenDrawer/real_only/seed_0/`. If batch size 4 runs out of GPU memory,
+run `python scripts/train_open_drawer_real_only_act.py --batch-size 2`; that
+uses a separate `seed_0_batch_2/` output directory. Existing runs are never
+overwritten.
+
+The runner writes `metrics.jsonl`, `train.log`, and the resolved
+`train_config.json` into the run directory. LeRobot saves complete
+`pretrained_model/` checkpoints with the model, policy configuration, training
+configuration, and both processor configurations plus their normalization
+state. LeRobot's six-digit checkpoint directories are also exposed as
+`checkpoints/2500/`, `/5000/`, `/7500/`, and `/10000/` links. `checkpoints/last/`
+points to the final checkpoint. Dataset and training output directories are
+Git-ignored.
