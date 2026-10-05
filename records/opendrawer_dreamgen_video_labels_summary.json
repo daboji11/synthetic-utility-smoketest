@@ -1,0 +1,28 @@
+{
+  "csv": "records/opendrawer_dreamgen_video_labels.csv",
+  "episodes": 60,
+  "counts": {
+    "success": 21,
+    "failure": 33,
+    "uncertain": 6
+  },
+  "visual_opening_proxy_rate_all_episodes": 0.35,
+  "uncertain_as_success_upper_proxy_rate": 0.45,
+  "strict_left_drawer_task_success_rate": null,
+  "scope": "Sampled-frame visual drawer-opening proxy on OpenDrawer/left-labeled videos, not a simulator success or action-executability label.",
+  "reviewer": "assistant; not human-labeled ground truth",
+  "camera": "left agentview only, 128x128",
+  "limitations": [
+    "Only sampled frames were reviewed; brief events may be missed.",
+    "Instruction says left drawer but task-relative target identity is not independently verified from this single camera.",
+    "Generated opening imagery can contain geometry/contact hallucinations; physical plausibility and IDM consistency are not certified.",
+    "No simulator replay was performed. Blank simulator_success is unknown, not failure.",
+    "Labels do not automatically alter the pool, select subsets, or launch/change training. finetune_selected is intentionally blank."
+  ],
+  "dataset": {
+    "repo": "Keh0t0/dreamgen_robocasa_p3_init0_v2_droid",
+    "revision": "686cd91d4502b0606e473b07adb73c920b05d4e3"
+  },
+  "metadata_success_fields": [],
+  "review_artifacts": "results/dataset_inspection/OpenDrawer/video_success_review"
+}

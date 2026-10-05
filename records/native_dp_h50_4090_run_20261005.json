@@ -1,0 +1,80 @@
+{
+  "record_date": "2026-10-05",
+  "status": "completed_on_remote_user_run; further experiments paused by user",
+  "evidence_source": "User-provided RunPod terminal screenshot; remote summary.json/checkpoint not yet downloaded or independently read locally.",
+  "policy": "official native DiffusionTransformerHybridImagePolicy",
+  "initialization": "pretrain_human300 EMA checkpoint",
+  "training": {
+    "dataset": "28 H50 human OpenDrawer left-drawer demonstrations",
+    "instruction": "open the left drawer",
+    "fps": 20,
+    "camera_count": 3,
+    "batch_size": 4,
+    "optimizer_updates": 10000,
+    "seed": 0,
+    "learning_rate_initial": 1e-05,
+    "gpu": "RTX 4090"
+  },
+  "evaluation": {
+    "task": "OpenDrawer",
+    "instruction": "open the left drawer",
+    "seeds": [
+      3,
+      4,
+      5
+    ],
+    "episodes": 3,
+    "successes": 0,
+    "success_rate": 0.0,
+    "control_hz": 20,
+    "denoising_steps": 100,
+    "replan_every_env_steps": 8,
+    "episode_stats": [
+      {
+        "seed": 3,
+        "success": false,
+        "steps": 750,
+        "reward": 0.0,
+        "clipped_count": 0,
+        "replans": 94
+      },
+      {
+        "seed": 4,
+        "success": false,
+        "steps": 750,
+        "reward": 0.0,
+        "clipped_count": 0,
+        "replans": 94
+      },
+      {
+        "seed": 5,
+        "success": false,
+        "steps": 750,
+        "reward": 0.0,
+        "clipped_count": 0,
+        "replans": 94
+      }
+    ],
+    "scope": "Three fixed-seed initial rollouts; not a full benchmark estimate."
+  },
+  "remote_run_path": "/root/research/synthetic-utility-smoketest/outputs/OpenDrawer/dp_pretrained_human_left/seed_0",
+  "final_checkpoint_relative": "checkpoints/last.ckpt",
+  "videos_relative": [
+    "robocasa_eval/seed_3_4_5/seed_3/rollout.mp4",
+    "robocasa_eval/seed_3_4_5/seed_4/rollout.mp4",
+    "robocasa_eval/seed_3_4_5/seed_5/rollout.mp4"
+  ],
+  "local_artifact_backup_verified": false,
+  "performance_observation": {
+    "source": "Earlier user-provided nvidia-smi/process/metrics screenshot",
+    "gpu_utilization_observed_percent_range": [
+      0,
+      24
+    ],
+    "gpu_memory_used_mib": 3702,
+    "loader_workers": 4,
+    "loader_worker_cpu_percent_approx": 250,
+    "diagnosis": "CPU video reading/decoding bottleneck strongly indicated; current OpenCV loader repeatedly opens and seeks MP4s. No GPU throughput optimization was performed before this rented run."
+  },
+  "next_action": "Download remote videos and final checkpoint/config/normalizer/metrics for local inspection; do not launch new training or rollout automatically."
+}

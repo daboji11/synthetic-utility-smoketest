@@ -26,3 +26,6 @@ outputs/
 *.pth
 
 *.ckpt
+
+# Local sampled-frame review artifacts; labels are versioned under records/.
+results/dataset_inspection/OpenDrawer/video_success_review/
