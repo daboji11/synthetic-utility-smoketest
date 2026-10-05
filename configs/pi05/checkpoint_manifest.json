@@ -1,0 +1,87 @@
+{
+  "repo_id": "robocasa/robocasa365_checkpoints",
+  "revision": "c484448aba1a9b60a04c9b0ca117241518ea69f3",
+  "prefix": "pi05_pretrain_human300/multitask_learning/75000",
+  "source_url": "https://github.com/robocasa-benchmark/openpi",
+  "source_commit": "5a6beda9ff99da30b4e1b59320f6a32971d7c397",
+  "files": [
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/assets/norm_stats.json",
+      "size": 3208
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/_METADATA",
+      "size": 23544
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/_sharding",
+      "size": 12797
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/array_metadatas/process_0",
+      "size": 9162
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/d/35c0b41e13ddb0a578456230f51a3416",
+      "size": 2138
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/manifest.ocdbt",
+      "size": 117
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/16a296efc9531f413b90c15199e43385",
+      "size": 538931200
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/28b537f74e118c2c1c44f72e8b0e00b7",
+      "size": 2240151552
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/471d6e9b709ec1a579f83c8b4914e1ed",
+      "size": 30384128
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/5cf1127d4e3fcd6e80a66ebba54dc32d",
+      "size": 2799407104
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/6292e633c11b8f6931cac6ab824f3279",
+      "size": 35061760
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/65f82551b4d64f31f6bb1cdcf17945e1",
+      "size": 70041600
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/7f76f4974bbb6946ff46b5dbcd4d44f8",
+      "size": 2529587200
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/b627c21812ded6c524507187a8526a3e",
+      "size": 1956962304
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/b808ab91bab1b5805b381e09b7fc0a85",
+      "size": 5367
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/d71893b153190783845eb3aabec57214",
+      "size": 1098
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/d76149c5c280cb9da59fd2f948d9cdda",
+      "size": 213
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/d/fb6f9dae6d90f1b488a3d4ebf79278ed",
+      "size": 2240278528
+    },
+    {
+      "path": "pi05_pretrain_human300/multitask_learning/75000/params/ocdbt.process_0/manifest.ocdbt",
+      "size": 486
+    }
+  ],
+  "download_bytes": 12440863506,
+  "format": "JAX Orbax params + native normalization assets"
+}

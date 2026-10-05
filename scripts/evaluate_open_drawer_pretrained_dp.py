@@ -19,11 +19,15 @@ REVISION = "c484448aba1a9b60a04c9b0ca117241518ea69f3"
 SNAPSHOT = ROOT / "data/raw/huggingface_models/models--robocasa--robocasa365_checkpoints/snapshots" / REVISION
 DEFAULT_CHECKPOINT = SNAPSHOT / PREFIX / "checkpoints/latest.ckpt"
 
-def load_native_policy(checkpoint, expected_updates=None):
+def load_native_policy(checkpoint, expected_updates=None, policy_kind=None):
     OmegaConf.register_new_resolver("eval", eval, replace=True)
     payload = torch.load(checkpoint, map_location="cpu", pickle_module=dill, weights_only=False)
     cfg = payload["cfg"]
     is_finetuned = cfg.task.name == "h50_open_drawer_left"
+    if policy_kind == "pretrained" and is_finetuned:
+        raise ValueError("Zero-shot evaluation requires the unmodified pretrain_human300 checkpoint")
+    if policy_kind == "finetuned" and not is_finetuned:
+        raise ValueError("Fine-tuned evaluation requires an H50-left fine-tuned checkpoint")
     if cfg.task.name not in ["pretrain_human300","h50_open_drawer_left"] or not cfg.training.use_ema:
         raise ValueError("Expected official pretrained EMA or its H50-left fine-tuned checkpoint")
     updates = int(dill.loads(payload["pickles"]["optimizer_updates"])) if is_finetuned else None
@@ -72,6 +76,11 @@ def load_native_policy(checkpoint, expected_updates=None):
     del payload
     gc.collect()
     policy = policy.to("cuda").eval()
+    protocol.update({"gpu":torch.cuda.get_device_name(0), "torch_version":torch.__version__,
+                     "torch_cuda_version":torch.version.cuda,
+                     "gpu_total_memory_mb":torch.cuda.get_device_properties(0).total_memory/1024**2,
+                     "training_batch_size":int(cfg.dataloader.batch_size),
+                     "inference_batch_size":1})
     return policy, protocol
 
 def process_native_observation(raw, shape_meta, lang_emb):
@@ -97,6 +106,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkpoint", type=Path, default=DEFAULT_CHECKPOINT)
     parser.add_argument("--expected-updates", type=int)
+    parser.add_argument("--policy-kind", choices=["pretrained","finetuned"])
+    parser.add_argument("--language-text", help="Explicit task text for a paired comparison; recorded in protocol")
     parser.add_argument("--seed", type=int, default=3)
     parser.add_argument("--horizon", type=int, default=750)
     parser.add_argument("--split", choices=["all","pretrain","target","test"], default="all")
@@ -107,7 +118,12 @@ def main():
     torch.set_num_threads(4)
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
-    policy, protocol = load_native_policy(args.checkpoint, args.expected_updates)
+    policy, protocol = load_native_policy(args.checkpoint, args.expected_updates, args.policy_kind)
+    if args.language_text is not None:
+        if args.language_text.strip().lower().rstrip(".") != "open the left drawer":
+            raise ValueError("Language override must describe the same left-drawer task")
+        protocol["policy_language_text"] = args.language_text
+    protocol["language_override"] = args.language_text
     print("CHECKPOINT_OK " + json.dumps(protocol), flush=True)
     from robomimic.utils.lang_utils import LangEncoder
     from robocasa.wrappers.gym_wrapper import RoboCasaGymEnv
@@ -141,7 +157,7 @@ def main():
             frames=[observation[protocol["shape_meta"]["obs"][key]["lerobot_keys"][0]] for key in camera_keys]
             canvas=np.concatenate(frames,axis=1)
             canvas=np.concatenate([canvas,np.zeros((32,768,3),dtype=np.uint8)],axis=0)
-            cv2.putText(canvas,f"pretrained DP seed={args.seed} step={step} success={int(success)} reward={reward:.1f}",
+            cv2.putText(canvas,f"DP seed={args.seed} step={step} success={int(success)} reward={reward:.1f}",
                         (4,277),cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,255,255),1,cv2.LINE_AA)
             writer.write(cv2.cvtColor(canvas,cv2.COLOR_RGB2BGR))
         writer=cv2.VideoWriter(str(args.output/"rollout.mp4"),cv2.VideoWriter_fourcc(*"mp4v"),20,(768,288))

@@ -2,25 +2,26 @@
 
 **Project question:** Does downstream learning utility vary among synthetic robot trajectories even when they have similar validity?
 
-**Current stage:** prepare fine-tuning of an official RoboCasa-pretrained Diffusion Policy on 28 H50 human-left episodes at native 20fps. The LeRobot U-Net DP path is retained as an engineering smoke only. The fixed base is 28 H50 left-drawer demos; synthetic data is deferred. **Data provenance correction:** DAVIAN-Robotics/robocasa-MG_30 is MimicGen synthetic simulator data, not human demonstrations. H50 is the human source and DreamGen is the future video-generated synthetic pool. Older Phase 0 sections below describe toy sequences whose action-error threshold is not robot task success.
+**Current stage:** official RoboCasa π0.5 with strictly LoRA-only adaptation on 28 H50 human
+OpenDrawer left-drawer demonstrations. User starts training on a Linux CUDA host; Mac is the SSH client.
+ACT and DP are historical experiments. H50 is human; MG_30 is MimicGen synthetic; DreamGen is deferred.
 
-## Active target — official pretrained RoboCasa Diffusion Policy
+## Active target — RoboCasa π0.5 human-left LoRA
 
-Official pretrain_human300 EMA checkpoint is connected through the native RoboCasa DP fork.
-One actual OpenDrawer left-drawer seed=3 rollout completed: 750 steps, 94 native 8-action chunks,
-finite actions, zero clipping, success=false. The complete video and per-step stats are saved locally.
-This is interface verification, not a successful zero-shot benchmark.
+Read [setup and handoff](docs/pi05_h50_lora_handoff.md), and use
+[the school continuation prompt](docs/NEXT_SESSION_PROMPT.md) in the next session.
+Includes pinned source/checkpoint, isolated environment, adapter-only freezing, three-camera/state/action
+integration and user-started commands. Verification status is in small records.
+Preparation is not a completed training run. Only the fixed28human-left demos, native20Hz, are used.
 
-The fixed 28 H50 human left demos have been exported at native 20Hz for the official dataset reader:
-5916 frames, three cameras, 128->256 bilinear upsampling. Original datasets remain intact.
-Official reader windows and pretrained forward-only compatibility checks passed.
-Fine-tuning has not started. Runnable native adapters now provide fresh optimizer/EMA initialization,
-preserved pretrained normalization, full checkpoints, metrics and3 evaluation episodes. See [native integration, results and target-data plan](docs/robocasa_pretrained_dp.md).
+Final paired DP diagnostic: original **2/20**, full-parameter H50 fine-tune **0/20**.
+See [comparison](records/dp_final_comparison.json) and [per-seed CSV](records/dp_final_comparison.csv).
+Failure cause is not proven. Completed DPtraining used batch4; later batch32 config was not trained.
+Historical commands: [local DP evaluation](docs/local_h50_native_dp_eval.md),
+[native DP integration](docs/robocasa_pretrained_dp.md), [4090 guide](docs/4090_h50_native_dp.md).
+Do not start another ACT/DP experiment from older guides.
 
-ACT runs and earlier LeRobot from-scratch DP checks remain historical engineering records.
-The old scratch trainer requires explicit opt-in for non-smoke training.
-For the4090 run, see [setup, dataset transfer and train/eval commands](docs/4090_h50_native_dp.md).
-See [earlier engineering checks](docs/open_drawer_diffusion.md).
+Data/checkpoints/videos are gitignored. Bring the handoff's H50 archive to school; Git doesn't transfer it.
 
 ## Setup and run
 

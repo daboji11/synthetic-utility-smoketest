@@ -1,0 +1,17 @@
+{
+  "status": "blocked_by_available_local_vram",
+  "passed": false,
+  "phase": "official checkpoint GPU load, before policy forward",
+  "error": "XlaRuntimeError RESOURCE_EXHAUSTED; allocator could not allocate 2415919104 bytes",
+  "gpu": "RTX 4060 Laptop GPU",
+  "gpu_total_mib": 8188,
+  "gpu_used_after_process_exit_mib": 2938,
+  "full_checkpoint_download_verified": true,
+  "preflight_passed": true,
+  "policy_forward_completed": false,
+  "env_steps_executed": 0,
+  "optimizer_updates": 0,
+  "next_gate": "Run scripts/smoke_pi05_checkpoint.py on the Linux cloud GPU before user-started rollout/training.",
+  "model_architecture_changed": false,
+  "precision": "official inference bfloat16 requested"
+}

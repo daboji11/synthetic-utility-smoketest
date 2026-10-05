@@ -154,13 +154,13 @@ ema:
   min_value: 0.0
   max_value: 0.9999
 dataloader:
-  batch_size: 4
+  batch_size: 32
   num_workers: 4
   shuffle: true
   pin_memory: true
   persistent_workers: false
 val_dataloader:
-  batch_size: 4
+  batch_size: 32
   num_workers: 0
   shuffle: false
   pin_memory: true
@@ -345,7 +345,7 @@ native_finetune:
   language_text: open the left drawer
   episodes: 28
   fps: 20
-  output: /home/dabozi/research/synthetic-utility-smoketest/outputs/OpenDrawer/dp_pretrained_human_left/seed_0
+  output: /home/dabozi/research/synthetic-utility-smoketest/outputs/OpenDrawer/dp_pretrained_human_left/seed_0_batch32
   architecture_unchanged: true
   synthetic_data: false
   initialization: published EMA into both models; fresh optimizer and counters

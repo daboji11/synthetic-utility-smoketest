@@ -1,0 +1,13 @@
+{
+  "archive": "h50_pi05_handoff_data.tar",
+  "local_windows_path": "D:\\h50_pi05_handoff_data.tar",
+  "bytes": 217835520,
+  "sha256": "e28351adc0c818bd471213e6c4045251da8ad2bfa5e2f0548e3ece79a1f61b29",
+  "dataset_directory": "h50_human_left_native_dp_20fps_256",
+  "episodes": 28,
+  "fps": 20,
+  "frames": 5916,
+  "videos": 84,
+  "parquet_files": 28,
+  "purpose": "Copy to Mac or external storage before leaving home; Git excludes datasets. Same fixed H50 human-left dataset used by native DP."
+}

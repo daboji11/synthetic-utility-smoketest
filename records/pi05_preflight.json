@@ -1,0 +1,145 @@
+{
+  "passed": true,
+  "source": "/home/dabozi/research/openpi-robocasa",
+  "devices": [
+    "cuda:0"
+  ],
+  "episodes": 28,
+  "frames": 5916,
+  "fps": 20,
+  "batch_size": 1,
+  "action_horizon": 50,
+  "action_dim": 12,
+  "state_dim": 16,
+  "trainable_parameter_count": 49987584,
+  "trainable_parameters": {
+    "PaliGemma/llm/layers/attn/attn_vec_einsum/lora_a": [
+      18,
+      8,
+      256,
+      16
+    ],
+    "PaliGemma/llm/layers/attn/attn_vec_einsum/lora_b": [
+      18,
+      8,
+      16,
+      2048
+    ],
+    "PaliGemma/llm/layers/attn/attn_vec_einsum_1/lora_a": [
+      18,
+      8,
+      256,
+      32
+    ],
+    "PaliGemma/llm/layers/attn/attn_vec_einsum_1/lora_b": [
+      18,
+      8,
+      32,
+      1024
+    ],
+    "PaliGemma/llm/layers/attn/kv_einsum/lora_a": [
+      18,
+      2,
+      1,
+      2048,
+      16
+    ],
+    "PaliGemma/llm/layers/attn/kv_einsum/lora_b": [
+      18,
+      2,
+      1,
+      16,
+      256
+    ],
+    "PaliGemma/llm/layers/attn/kv_einsum_1/lora_a": [
+      18,
+      2,
+      1,
+      1024,
+      32
+    ],
+    "PaliGemma/llm/layers/attn/kv_einsum_1/lora_b": [
+      18,
+      2,
+      1,
+      32,
+      256
+    ],
+    "PaliGemma/llm/layers/attn/q_einsum/lora_a": [
+      18,
+      8,
+      2048,
+      16
+    ],
+    "PaliGemma/llm/layers/attn/q_einsum/lora_b": [
+      18,
+      8,
+      16,
+      256
+    ],
+    "PaliGemma/llm/layers/attn/q_einsum_1/lora_a": [
+      18,
+      8,
+      1024,
+      32
+    ],
+    "PaliGemma/llm/layers/attn/q_einsum_1/lora_b": [
+      18,
+      8,
+      32,
+      256
+    ],
+    "PaliGemma/llm/layers/mlp/gating_einsum_lora_a": [
+      18,
+      2,
+      2048,
+      16
+    ],
+    "PaliGemma/llm/layers/mlp/gating_einsum_lora_b": [
+      18,
+      2,
+      16,
+      16384
+    ],
+    "PaliGemma/llm/layers/mlp/linear_lora_a": [
+      18,
+      16384,
+      16
+    ],
+    "PaliGemma/llm/layers/mlp/linear_lora_b": [
+      18,
+      16,
+      2048
+    ],
+    "PaliGemma/llm/layers/mlp_1/gating_einsum_lora_a": [
+      18,
+      2,
+      1024,
+      32
+    ],
+    "PaliGemma/llm/layers/mlp_1/gating_einsum_lora_b": [
+      18,
+      2,
+      32,
+      4096
+    ],
+    "PaliGemma/llm/layers/mlp_1/linear_lora_a": [
+      18,
+      4096,
+      32
+    ],
+    "PaliGemma/llm/layers/mlp_1/linear_lora_b": [
+      18,
+      32,
+      1024
+    ]
+  },
+  "state_reorder_matches_source": true,
+  "action_order_magnitude_preserved": true,
+  "all_three_camera_masks_true": true,
+  "vision_frozen": true,
+  "only_lora_trainable": true,
+  "optimizer_updates": 0,
+  "full_model_weights_loaded": false,
+  "rollout_executed": false
+}

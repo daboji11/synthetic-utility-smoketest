@@ -1,0 +1,38 @@
+{
+  "python": "3.11.13",
+  "environment": "/home/dabozi/research/openpi-robocasa/.venv",
+  "source_commit": "5a6beda9ff99da30b4e1b59320f6a32971d7c397",
+  "devices": [
+    "cuda:0"
+  ],
+  "versions": {
+    "jax": "0.5.3",
+    "jaxlib": "0.5.3",
+    "torch": "2.7.1",
+    "flax": "0.10.2",
+    "orbax-checkpoint": "0.11.13",
+    "numpy": "2.2.5",
+    "lerobot": "0.3.3",
+    "mujoco": "3.3.1",
+    "gymnasium": "0.29.1",
+    "robocasa": "1.0.1",
+    "robosuite": "1.5.2",
+    "protobuf": "3.19.6",
+    "googleapis-common-protos": "1.56.4",
+    "huggingface-hub": "0.36.2",
+    "wandb": "0.20.1",
+    "tianshou": "0.4.10"
+  },
+  "jax_cuda_smoke_passed": true,
+  "pip_check_passed": true,
+  "core_dependencies": "pinned upstream uv.lock",
+  "runtime_corrections_file": "requirements-pi05-runtime.txt",
+  "config_snapshot_serializes": true,
+  "interface_contract_tests_passed": 4,
+  "historical_suite_note": "Full collection in native DP env hits old ACT/scratch-DP LeRobot API imports; not a pi05 test failure. Retired policy envs remain untouched.",
+  "checkpoint_forward_status": "Local GPU-load OOM before inference; cloud GPU smoke still required",
+  "optimizer_updates": 0,
+  "env_steps_executed": 0,
+  "native_dp_and_core_regression_tests_passed": 8,
+  "setup_repeated_with_final_dependencies_passed": true
+}

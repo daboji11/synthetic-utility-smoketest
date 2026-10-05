@@ -1,0 +1,385 @@
+{
+  "training": {
+    "batch_size": 4,
+    "updates": 10000,
+    "configured_lr": 1e-05,
+    "observed_max_lr": 1e-05,
+    "last_lr": 2.733962412015956e-13,
+    "warmup": 500,
+    "val_ratio": 0.0,
+    "validation_every": 50,
+    "scheduled_epochs": 20,
+    "all_losses_finite": true,
+    "sampled_windows_approx": 40000,
+    "dataset_passes_approx": 6.761325219743069
+  },
+  "loss_blocks": [
+    {
+      "steps": [
+        1,
+        500
+      ],
+      "mean_loss": 0.02395644472085405
+    },
+    {
+      "steps": [
+        501,
+        1000
+      ],
+      "mean_loss": 0.018988451410434207
+    },
+    {
+      "steps": [
+        1001,
+        1500
+      ],
+      "mean_loss": 0.018751662159804255
+    },
+    {
+      "steps": [
+        1501,
+        2000
+      ],
+      "mean_loss": 0.0188752180460142
+    },
+    {
+      "steps": [
+        2001,
+        2500
+      ],
+      "mean_loss": 0.017145372545928694
+    },
+    {
+      "steps": [
+        2501,
+        3000
+      ],
+      "mean_loss": 0.01819128494639881
+    },
+    {
+      "steps": [
+        3001,
+        3500
+      ],
+      "mean_loss": 0.015630193956545555
+    },
+    {
+      "steps": [
+        3501,
+        4000
+      ],
+      "mean_loss": 0.015939380156458356
+    },
+    {
+      "steps": [
+        4001,
+        4500
+      ],
+      "mean_loss": 0.0153662024224177
+    },
+    {
+      "steps": [
+        4501,
+        5000
+      ],
+      "mean_loss": 0.01661418321938254
+    },
+    {
+      "steps": [
+        5001,
+        5500
+      ],
+      "mean_loss": 0.015473459738073871
+    },
+    {
+      "steps": [
+        5501,
+        6000
+      ],
+      "mean_loss": 0.015023934773984365
+    },
+    {
+      "steps": [
+        6001,
+        6500
+      ],
+      "mean_loss": 0.015516247952007688
+    },
+    {
+      "steps": [
+        6501,
+        7000
+      ],
+      "mean_loss": 0.013430365947424434
+    },
+    {
+      "steps": [
+        7001,
+        7500
+      ],
+      "mean_loss": 0.01490465713175945
+    },
+    {
+      "steps": [
+        7501,
+        8000
+      ],
+      "mean_loss": 0.015497994887758978
+    },
+    {
+      "steps": [
+        8001,
+        8500
+      ],
+      "mean_loss": 0.013617718549328856
+    },
+    {
+      "steps": [
+        8501,
+        9000
+      ],
+      "mean_loss": 0.01419386218872387
+    },
+    {
+      "steps": [
+        9001,
+        9500
+      ],
+      "mean_loss": 0.013063440814381466
+    },
+    {
+      "steps": [
+        9501,
+        10000
+      ],
+      "mean_loss": 0.013975450390134939
+    }
+  ],
+  "paired_results": [
+    {
+      "seed": 3,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.0005478798102612076
+      },
+      "pretrained": {
+        "success": false,
+        "max_drawer_open": 0.014870907035082067
+      }
+    },
+    {
+      "seed": 4,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.007499345651740764
+      },
+      "pretrained": {
+        "success": false,
+        "max_drawer_open": 0.0764084398955263
+      }
+    },
+    {
+      "seed": 5,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.0036331818960395426
+      },
+      "pretrained": {
+        "success": false,
+        "max_drawer_open": 0.27457892092243524
+      }
+    },
+    {
+      "seed": 8,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.00010046446992740887
+      },
+      "pretrained": {
+        "success": false,
+        "max_drawer_open": 0.0014824845088034567
+      }
+    },
+    {
+      "seed": 10,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 1.4663233846968177e-09
+      },
+      "pretrained": {
+        "success": false,
+        "max_drawer_open": 0.0029174731373655637
+      }
+    },
+    {
+      "seed": 13,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.004868656942921918
+      },
+      "pretrained": {
+        "success": true,
+        "max_drawer_open": 0.957042947712188
+      }
+    },
+    {
+      "seed": 16,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.0016689969926866402
+      },
+      "pretrained": {
+        "success": false,
+        "max_drawer_open": 0.0016688215844001153
+      }
+    },
+    {
+      "seed": 18,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.0028715641291984805
+      },
+      "pretrained": {
+        "success": false,
+        "max_drawer_open": 2.6275321159974284e-07
+      }
+    },
+    {
+      "seed": 20,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.0007511670165300334
+      },
+      "pretrained": {
+        "success": false,
+        "max_drawer_open": 0.0007511225819150142
+      }
+    },
+    {
+      "seed": 21,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.001606810409278741
+      },
+      "pretrained": {
+        "success": true,
+        "max_drawer_open": 0.9734390541367158
+      }
+    },
+    {
+      "seed": 22,
+      "finetuned": {
+        "success": false,
+        "max_drawer_open": 0.004525833343932409
+      },
+      "pretrained": {
+        "success": false,
+        "max_drawer_open": 0.0015912216454182864
+      }
+    }
+  ],
+  "run_counts": {
+    "finetuned": {
+      "completed": 20,
+      "successes": 0
+    },
+    "pretrained": {
+      "completed": 11,
+      "successes": 2
+    }
+  },
+  "original_optimizer": {
+    "transformer_weight_decay": 0.001,
+    "obs_encoder_weight_decay": 1e-06,
+    "learning_rate": 0.0001,
+    "betas": [
+      0.9,
+      0.95
+    ]
+  },
+  "weight_drift": {
+    "model": {
+      "normalizer_unchanged": true,
+      "excluded_unchanged_nonfinite_buffers": [
+        "model.mask",
+        "model.memory_mask"
+      ],
+      "groups": {
+        "robot0_agentview_right_image": {
+          "elements": 14166662,
+          "reference_squared_norm": 81780.45734744146,
+          "delta_squared_norm": 6.204972435309935,
+          "changed_tensors": 82,
+          "max_abs_delta": 0.003859087824821472,
+          "relative_l2_update": 0.008710541631780712
+        },
+        "robot0_agentview_left_image": {
+          "elements": 14166662,
+          "reference_squared_norm": 72426.28116659448,
+          "delta_squared_norm": 7.068556600826486,
+          "changed_tensors": 82,
+          "max_abs_delta": 0.004806485027074814,
+          "relative_l2_update": 0.00987909761765722
+        },
+        "robot0_eye_in_hand_image": {
+          "elements": 14166662,
+          "reference_squared_norm": 73203.65713114291,
+          "delta_squared_norm": 8.047061659700375,
+          "changed_tensors": 82,
+          "max_abs_delta": 0.004704092629253864,
+          "relative_l2_update": 0.010484609877852146
+        },
+        "diffusion_transformer": {
+          "elements": 63575052,
+          "reference_squared_norm": 358656.10330012324,
+          "delta_squared_norm": 21.170959649240217,
+          "changed_tensors": 274,
+          "max_abs_delta": 0.005233261734247208,
+          "relative_l2_update": 0.0076830057703068735
+        }
+      }
+    },
+    "ema_model": {
+      "normalizer_unchanged": true,
+      "excluded_unchanged_nonfinite_buffers": [
+        "model.mask",
+        "model.memory_mask"
+      ],
+      "groups": {
+        "robot0_agentview_right_image": {
+          "elements": 14166662,
+          "reference_squared_norm": 81780.45734744146,
+          "delta_squared_norm": 6.176681329148138,
+          "changed_tensors": 82,
+          "max_abs_delta": 0.0038396865129470825,
+          "relative_l2_update": 0.008690661414862211
+        },
+        "robot0_agentview_left_image": {
+          "elements": 14166662,
+          "reference_squared_norm": 72426.28116659448,
+          "delta_squared_norm": 7.0289885061339135,
+          "changed_tensors": 82,
+          "max_abs_delta": 0.004796445369720459,
+          "relative_l2_update": 0.009851408397230789
+        },
+        "robot0_eye_in_hand_image": {
+          "elements": 14166662,
+          "reference_squared_norm": 73203.65713114291,
+          "delta_squared_norm": 8.00230080860277,
+          "changed_tensors": 82,
+          "max_abs_delta": 0.004685461521148682,
+          "relative_l2_update": 0.01045540949952523
+        },
+        "diffusion_transformer": {
+          "elements": 63575052,
+          "reference_squared_norm": 358656.10330012324,
+          "delta_squared_norm": 21.084358905219005,
+          "changed_tensors": 274,
+          "max_abs_delta": 0.0052214860916137695,
+          "relative_l2_update": 0.007667275830869782
+        }
+      }
+    }
+  },
+  "protocol": "Full policy fine-tune, original EMA->model+EMA, fresh optimizer, no LoRA/frozen vision, fixed original normalizer, no held-out validation or checkpoint success selection."
+}

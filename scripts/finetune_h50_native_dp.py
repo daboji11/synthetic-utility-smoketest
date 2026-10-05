@@ -18,9 +18,9 @@ from evaluate_open_drawer_pretrained_dp import DEFAULT_CHECKPOINT
 from src.workflows.native_dp_finetune import H50PretrainedFineTuneWorkspace,normalizer_equal
 
 DATASET=ROOT/"data/processed/OpenDrawer/h50_human_left_native_dp_20fps_256"
-OUTPUT=ROOT/"outputs/OpenDrawer/dp_pretrained_human_left/seed_0"
+OUTPUT=ROOT/"outputs/OpenDrawer/dp_pretrained_human_left/seed_0_batch32"
 
-def build_config(checkpoint,dataset,output,steps=10000,batch_size=4,learning_rate=1e-5):
+def build_config(checkpoint,dataset,output,steps=10000,batch_size=32,learning_rate=1e-5):
     OmegaConf.register_new_resolver("now",lambda fmt:datetime.datetime.now().strftime(fmt),replace=True)
     cfg=OmegaConf.load(checkpoint.parent.parent/".hydra/config.yaml")
     if steps<1 or (steps>500 and steps%500):
@@ -113,7 +113,8 @@ def main():
     parser.add_argument("--dataset",type=Path,default=DATASET)
     parser.add_argument("--output",type=Path,default=OUTPUT)
     parser.add_argument("--steps",type=int,default=10000)
-    parser.add_argument("--batch-size",type=int,default=4)
+    parser.add_argument("--batch-size",type=int,default=32,
+                        help="4090 default; benchmark on the training server before a long run")
     parser.add_argument("--learning-rate",type=float,default=1e-5)
     parser.add_argument("--preflight",action="store_true")
     args=parser.parse_args()

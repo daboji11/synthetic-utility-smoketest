@@ -1,0 +1,30 @@
+# Original published EMA weights; zero H50 fine-tuning. No fine-tuned episode reuse.
+# Literal language text matches H50 fine-tuned inference for the paired control.
+checkpoint: data/raw/huggingface_models/models--robocasa--robocasa365_checkpoints/snapshots/c484448aba1a9b60a04c9b0ca117241518ea69f3/diffusion_policy/17.40.09_train_diffusion_transformer_hybrid_pretrain_human300/checkpoints/latest.ckpt
+output: results/robocasa_eval/pretrained_dp_local_20_seeds
+policy_kind: pretrained
+expected_updates: null
+language_text: open the left drawer
+seeds:
+- 3
+- 4
+- 5
+- 8
+- 10
+- 13
+- 16
+- 18
+- 20
+- 21
+- 22
+- 23
+- 26
+- 27
+- 28
+- 31
+- 32
+- 33
+- 34
+- 35
+horizon: 750
+split: all

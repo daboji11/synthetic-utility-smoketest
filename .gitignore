@@ -29,3 +29,7 @@ outputs/
 
 # Local sampled-frame review artifacts; labels are versioned under records/.
 results/dataset_inspection/OpenDrawer/video_success_review/
+
+# Isolated pi05 installer and runtime artifacts
+.venv-pi05-tools*/
+requirements-pi05-linux-lock.txt

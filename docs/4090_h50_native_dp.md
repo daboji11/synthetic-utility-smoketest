@@ -103,7 +103,7 @@ Fine-tuning defaults:
 | Target dataset |28 H50 human left demos, no synthetic |
 | Camera count/input size |3 /256x256, native224x224 crop |
 | FPS/control frequency |20 |
-| Batch size |4 |
+| Batch size |32 (4090 default; not yet benchmarked) |
 | Optimizer updates |10000 |
 | Learning rate |1e-5,500-step warmup then cosine |
 | Seed |0 |
@@ -117,6 +117,14 @@ Fine-tuning defaults:
 | During-training rollouts |Disabled |
 | Logging service |W&B disabled; local metrics/logs saved |
 
+Training is intended to run on the rented RTX4090; local WSL is for preparation and inspection.
+The previous batch4 run and checkpoint remain unchanged. New runs default to seed_0_batch32.
+Batch32 has not been measured with a real backward pass on the4090. The preflight is forward-only.
+A larger batch does not remove the current CPU/video-decoding bottleneck or guarantee faster updates.
+At10000 updates, batch32 processes about8 times as many windows as batch4; it changes the training budget,
+not only speed. Keep the batch/update protocol identical across future comparison variants.
+The combined runner accepts BATCH_SIZE and RUN_DIR environment overrides and evaluates that same run.
+
 The official trainer's global_step includes epoch logging increments.
 metrics.jsonl step and checkpoint names use the exact optimizer-update counter instead.
 
@@ -127,7 +135,7 @@ Evaluation prints PROGRESS, EPISODE_STATS, EVAL_PROGRESS and FINAL_EVAL.
 
 ## Output files
 
-    outputs/OpenDrawer/dp_pretrained_human_left/seed_0/
+    outputs/OpenDrawer/dp_pretrained_human_left/seed_0_batch32/
       config.yaml
       config.json
       normalizer.pkl
@@ -151,8 +159,8 @@ Evaluation prints PROGRESS, EPISODE_STATS, EVAL_PROGRESS and FINAL_EVAL.
 
 Console logs:
 
-    outputs/OpenDrawer/dp_pretrained_human_left/logs/train_seed_0.log
-    outputs/OpenDrawer/dp_pretrained_human_left/logs/eval_seed_3_4_5.log
+    outputs/OpenDrawer/dp_pretrained_human_left/seed_0_batch32_logs/train_seed_0.log
+    outputs/OpenDrawer/dp_pretrained_human_left/seed_0_batch32_logs/eval_seed_3_4_5.log
 
 The native .ckpt contains model, EMA, optimizer, full config and counters.
 The checkpoint contains normalization tensors; normalizer.pkl is also saved and checked by evaluation.
@@ -178,7 +186,9 @@ Train only:
 
 Evaluate final checkpoint only:
 
-    python -u scripts/evaluate_h50_native_dp_three.py
+    python -u scripts/evaluate_h50_native_dp_three.py \
+      --checkpoint outputs/OpenDrawer/dp_pretrained_human_left/seed_0_batch32/checkpoints/last.ckpt \
+      --output outputs/OpenDrawer/dp_pretrained_human_left/seed_0_batch32/robocasa_eval/seed_3_4_5
 
 The evaluator requires10000 actual updates by default and checks saved normalizer consistency.
 For an explicitly shorter engineering run, choose a separate output and pass its --expected-updates
@@ -191,7 +201,7 @@ Copy the full run directory back before removing the rental machine. From local 
 
     mkdir -p /home/dabozi/research/synthetic-utility-smoketest/outputs/OpenDrawer/dp_pretrained_human_left
     rsync -av --progress -e 'ssh -p PORT' \
-      USER@HOST:~/research/synthetic-utility-smoketest/outputs/OpenDrawer/dp_pretrained_human_left/seed_0 \
+      USER@HOST:~/research/synthetic-utility-smoketest/outputs/OpenDrawer/dp_pretrained_human_left/seed_0_batch32 \
       /home/dabozi/research/synthetic-utility-smoketest/outputs/OpenDrawer/dp_pretrained_human_left/
 
 Use a new local destination if seed_0 already exists. Do not overwrite archived ACT/debug runs.

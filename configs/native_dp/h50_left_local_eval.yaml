@@ -1,0 +1,13 @@
+# Local inference of the completed batch4 4090 archive; no training.
+# Seeds were checked via env.reset only. Seeds6/7/9 are right drawer.
+checkpoint: outputs/OpenDrawer/dp_pretrained_human_left/seed_0_4090_archive/checkpoints/last.ckpt
+output: results/robocasa_eval/h50_dp_local_5_seeds
+expected_updates: 10000
+seeds:
+- 3
+- 4
+- 5
+- 8
+- 10
+horizon: 750
+split: all
