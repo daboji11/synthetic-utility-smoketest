@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Official RoboCasa pretrain_human300 EMA policy; one native zero-shot rollout."""
+"""Official native EMA DP: one pretrained or H50-left fine-tuned rollout."""
 from __future__ import annotations
 import argparse
 from collections import deque
@@ -19,12 +19,21 @@ REVISION = "c484448aba1a9b60a04c9b0ca117241518ea69f3"
 SNAPSHOT = ROOT / "data/raw/huggingface_models/models--robocasa--robocasa365_checkpoints/snapshots" / REVISION
 DEFAULT_CHECKPOINT = SNAPSHOT / PREFIX / "checkpoints/latest.ckpt"
 
-def load_native_policy(checkpoint):
+def load_native_policy(checkpoint, expected_updates=None):
     OmegaConf.register_new_resolver("eval", eval, replace=True)
     payload = torch.load(checkpoint, map_location="cpu", pickle_module=dill, weights_only=False)
     cfg = payload["cfg"]
-    if cfg.task.name != "pretrain_human300" or not cfg.training.use_ema:
-        raise ValueError("Expected official pretrain_human300 EMA checkpoint")
+    is_finetuned = cfg.task.name == "h50_open_drawer_left"
+    if cfg.task.name not in ["pretrain_human300","h50_open_drawer_left"] or not cfg.training.use_ema:
+        raise ValueError("Expected official pretrained EMA or its H50-left fine-tuned checkpoint")
+    updates = int(dill.loads(payload["pickles"]["optimizer_updates"])) if is_finetuned else None
+    if is_finetuned:
+        required = expected_updates if expected_updates is not None else int(cfg.native_finetune.steps)
+        if (updates != required or cfg.native_finetune.source_revision != REVISION
+            or cfg.native_finetune.episodes != 28 or cfg.native_finetune.fps != 20):
+            raise ValueError(f"Incomplete/incompatible H50 checkpoint: updates={updates}, required={required}")
+    elif expected_updates is not None:
+        raise ValueError("Optimizer-update gate applies only to fine-tuned checkpoints")
     policy = hydra.utils.instantiate(cfg.policy)
     loaded = policy.load_state_dict(payload["state_dicts"]["ema_model"], strict=True)
     assert not loaded.missing_keys and not loaded.unexpected_keys
@@ -45,7 +54,7 @@ def load_native_policy(checkpoint):
             raise ValueError("EMA checkpoint and published companion normalizer differ")
     protocol = {
         "checkpoint": str(checkpoint.absolute()), "checkpoint_blob": str(checkpoint.resolve()), "checkpoint_revision": REVISION,
-        "policy_class": cfg.policy._target_, "pretraining_task": cfg.task.name,
+        "policy_class": cfg.policy._target_, "pretraining_task": "pretrain_human300", "checkpoint_task": cfg.task.name,
         "loaded_weights": "ema_model", "strict_load": True,
         "shape_meta": OmegaConf.to_container(cfg.task.shape_meta, resolve=True),
         "n_obs_steps": policy.n_obs_steps, "prediction_horizon": policy.horizon,
@@ -56,7 +65,9 @@ def load_native_policy(checkpoint):
         "normalizer_fields": list(policy.normalizer.params_dict),
         "inference_dtype": "float32", "control_hz": 20,
         "language_encoder": "openai/clip-vit-large-patch14, robomimic LangEncoder",
-        "source_is_pretrained": True, "fine_tuning_started": False,
+        "source_is_pretrained": True, "fine_tuning_started": is_finetuned,
+        "optimizer_updates": updates,
+        "policy_language_text": str(cfg.native_finetune.language_text) if is_finetuned else None,
     }
     del payload
     gc.collect()
@@ -85,6 +96,7 @@ def process_native_observation(raw, shape_meta, lang_emb):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkpoint", type=Path, default=DEFAULT_CHECKPOINT)
+    parser.add_argument("--expected-updates", type=int)
     parser.add_argument("--seed", type=int, default=3)
     parser.add_argument("--horizon", type=int, default=750)
     parser.add_argument("--split", choices=["all","pretrain","target","test"], default="all")
@@ -95,7 +107,7 @@ def main():
     torch.set_num_threads(4)
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
-    policy, protocol = load_native_policy(args.checkpoint)
+    policy, protocol = load_native_policy(args.checkpoint, args.expected_updates)
     print("CHECKPOINT_OK " + json.dumps(protocol), flush=True)
     from robomimic.utils.lang_utils import LangEncoder
     from robocasa.wrappers.gym_wrapper import RoboCasaGymEnv
@@ -114,12 +126,13 @@ def main():
         instruction = raw["annotation.human.task_description"]
         if instruction.strip().lower().rstrip(".") != "open the left drawer":
             raise ValueError(f"Seed={args.seed} is not left drawer: {instruction!r}")
-        lang = lang_encoder.get_lang_emb(instruction).cpu().numpy()
+        language_text = protocol["policy_language_text"] or instruction
+        lang = lang_encoder.get_lang_emb(language_text).cpu().numpy()
         del lang_encoder
         if lang.shape != (768,) or env.env.control_freq != 20:
             raise ValueError("Language or control frequency mismatch")
         protocol.update({"seed":args.seed, "split":args.split, "instruction":instruction,
-                         "actual_control_hz":env.env.control_freq,
+                         "actual_control_hz":env.env.control_freq, "actual_policy_language_text":language_text,
                          "env_metadata":env.env.get_ep_meta(),
                          "camera_names":list(env.env.camera_names)})
         (args.output/"protocol.json").write_text(json.dumps(protocol, indent=2)+"\n")
@@ -196,7 +209,7 @@ def main():
                  "max_drawer_open":max_drawer,"wall_clock_s":time.monotonic()-started,
                  "inference_s":inference_s,"gpu_peak_allocated_mb":torch.cuda.max_memory_allocated()/1024**2,
                  "video":str(args.output/"rollout.mp4"),
-                 "interpretation":"One zero-shot interface smoke episode, not a success-rate estimate"}
+                 "interpretation":"One fine-tuned H50-left episode" if protocol["fine_tuning_started"] else "One zero-shot interface smoke episode, not a success-rate estimate"}
         (args.output/"summary.json").write_text(json.dumps(summary,indent=2)+"\n")
         print("SUMMARY "+json.dumps(summary),flush=True)
     finally:

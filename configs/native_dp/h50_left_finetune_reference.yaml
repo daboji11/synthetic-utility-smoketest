@@ -1,0 +1,351 @@
+# Reference only; finetune_h50_native_dp.py resolves local paths and preserves exact native architecture.
+name: train_diffusion_transformer_hybrid
+_target_: src.workflows.native_dp_finetune.H50PretrainedFineTuneWorkspace
+task_name: h50_open_drawer_left
+shape_meta:
+  obs:
+    robot0_agentview_right_image:
+      shape:
+      - 3
+      - 256
+      - 256
+      type: rgb
+      lerobot_keys:
+      - video.robot0_agentview_right
+    robot0_agentview_left_image:
+      shape:
+      - 3
+      - 256
+      - 256
+      type: rgb
+      lerobot_keys:
+      - video.robot0_agentview_left
+    robot0_eye_in_hand_image:
+      shape:
+      - 3
+      - 256
+      - 256
+      type: rgb
+      lerobot_keys:
+      - video.robot0_eye_in_hand
+    robot0_base_to_eef_pos:
+      shape:
+      - 3
+      lerobot_keys:
+      - state.end_effector_position_relative
+    robot0_base_to_eef_quat:
+      shape:
+      - 4
+      lerobot_keys:
+      - state.end_effector_rotation_relative
+    robot0_gripper_qpos:
+      shape:
+      - 2
+      lerobot_keys:
+      - state.gripper_qpos
+    lang_emb:
+      shape:
+      - 768
+  action:
+    shape:
+    - 12
+    lerobot_keys:
+    - action.end_effector_position
+    - action.end_effector_rotation
+    - action.gripper_close
+    - action.base_motion
+    - action.control_mode
+exp_name: pretrained_ema_h50_left_finetune
+horizon: 10
+n_obs_steps: 2
+n_action_steps: 8
+n_latency_steps: 0
+dataset_obs_steps: 2
+past_action_visible: false
+keypoint_visible_rate: 1.0
+obs_as_cond: true
+policy:
+  _target_: diffusion_policy.policy.diffusion_transformer_hybrid_image_policy.DiffusionTransformerHybridImagePolicy
+  shape_meta:
+    obs:
+      robot0_agentview_right_image:
+        shape:
+        - 3
+        - 256
+        - 256
+        type: rgb
+        lerobot_keys:
+        - video.robot0_agentview_right
+      robot0_agentview_left_image:
+        shape:
+        - 3
+        - 256
+        - 256
+        type: rgb
+        lerobot_keys:
+        - video.robot0_agentview_left
+      robot0_eye_in_hand_image:
+        shape:
+        - 3
+        - 256
+        - 256
+        type: rgb
+        lerobot_keys:
+        - video.robot0_eye_in_hand
+      robot0_base_to_eef_pos:
+        shape:
+        - 3
+        lerobot_keys:
+        - state.end_effector_position_relative
+      robot0_base_to_eef_quat:
+        shape:
+        - 4
+        lerobot_keys:
+        - state.end_effector_rotation_relative
+      robot0_gripper_qpos:
+        shape:
+        - 2
+        lerobot_keys:
+        - state.gripper_qpos
+      lang_emb:
+        shape:
+        - 768
+    action:
+      shape:
+      - 12
+      lerobot_keys:
+      - action.end_effector_position
+      - action.end_effector_rotation
+      - action.gripper_close
+      - action.base_motion
+      - action.control_mode
+  noise_scheduler:
+    _target_: diffusers.schedulers.scheduling_ddpm.DDPMScheduler
+    num_train_timesteps: 100
+    beta_start: 0.0001
+    beta_end: 0.02
+    beta_schedule: squaredcos_cap_v2
+    variance_type: fixed_small
+    clip_sample: true
+    prediction_type: epsilon
+  horizon: 10
+  n_action_steps: 8
+  n_obs_steps: 2
+  num_inference_steps: 100
+  crop_shape:
+  - 224
+  - 224
+  obs_encoder_group_norm: true
+  eval_fixed_crop: true
+  n_layer: 12
+  n_cond_layers: 4
+  n_head: 8
+  n_emb: 512
+  p_drop_emb: 0.0
+  p_drop_attn: 0.3
+  causal_attn: true
+  time_as_cond: true
+  obs_as_cond: true
+ema:
+  _target_: diffusion_policy.model.diffusion.ema_model.EMAModel
+  update_after_step: 0
+  inv_gamma: 1.0
+  power: 0.75
+  min_value: 0.0
+  max_value: 0.9999
+dataloader:
+  batch_size: 4
+  num_workers: 4
+  shuffle: true
+  pin_memory: true
+  persistent_workers: false
+val_dataloader:
+  batch_size: 4
+  num_workers: 0
+  shuffle: false
+  pin_memory: true
+  persistent_workers: false
+optimizer:
+  transformer_weight_decay: 0.001
+  obs_encoder_weight_decay: 1.0e-06
+  learning_rate: 1.0e-05
+  betas:
+  - 0.9
+  - 0.95
+training:
+  device: cuda:0
+  seed: 0
+  debug: false
+  resume: false
+  lr_scheduler: cosine
+  lr_warmup_steps: 500
+  num_epochs: 20
+  gradient_accumulate_every: 1
+  use_ema: true
+  rollout_every: null
+  checkpoint_every: 1
+  val_every: 50
+  sample_every: 1000000
+  max_train_steps: 500
+  max_val_steps: null
+  tqdm_interval_sec: 1.0
+logging:
+  project: h50_left_native_dp_finetune
+  resume: false
+  mode: disabled
+  name: h50_left_native_dp_seed_0
+  tags:
+  - train_diffusion_transformer_hybrid
+  - h50_open_drawer_left
+  - pretrained_ema_h50_left_finetune
+  id: null
+  group: null
+checkpoint:
+  topk:
+    monitor_key: test_mean_score
+    mode: max
+    k: 0
+    format_str: epoch={epoch:04d}-test_mean_score={test_mean_score:.3f}.ckpt
+  save_last_ckpt: true
+  save_last_snapshot: false
+multi_run:
+  run_dir: data/outputs/2026.10.05/14.19.01_train_diffusion_transformer_hybrid_h50_open_drawer_left
+  wandb_name_base: 2026.10.05-14.19.01_train_diffusion_transformer_hybrid_h50_open_drawer_left
+task:
+  name: h50_open_drawer_left
+  shape_meta:
+    obs:
+      robot0_agentview_right_image:
+        shape:
+        - 3
+        - 256
+        - 256
+        type: rgb
+        lerobot_keys:
+        - video.robot0_agentview_right
+      robot0_agentview_left_image:
+        shape:
+        - 3
+        - 256
+        - 256
+        type: rgb
+        lerobot_keys:
+        - video.robot0_agentview_left
+      robot0_eye_in_hand_image:
+        shape:
+        - 3
+        - 256
+        - 256
+        type: rgb
+        lerobot_keys:
+        - video.robot0_eye_in_hand
+      robot0_base_to_eef_pos:
+        shape:
+        - 3
+        lerobot_keys:
+        - state.end_effector_position_relative
+      robot0_base_to_eef_quat:
+        shape:
+        - 4
+        lerobot_keys:
+        - state.end_effector_rotation_relative
+      robot0_gripper_qpos:
+        shape:
+        - 2
+        lerobot_keys:
+        - state.gripper_qpos
+      lang_emb:
+        shape:
+        - 768
+    action:
+      shape:
+      - 12
+      lerobot_keys:
+      - action.end_effector_position
+      - action.end_effector_rotation
+      - action.gripper_close
+      - action.base_motion
+      - action.control_mode
+  abs_action: false
+  dataset:
+    _target_: src.workflows.native_dp_finetune.PretrainedNormalizerH50Dataset
+    shape_meta:
+      obs:
+        robot0_agentview_right_image:
+          shape:
+          - 3
+          - 256
+          - 256
+          type: rgb
+          lerobot_keys:
+          - video.robot0_agentview_right
+        robot0_agentview_left_image:
+          shape:
+          - 3
+          - 256
+          - 256
+          type: rgb
+          lerobot_keys:
+          - video.robot0_agentview_left
+        robot0_eye_in_hand_image:
+          shape:
+          - 3
+          - 256
+          - 256
+          type: rgb
+          lerobot_keys:
+          - video.robot0_eye_in_hand
+        robot0_base_to_eef_pos:
+          shape:
+          - 3
+          lerobot_keys:
+          - state.end_effector_position_relative
+        robot0_base_to_eef_quat:
+          shape:
+          - 4
+          lerobot_keys:
+          - state.end_effector_rotation_relative
+        robot0_gripper_qpos:
+          shape:
+          - 2
+          lerobot_keys:
+          - state.gripper_qpos
+        lang_emb:
+          shape:
+          - 768
+      action:
+        shape:
+        - 12
+        lerobot_keys:
+        - action.end_effector_position
+        - action.end_effector_rotation
+        - action.gripper_close
+        - action.base_motion
+        - action.control_mode
+    dataset_paths:
+    - /home/dabozi/research/synthetic-utility-smoketest/data/processed/OpenDrawer/h50_human_left_native_dp_20fps_256
+    dataset_soup: null
+    horizon: 10
+    n_obs_steps: 2
+    pad_before: 1
+    pad_after: 7
+    abs_action: false
+    use_legacy_normalizer: false
+    use_cache: false
+    seed: 0
+    val_ratio: 0.0
+    pretrained_normalizer_path: /home/dabozi/research/synthetic-utility-smoketest/data/raw/huggingface_models/models--robocasa--robocasa365_checkpoints/snapshots/c484448aba1a9b60a04c9b0ca117241518ea69f3/diffusion_policy/17.40.09_train_diffusion_transformer_hybrid_pretrain_human300/normalizer.pkl
+  ckpt_path: null
+native_finetune:
+  source_checkpoint: /home/dabozi/research/synthetic-utility-smoketest/data/raw/huggingface_models/models--robocasa--robocasa365_checkpoints/snapshots/c484448aba1a9b60a04c9b0ca117241518ea69f3/diffusion_policy/17.40.09_train_diffusion_transformer_hybrid_pretrain_human300/checkpoints/latest.ckpt
+  source_revision: c484448aba1a9b60a04c9b0ca117241518ea69f3
+  pretrained_normalizer_path: /home/dabozi/research/synthetic-utility-smoketest/data/raw/huggingface_models/models--robocasa--robocasa365_checkpoints/snapshots/c484448aba1a9b60a04c9b0ca117241518ea69f3/diffusion_policy/17.40.09_train_diffusion_transformer_hybrid_pretrain_human300/normalizer.pkl
+  steps: 10000
+  save_freq: 2500
+  language_text: open the left drawer
+  episodes: 28
+  fps: 20
+  output: /home/dabozi/research/synthetic-utility-smoketest/outputs/OpenDrawer/dp_pretrained_human_left/seed_0
+  architecture_unchanged: true
+  synthetic_data: false
+  initialization: published EMA into both models; fresh optimizer and counters

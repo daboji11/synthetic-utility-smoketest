@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "episodes": 28,
+  "frames": 5916,
+  "fps": 20,
+  "batch_size": 4,
+  "initialization": "EMA -> model+EMA; optimizer state empty; counters0",
+  "normalizer_equal_pretrained": true,
+  "camera_encoder_inputs": {
+    "robot0_agentview_right_image": [
+      8,
+      3,
+      224,
+      224
+    ],
+    "robot0_agentview_left_image": [
+      8,
+      3,
+      224,
+      224
+    ],
+    "robot0_eye_in_hand_image": [
+      8,
+      3,
+      224,
+      224
+    ]
+  },
+  "forward_loss": 0.017380082979798317,
+  "optimizer_updates": 0,
+  "backward_executed": false,
+  "gpu_peak_allocated_mb": 2053.4453125,
+  "output": "/home/dabozi/research/synthetic-utility-smoketest/outputs/OpenDrawer/dp_pretrained_human_left/seed_0",
+  "native_trainer_fixture_test": {
+    "passed": 1,
+    "wall_clock_s": 10.99,
+    "scope": "Tiny fixture only: stock loop, fresh EMA initialization, optimizer counters, final checkpoint, evaluator reload; no real DP training"
+  },
+  "real_h50_finetuning_started": false,
+  "remote_4090_setup_executed": false,
+  "real_env_reset_preflight": {
+    "seed": 3,
+    "instruction": "Open the left drawer.",
+    "control_hz": 20,
+    "camera_count": 3,
+    "camera_shape": [
+      256,
+      256,
+      3
+    ],
+    "proprio_dim": 9,
+    "action_dim": 12,
+    "rendering_and_assets_work": true,
+    "env_steps_executed": 0
+  },
+  "transfer_archive": "data/raw/transfers/h50_native_dp_28.tar",
+  "transfer_archive_size_bytes": 217784320,
+  "transfer_archive_sha256": "0df570f3ada21f6cf27a2fe6a3498eb76d330e21cf71bff5c736bef38cb85913",
+  "training_ready": true
+}

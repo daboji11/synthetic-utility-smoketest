@@ -137,32 +137,21 @@ configs/native_dp/task/h50_open_drawer_left.yaml is a load-tested **dataset/task
 dataset_paths points only to this target via H50_NATIVE_DP_DATASET, dataset_soup=null.
 It does not include pretrain_human300 data in target fine-tuning.
 
-## Required fine-tuning handling before a training command
+## Fine-tuning implementation
 
-No runnable fine-tuning command is supplied yet; the current dataset/task config is ready,
-while training initialization and normalization need explicit handling:
+The previous initialization/normalization/save issues are now handled by the local adapter:
 
-1. Initialize both train model and EMA from the published EMA weights, with a fresh optimizer,
-   epoch and step. Official workspace's task.ckpt_path + training.resume=false only excludes
-   pickled counters; it still restores optimizer and loads model and EMA separately.
-   A model-only initialization payload or a small loader override is needed.
-2. Recommended: preserve pretrained observation normalizer during adaptation.
-   The official workspace unconditionally calls dataset.get_normalizer(), writes normalizer.pkl
-   and sets it on both model and EMA, so simply copying the original pkl into output does not help.
-   H50-only range scaling is about 2-3x larger for EE position/gripper than pretrained scaling.
-   A target dataset adapter whose get_normalizer returns the saved pretrained normalizer
-   can preserve the native training loop while avoiding this input convention change.
-   Delta-action normalization remains identity in both cases.
-3. Choose a fine-tuning learning rate/batch/optimizer-update budget suitable for the rented GPU,
-   and explicitly ensure a final checkpoint. The official loop counts epochs and has an extra
-   epoch-log increment; global_step is not exactly the number of optimizer updates.
-   Its default checkpoint_every=100 with only a small number of epochs can save no checkpoint.
-4. Use the same native architecture, cameras, language convention, 20Hz temporal convention,
-   normalization and evaluation seeds for subsequent human-only/mixed comparisons.
+- Published EMA loads into both train model and EMA; optimizer/global counters start fresh.
+- PretrainedNormalizerH50Dataset uses the official dataset/window reader but returns the saved
+  pretrained normalizer, so the official trainer keeps the original input convention.
+- Exact optimizer-update counting drives metrics and2500/5000/7500/10000 checkpoint names.
+- A final native checkpoint is guaranteed; the model architecture and official training loop are retained.
+- Fine-tuned evaluator verifies update count and companion normalizer, then uses8-action chunks.
+- H50 literal language text is used for fine-tuned inference, matching target training annotations.
+- A real-model batch4 forward-only preflight passed. A tiny fixture tested the stock loop and reload.
+- No actual H50 fine-tuning or fine-tuned policy rollouts have been launched by the agent.
 
-ACT artifacts and the earlier from-scratch LeRobot U-Net engineering checks are preserved.
-The LeRobot scratch trainer requires explicit opt-in for non-smoke training so it cannot
-accidentally become the pretrained fine-tuning baseline.
+[4090 setup, dataset transfer, fine-tuning and3 rollout commands](4090_h50_native_dp.md).
 
 ## Small verification records
 

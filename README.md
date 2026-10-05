@@ -14,11 +14,12 @@ This is interface verification, not a successful zero-shot benchmark.
 The fixed 28 H50 human left demos have been exported at native 20Hz for the official dataset reader:
 5916 frames, three cameras, 128->256 bilinear upsampling. Original datasets remain intact.
 Official reader windows and pretrained forward-only compatibility checks passed.
-Fine-tuning has not started; fresh optimizer/EMA initialization and observation-normalizer handling
-must be configured before launching it. See [native integration, results and target-data plan](docs/robocasa_pretrained_dp.md).
+Fine-tuning has not started. Runnable native adapters now provide fresh optimizer/EMA initialization,
+preserved pretrained normalization, full checkpoints, metrics and3 evaluation episodes. See [native integration, results and target-data plan](docs/robocasa_pretrained_dp.md).
 
 ACT runs and earlier LeRobot from-scratch DP checks remain historical engineering records.
 The old scratch trainer requires explicit opt-in for non-smoke training.
+For the4090 run, see [setup, dataset transfer and train/eval commands](docs/4090_h50_native_dp.md).
 See [earlier engineering checks](docs/open_drawer_diffusion.md).
 
 ## Setup and run

@@ -98,12 +98,10 @@
   ],
   "uses_ema": true,
   "directly_compatible_with_current_lerobot_unet": false,
-  "finetuning_ready": false,
+  "finetuning_ready": true,
   "remaining_work": [
-    "Prepare EMA-to-model initialization with fresh optimizer/counters",
-    "Preserve pretrained observation normalizer in native target fine-tuning",
-    "Choose fine-tuning hyperparameters and explicit final checkpoint schedule",
-    "Evaluate additional held-out left-drawer seeds after adaptation"
+    "User sets up4090 environment/transfers28-demo export",
+    "User launches10000-update fine-tuning and3 fine-tuned rollouts"
   ],
   "official_native_dataset_source_action_normalizer": "identity; strictly loaded EMA tensors and companion verified",
   "note": "Native model/normalizer/one-episode interface and H50 official reader verified; seed3 zero-shot success=false. H50 visual source detail is128x128; RoboCasa365 benchmark generalization is not established.",
@@ -113,5 +111,6 @@
   "zero_shot_success": false,
   "target_dataset_official_reader_verified": true,
   "fork_commit": "41212698b6f481ed92a55f0d5f1778ec56bea417",
-  "robomimic_commit": "7dc18461c4fc497095f1044f4c40cd44fff62e6a"
+  "robomimic_commit": "7dc18461c4fc497095f1044f4c40cd44fff62e6a",
+  "real_finetuning_started": false
 }
