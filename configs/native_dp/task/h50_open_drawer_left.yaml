@@ -1,0 +1,71 @@
+# Dataset/task candidate only; no fine-tuning launch. Set H50_NATIVE_DP_DATASET to an absolute Linux path.
+name: h50_open_drawer_left
+shape_meta:
+  obs:
+    robot0_agentview_right_image:
+      shape:
+      - 3
+      - 256
+      - 256
+      type: rgb
+      lerobot_keys:
+      - video.robot0_agentview_right
+    robot0_agentview_left_image:
+      shape:
+      - 3
+      - 256
+      - 256
+      type: rgb
+      lerobot_keys:
+      - video.robot0_agentview_left
+    robot0_eye_in_hand_image:
+      shape:
+      - 3
+      - 256
+      - 256
+      type: rgb
+      lerobot_keys:
+      - video.robot0_eye_in_hand
+    robot0_base_to_eef_pos:
+      shape:
+      - 3
+      lerobot_keys:
+      - state.end_effector_position_relative
+    robot0_base_to_eef_quat:
+      shape:
+      - 4
+      lerobot_keys:
+      - state.end_effector_rotation_relative
+    robot0_gripper_qpos:
+      shape:
+      - 2
+      lerobot_keys:
+      - state.gripper_qpos
+    lang_emb:
+      shape:
+      - 768
+  action:
+    shape:
+    - 12
+    lerobot_keys:
+    - action.end_effector_position
+    - action.end_effector_rotation
+    - action.gripper_close
+    - action.base_motion
+    - action.control_mode
+abs_action: false
+dataset:
+  _target_: diffusion_policy.dataset.lerobot_dataset.LerobotCotrainingDataset
+  shape_meta: '${task.shape_meta}'
+  dataset_paths:
+  - '${oc.env:H50_NATIVE_DP_DATASET}'
+  dataset_soup: null
+  horizon: '${horizon}'
+  n_obs_steps: '${n_obs_steps}'
+  pad_before: 1
+  pad_after: 7
+  abs_action: false
+  use_legacy_normalizer: false
+  use_cache: false
+  seed: 0
+  val_ratio: 0.0

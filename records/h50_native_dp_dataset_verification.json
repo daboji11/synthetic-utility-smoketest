@@ -1,0 +1,117 @@
+{
+  "official_dataset_class": "diffusion_policy.dataset.lerobot_dataset.LerobotCotrainingDataset",
+  "episodes": 28,
+  "frames": 5916,
+  "fps": 20,
+  "instruction": "open the left drawer",
+  "drawer_side": {
+    "left": 28,
+    "right": 0
+  },
+  "windows_checked": 84,
+  "window_shapes": {
+    "robot0_agentview_right_image": [
+      2,
+      3,
+      256,
+      256
+    ],
+    "robot0_agentview_left_image": [
+      2,
+      3,
+      256,
+      256
+    ],
+    "robot0_eye_in_hand_image": [
+      2,
+      3,
+      256,
+      256
+    ],
+    "robot0_base_to_eef_pos": [
+      2,
+      3
+    ],
+    "robot0_base_to_eef_quat": [
+      2,
+      4
+    ],
+    "robot0_gripper_qpos": [
+      2,
+      2
+    ],
+    "lang_emb": [
+      2,
+      768
+    ]
+  },
+  "action_shape": [
+    10,
+    12
+  ],
+  "action_identity_normalizer": true,
+  "state_and_action_order_verified": true,
+  "boundary_padding": "official first/last repetition",
+  "image_resolution": [
+    256,
+    256
+  ],
+  "source_resolution": [
+    128,
+    128
+  ],
+  "image_transform": "bilinear upsample only; source detail remains 128x128",
+  "fine_tuning_started": false,
+  "task_config_load_passed": true,
+  "pretrained_forward_only_loss": 0.047743912786245346,
+  "backward_or_optimizer_executed": false,
+  "normalizer_comparison": {
+    "robot0_base_to_eef_pos": {
+      "pretrained_scale": [
+        1.2637768983840942,
+        1.1260361671447754,
+        1.338916540145874
+      ],
+      "target_only_scale": [
+        3.784776449203491,
+        2.738186836242676,
+        3.3792245388031006
+      ],
+      "pretrained_offset": [
+        -0.17740243673324585,
+        0.017200350761413574,
+        -0.5025506019592285
+      ],
+      "target_only_offset": [
+        -0.6330047845840454,
+        -0.9331933856010437,
+        -1.183699131011963
+      ]
+    },
+    "robot0_gripper_qpos": {
+      "pretrained_scale": [
+        16.73273468017578,
+        18.45061492919922
+      ],
+      "target_only_scale": [
+        48.98855972290039,
+        51.07712173461914
+      ],
+      "pretrained_offset": [
+        -0.2781268358230591,
+        0.4364076852798462
+      ],
+      "target_only_offset": [
+        -0.9982348084449768,
+        1.0538222789764404
+      ]
+    }
+  },
+  "training_ready": false,
+  "remaining_training_decisions": [
+    "fresh optimizer initialization from EMA",
+    "preserve pretrained observation normalizer versus refit on 28 episodes",
+    "fine-tuning learning rate and checkpoint schedule"
+  ],
+  "language_annotation": "H50 literal lowercase instruction; env emits capitalized sentence with period"
+}

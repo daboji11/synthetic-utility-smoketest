@@ -1,0 +1,338 @@
+{
+  "date": "2026-10-05",
+  "experiment_role": "pipeline_validation_not_spatial_benchmark",
+  "dataset": {
+    "source": "DAVIAN-Robotics/robocasa-H50",
+    "task": "OpenDrawer",
+    "instruction": "open the left drawer",
+    "episodes": 28,
+    "frames": 5916,
+    "fps": 20,
+    "resampling": "none",
+    "synthetic_episodes": 0
+  },
+  "runs": [
+    {
+      "relative_run_path": "outputs/OpenDrawer/diffusion_human_left_3cam/smoke_seed_0_batch_1",
+      "completed_steps": 200,
+      "requested_steps": 200,
+      "batch_size": 1,
+      "seed": 0,
+      "error": null,
+      "wall_clock_s_including_setup_and_checkpoint": 59.804184921,
+      "training_loop_elapsed_s": 47.21402621199999,
+      "steady_state_steps_per_s_excluding_first_10": 4.532931887774936,
+      "max_gpu_allocated_mib": 5647.294921875,
+      "max_gpu_reserved_mib": 5712.0,
+      "loss_first_50_mean": 1.0660566437244414,
+      "loss_last_50_mean": 0.996511709690094,
+      "three_camera_audit": {
+        "forward": {
+          "observation.images.robot0_agentview_left_image": {
+            "input_shape": [
+              2,
+              3,
+              128,
+              128
+            ],
+            "output_shape": [
+              2,
+              64
+            ],
+            "matches_preprocessed_training_camera": true
+          },
+          "observation.images.robot0_agentview_right_image": {
+            "input_shape": [
+              2,
+              3,
+              128,
+              128
+            ],
+            "output_shape": [
+              2,
+              64
+            ],
+            "matches_preprocessed_training_camera": true
+          },
+          "observation.images.robot0_eye_in_hand_image": {
+            "input_shape": [
+              2,
+              3,
+              128,
+              128
+            ],
+            "output_shape": [
+              2,
+              64
+            ],
+            "matches_preprocessed_training_camera": true
+          }
+        },
+        "backward": {
+          "observation.images.robot0_eye_in_hand_image": {
+            "first_weight_grad_norm": 1.1905592679977417,
+            "finite_nonzero": true
+          },
+          "observation.images.robot0_agentview_right_image": {
+            "first_weight_grad_norm": 0.3721320331096649,
+            "finite_nonzero": true
+          },
+          "observation.images.robot0_agentview_left_image": {
+            "first_weight_grad_norm": 0.32500600814819336,
+            "finite_nonzero": true
+          }
+        },
+        "batch_shapes": {
+          "observation.state": [
+            1,
+            2,
+            16
+          ],
+          "action": [
+            1,
+            64,
+            12
+          ],
+          "observation.images.robot0_agentview_left_image": [
+            1,
+            2,
+            3,
+            128,
+            128
+          ],
+          "observation.images.robot0_agentview_right_image": [
+            1,
+            2,
+            3,
+            128,
+            128
+          ],
+          "observation.images.robot0_eye_in_hand_image": [
+            1,
+            2,
+            3,
+            128,
+            128
+          ]
+        },
+        "all_three_cameras_forward_and_backward": true
+      },
+      "protocol": {
+        "policy": "diffusion",
+        "observation_horizon": 2,
+        "prediction_horizon": 64,
+        "action_horizon": 32,
+        "denoising_steps": 100,
+        "noise_scheduler": "DDPM",
+        "beta_schedule": "squaredcos_cap_v2",
+        "prediction_type": "epsilon",
+        "normalization": {
+          "VISUAL": "MEAN_STD",
+          "STATE": "MIN_MAX",
+          "ACTION": "MIN_MAX"
+        },
+        "vision_backbone": "resnet18",
+        "pretrained_visual_backbone": "ResNet18_Weights.IMAGENET1K_V1",
+        "pretrained_robot_policy": null,
+        "separate_encoder_per_camera": true,
+        "camera_keys": [
+          "observation.images.robot0_agentview_left_image",
+          "observation.images.robot0_agentview_right_image",
+          "observation.images.robot0_eye_in_hand_image"
+        ],
+        "resolution": [
+          128,
+          128
+        ],
+        "down_dims": [
+          512,
+          1024,
+          2048
+        ],
+        "drop_n_last_frames": 7,
+        "train_fps": 20,
+        "env_control_hz": 20,
+        "effective_dt_seconds": 0.05,
+        "policy_select_action_hz": 20,
+        "model_replan_hz": 0.625,
+        "actions_generated_per_diffusion_sample": 64,
+        "actions_retained_and_executed": 32,
+        "observation_queue_updated_every_env_step": true,
+        "mixed_precision": "bf16"
+      },
+      "spatial_behavior_evaluated": false,
+      "smoke_is_not_a_trained_baseline": true
+    },
+    {
+      "relative_run_path": "outputs/OpenDrawer/diffusion_human_left_3cam/smoke_seed_0_batch_2",
+      "completed_steps": 500,
+      "requested_steps": 500,
+      "batch_size": 2,
+      "seed": 0,
+      "error": null,
+      "wall_clock_s_including_setup_and_checkpoint": 125.99552534300001,
+      "training_loop_elapsed_s": 114.053119029,
+      "steady_state_steps_per_s_excluding_first_10": 4.497699420779932,
+      "max_gpu_allocated_mib": 5643.30078125,
+      "max_gpu_reserved_mib": 5736.0,
+      "loss_first_50_mean": 1.0606600379943847,
+      "loss_last_50_mean": 0.1339625284075737,
+      "three_camera_audit": {
+        "forward": {
+          "observation.images.robot0_agentview_left_image": {
+            "input_shape": [
+              4,
+              3,
+              128,
+              128
+            ],
+            "output_shape": [
+              4,
+              64
+            ],
+            "matches_preprocessed_training_camera": true
+          },
+          "observation.images.robot0_agentview_right_image": {
+            "input_shape": [
+              4,
+              3,
+              128,
+              128
+            ],
+            "output_shape": [
+              4,
+              64
+            ],
+            "matches_preprocessed_training_camera": true
+          },
+          "observation.images.robot0_eye_in_hand_image": {
+            "input_shape": [
+              4,
+              3,
+              128,
+              128
+            ],
+            "output_shape": [
+              4,
+              64
+            ],
+            "matches_preprocessed_training_camera": true
+          }
+        },
+        "backward": {
+          "observation.images.robot0_eye_in_hand_image": {
+            "first_weight_grad_norm": 0.38178369402885437,
+            "finite_nonzero": true
+          },
+          "observation.images.robot0_agentview_right_image": {
+            "first_weight_grad_norm": 0.3543788194656372,
+            "finite_nonzero": true
+          },
+          "observation.images.robot0_agentview_left_image": {
+            "first_weight_grad_norm": 0.25921717286109924,
+            "finite_nonzero": true
+          }
+        },
+        "batch_shapes": {
+          "observation.state": [
+            2,
+            2,
+            16
+          ],
+          "action": [
+            2,
+            64,
+            12
+          ],
+          "observation.images.robot0_agentview_left_image": [
+            2,
+            2,
+            3,
+            128,
+            128
+          ],
+          "observation.images.robot0_agentview_right_image": [
+            2,
+            2,
+            3,
+            128,
+            128
+          ],
+          "observation.images.robot0_eye_in_hand_image": [
+            2,
+            2,
+            3,
+            128,
+            128
+          ]
+        },
+        "all_three_cameras_forward_and_backward": true
+      },
+      "protocol": {
+        "policy": "diffusion",
+        "observation_horizon": 2,
+        "prediction_horizon": 64,
+        "action_horizon": 32,
+        "denoising_steps": 100,
+        "noise_scheduler": "DDPM",
+        "beta_schedule": "squaredcos_cap_v2",
+        "prediction_type": "epsilon",
+        "normalization": {
+          "VISUAL": "MEAN_STD",
+          "STATE": "MIN_MAX",
+          "ACTION": "MIN_MAX"
+        },
+        "vision_backbone": "resnet18",
+        "pretrained_visual_backbone": "ResNet18_Weights.IMAGENET1K_V1",
+        "pretrained_robot_policy": null,
+        "separate_encoder_per_camera": true,
+        "camera_keys": [
+          "observation.images.robot0_agentview_left_image",
+          "observation.images.robot0_agentview_right_image",
+          "observation.images.robot0_eye_in_hand_image"
+        ],
+        "resolution": [
+          128,
+          128
+        ],
+        "down_dims": [
+          512,
+          1024,
+          2048
+        ],
+        "drop_n_last_frames": 7,
+        "train_fps": 20,
+        "env_control_hz": 20,
+        "effective_dt_seconds": 0.05,
+        "policy_select_action_hz": 20,
+        "model_replan_hz": 0.625,
+        "actions_generated_per_diffusion_sample": 64,
+        "actions_retained_and_executed": 32,
+        "observation_queue_updated_every_env_step": true,
+        "mixed_precision": "bf16"
+      },
+      "spatial_behavior_evaluated": false,
+      "smoke_is_not_a_trained_baseline": true
+    }
+  ],
+  "checkpoint_verification": {
+    "batch1_cpu_saved_checkpoint_forward": true,
+    "batch2_cuda_bf16_saved_checkpoint_forward": true,
+    "saved_normalization_matches_native20fps": true,
+    "original_action_roundtrip": true,
+    "unet_calls_per_generation": 100,
+    "cached_actions_per_generation": 32,
+    "simulator_started": false,
+    "success_rate_measured": false
+  },
+  "environment": {
+    "train_env": "synutility312",
+    "sim_env": "synutility-sim",
+    "python": "3.12",
+    "torch": "2.7.1+cu128",
+    "lerobot": "0.6.1",
+    "diffusers": "0.39.0",
+    "train_pip_check": "passed",
+    "sim_pip_check": "pre-existing: robocasa1.0.1 declares lerobot==0.3.3, installed0.6.1; kept verified combination"
+  }
+}

@@ -1,0 +1,2 @@
+# Add to the existing verified Linux training environment; keep CUDA-compatible torch.
+diffusers==0.39.0

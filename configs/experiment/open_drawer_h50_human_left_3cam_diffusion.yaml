@@ -1,0 +1,39 @@
+# ENGINEERING FROM SCRATCH ONLY. Not the requested RoboCasa pretrained fine-tuning config.
+# Official LeRobot 0.6.1 Diffusion defaults. 4090 batch=8 is a starting point, not memory-tested.
+dataset:
+  repo_id: local/open_drawer_h50_human_left_20fps_3cam
+  root: data/processed/OpenDrawer/h50_human_left_20fps_3cam
+  video_backend: torchcodec
+  eval_split: 0.0
+policy:
+  type: diffusion
+  device: cuda
+  push_to_hub: false
+  use_amp: true
+  n_obs_steps: 2
+  horizon: 64
+  n_action_steps: 32
+  vision_backbone: resnet18
+  pretrained_backbone_weights: ResNet18_Weights.IMAGENET1K_V1
+  use_separate_rgb_encoder_per_camera: true
+  resize_shape: null
+  crop_shape: null
+  down_dims: [512, 1024, 2048]
+  noise_scheduler_type: DDPM
+  num_train_timesteps: 100
+  num_inference_steps: null
+  prediction_type: epsilon
+  drop_n_last_frames: 7
+output_dir: outputs/OpenDrawer/diffusion_human_left_3cam/seed_0
+seed: 0
+batch_size: 8
+steps: 10000
+save_checkpoint: true
+save_freq: 2500
+log_freq: 10
+num_workers: 2
+prefetch_factor: 2
+env_eval_freq: 0
+eval_steps: 0
+wandb:
+  enable: false

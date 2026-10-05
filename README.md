@@ -2,7 +2,24 @@
 
 **Project question:** Does downstream learning utility vary among synthetic robot trajectories even when they have similar validity?
 
-**Current stage:** Phase 0: infrastructure and a placeholder smoke test. **Data provenance correction:** DAVIAN-Robotics/robocasa-MG_30 is MimicGen synthetic simulator data, not human demonstrations. Formal OpenDrawer experiments use H50 human demonstrations plus DreamGen synthetic trajectories. The generated trajectories are toy observation/action sequences. The reported `success_rate` is a **toy action-error threshold**, not robot task success. Use simulator rollouts for scientific comparisons.
+**Current stage:** prepare fine-tuning of an official RoboCasa-pretrained Diffusion Policy on 28 H50 human-left episodes at native 20fps. The LeRobot U-Net DP path is retained as an engineering smoke only. The fixed base is 28 H50 left-drawer demos; synthetic data is deferred. **Data provenance correction:** DAVIAN-Robotics/robocasa-MG_30 is MimicGen synthetic simulator data, not human demonstrations. H50 is the human source and DreamGen is the future video-generated synthetic pool. Older Phase 0 sections below describe toy sequences whose action-error threshold is not robot task success.
+
+## Active target — official pretrained RoboCasa Diffusion Policy
+
+Official pretrain_human300 EMA checkpoint is connected through the native RoboCasa DP fork.
+One actual OpenDrawer left-drawer seed=3 rollout completed: 750 steps, 94 native 8-action chunks,
+finite actions, zero clipping, success=false. The complete video and per-step stats are saved locally.
+This is interface verification, not a successful zero-shot benchmark.
+
+The fixed 28 H50 human left demos have been exported at native 20Hz for the official dataset reader:
+5916 frames, three cameras, 128->256 bilinear upsampling. Original datasets remain intact.
+Official reader windows and pretrained forward-only compatibility checks passed.
+Fine-tuning has not started; fresh optimizer/EMA initialization and observation-normalizer handling
+must be configured before launching it. See [native integration, results and target-data plan](docs/robocasa_pretrained_dp.md).
+
+ACT runs and earlier LeRobot from-scratch DP checks remain historical engineering records.
+The old scratch trainer requires explicit opt-in for non-smoke training.
+See [earlier engineering checks](docs/open_drawer_diffusion.md).
 
 ## Setup and run
 

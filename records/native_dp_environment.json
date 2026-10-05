@@ -1,0 +1,50 @@
+{
+  "python": "3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:46:43) [GCC 14.3.0]",
+  "conda_env": "synutility-dp-pretrained",
+  "torch": "2.7.1+cu128",
+  "cuda": "12.8",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "versions": {
+    "diffusers": "0.30.3",
+    "transformers": "4.51.3",
+    "huggingface-hub": "0.36.2",
+    "hydra-core": "1.3.7",
+    "robomimic": "0.3.0",
+    "robocasa": "1.0.1",
+    "robosuite": "1.5.2",
+    "lerobot": "0.3.3",
+    "wandb": "0.17.9",
+    "protobuf": "3.19.6",
+    "numpydantic": "1.10.0"
+  },
+  "pip_check_exit_code": 1,
+  "remaining_declared_dependency_conflicts": [
+    "lerobot 0.3.3 requires deepdiff, which is not installed.",
+    "lerobot 0.3.3 requires flask, which is not installed.",
+    "lerobot 0.3.3 requires pyserial, which is not installed.",
+    "lerobot 0.3.3 requires rerun-sdk, which is not installed.",
+    "lerobot 0.3.3 has requirement datasets<=3.6.0,>=2.19.0, but you have datasets 4.8.5.",
+    "lerobot 0.3.3 has requirement draccus==0.10.0, but you have draccus 0.11.6.",
+    "lerobot 0.3.3 has requirement gymnasium<1.0.0,>=0.29.1, but you have gymnasium 1.3.0.",
+    "lerobot 0.3.3 has requirement wandb>=0.20.0, but you have wandb 0.17.9.",
+    "robomimic 0.3.0 has requirement diffusers==0.11.1, but you have diffusers 0.30.3.",
+    "robomimic 0.3.0 has requirement numpy==1.23.2, but you have numpy 2.2.5.",
+    "robomimic 0.3.0 has requirement torch==2.0.1, but you have torch 2.7.1+cu128.",
+    "robomimic 0.3.0 has requirement torchvision==0.15.2, but you have torchvision 0.22.1+cu128."
+  ],
+  "installation_strategy": "isolated clone; official forks installed no-deps; compatible runtime versions pinned",
+  "upstream_code_modified": false,
+  "namespace_import_fix": "env-local .pth for official namespace package",
+  "actual_native_rollout_completed": true,
+  "official_dataset_reader_and_forward_passed": true,
+  "original_working_training_and_sim_envs_preserved": true,
+  "native_workspace_import_passed": true,
+  "legacy_tests": {
+    "environment": "synutility-sim",
+    "passed": 10,
+    "failed": 0,
+    "wall_clock_s": 9.74
+  },
+  "native_legacy_tests_initial_failure": "Old LeRobot 0.6.1 test imports do not match native Transformers/Hub stack; use preserved sim env"
+}

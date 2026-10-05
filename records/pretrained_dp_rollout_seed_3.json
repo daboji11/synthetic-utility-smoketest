@@ -1,0 +1,166 @@
+{
+  "checkpoint": "/home/dabozi/research/synthetic-utility-smoketest/data/raw/huggingface_models/blobs/01/01feb65968cb3471513859b852b83ceb9674aaa31a8ff6303a2dbc4b3bf1321a",
+  "checkpoint_revision": "c484448aba1a9b60a04c9b0ca117241518ea69f3",
+  "policy_class": "diffusion_policy.policy.diffusion_transformer_hybrid_image_policy.DiffusionTransformerHybridImagePolicy",
+  "pretraining_task": "pretrain_human300",
+  "loaded_weights": "ema_model",
+  "strict_load": true,
+  "n_obs_steps": 2,
+  "prediction_horizon": 10,
+  "executed_actions_per_inference": 8,
+  "denoising_steps": 100,
+  "normalizer_source": "strictly loaded EMA checkpoint (companion verified)",
+  "action_normalization": "identity; no LeRobot processors or action scaling",
+  "normalizer_fields": [
+    "action",
+    "robot0_base_to_eef_pos",
+    "robot0_base_to_eef_quat",
+    "robot0_gripper_qpos",
+    "lang_emb",
+    "robot0_agentview_right_image",
+    "robot0_agentview_left_image",
+    "robot0_eye_in_hand_image"
+  ],
+  "inference_dtype": "float32",
+  "control_hz": 20,
+  "language_encoder": "openai/clip-vit-large-patch14, robomimic LangEncoder",
+  "source_is_pretrained": true,
+  "fine_tuning_started": false,
+  "seed": 3,
+  "split": "all",
+  "instruction": "Open the left drawer.",
+  "actual_control_hz": 20,
+  "camera_names": [
+    "robot0_agentview_left",
+    "robot0_agentview_right",
+    "robot0_eye_in_hand"
+  ],
+  "pipeline_passed": true,
+  "steps": 750,
+  "success": false,
+  "reward": 0.0,
+  "replans": 94,
+  "denoiser_calls": 9400,
+  "actions_finite": true,
+  "clipped_count": 0,
+  "max_drawer_open": 0.000547879810261253,
+  "wall_clock_s": 235.92578772399997,
+  "inference_s": 79.69828947399981,
+  "gpu_peak_allocated_mb": 440.623046875,
+  "video": "/home/dabozi/research/synthetic-utility-smoketest/results/robocasa_eval/pretrained_dp_seed_3/rollout.mp4",
+  "interpretation": "One zero-shot interface smoke episode, not a success-rate estimate",
+  "video_decoded_frames": 751,
+  "action_stats": [
+    {
+      "dim": 0,
+      "min": -0.9893544912338257,
+      "max": 0.7269002795219421,
+      "mean": -0.05329561233520508,
+      "std": 0.29523706436157227,
+      "p99_abs": 0.8705779314041138,
+      "clipped_count": 0
+    },
+    {
+      "dim": 1,
+      "min": -0.8373190760612488,
+      "max": 1.0,
+      "mean": 0.1110040470957756,
+      "std": 0.23025979101657867,
+      "p99_abs": 0.8275082111358643,
+      "clipped_count": 0
+    },
+    {
+      "dim": 2,
+      "min": -0.6251212358474731,
+      "max": 0.4897981584072113,
+      "mean": -0.05464211478829384,
+      "std": 0.1784888207912445,
+      "p99_abs": 0.5285347104072571,
+      "clipped_count": 0
+    },
+    {
+      "dim": 3,
+      "min": -0.45572206377983093,
+      "max": 0.19926194846630096,
+      "mean": -0.08270018547773361,
+      "std": 0.08402989059686661,
+      "p99_abs": 0.3497653603553772,
+      "clipped_count": 0
+    },
+    {
+      "dim": 4,
+      "min": -0.3430371582508087,
+      "max": 0.12057606130838394,
+      "mean": -0.07479165494441986,
+      "std": 0.08135713636875153,
+      "p99_abs": 0.2879396677017212,
+      "clipped_count": 0
+    },
+    {
+      "dim": 5,
+      "min": -0.18985852599143982,
+      "max": 0.5451764464378357,
+      "mean": 0.01061060931533575,
+      "std": 0.07826173305511475,
+      "p99_abs": 0.3881779611110687,
+      "clipped_count": 0
+    },
+    {
+      "dim": 6,
+      "min": -1.0,
+      "max": 1.0,
+      "mean": 0.6594995260238647,
+      "std": 0.7506019473075867,
+      "p99_abs": 1.0,
+      "clipped_count": 0
+    },
+    {
+      "dim": 7,
+      "min": -0.010415892116725445,
+      "max": 0.006107619497925043,
+      "mean": 0.00021181811462156475,
+      "std": 0.0015588944079354405,
+      "p99_abs": 0.004713345784693956,
+      "clipped_count": 0
+    },
+    {
+      "dim": 8,
+      "min": -0.011439910158514977,
+      "max": 0.011136702261865139,
+      "mean": 0.0007282293518073857,
+      "std": 0.00181365548633039,
+      "p99_abs": 0.0058988649398088455,
+      "clipped_count": 0
+    },
+    {
+      "dim": 9,
+      "min": -0.01016591303050518,
+      "max": 0.007454640232026577,
+      "mean": -0.0016249882755801082,
+      "std": 0.001986169721931219,
+      "p99_abs": 0.007057341281324625,
+      "clipped_count": 0
+    },
+    {
+      "dim": 10,
+      "min": -0.014538481831550598,
+      "max": 0.016735240817070007,
+      "mean": -0.0004738789866678417,
+      "std": 0.004925343673676252,
+      "p99_abs": 0.012314320541918278,
+      "clipped_count": 0
+    },
+    {
+      "dim": 11,
+      "min": -1.0,
+      "max": -1.0,
+      "mean": -1.0,
+      "std": 0.0,
+      "p99_abs": 1.0,
+      "clipped_count": 0
+    }
+  ],
+  "logical_checkpoint_path": "data/raw/huggingface_models/models--robocasa--robocasa365_checkpoints/snapshots/c484448aba1a9b60a04c9b0ca117241518ea69f3/diffusion_policy/17.40.09_train_diffusion_transformer_hybrid_pretrain_human300/checkpoints/latest.ckpt",
+  "rollout_environment_lerobot": "0.6.1 inherited utility package (policy does not use it)",
+  "final_environment_lerobot": "0.3.3, official workspace import and target reader/forward reverified"
+}

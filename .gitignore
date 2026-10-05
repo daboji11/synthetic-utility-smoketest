@@ -24,3 +24,5 @@ outputs/
 *.safetensors
 *.pt
 *.pth
+
+*.ckpt

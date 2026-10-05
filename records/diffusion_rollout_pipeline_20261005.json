@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-05",
+  "role": "engineering_real_rollout_pipeline_validation",
+  "checkpoint_role": "LeRobot diffusion trained500steps_only_not_RoboCasa_pretrained",
+  "task": "OpenDrawer",
+  "instruction": "open the left drawer",
+  "seed": 3,
+  "steps": 750,
+  "actual_control_hz": 20,
+  "actual_cameras": [
+    "robot0_agentview_left",
+    "robot0_agentview_right",
+    "robot0_eye_in_hand"
+  ],
+  "state_dim": 16,
+  "action_dim": 12,
+  "model_replans": 24,
+  "replan_every": 32,
+  "all_actions_finite": true,
+  "clipped_action_values": 0,
+  "episode_wall_clock_s": 204.3,
+  "total_eval_wall_clock_s": 219.530197703,
+  "success": false,
+  "reward": 0.0,
+  "video": {
+    "decoded_frames": 751,
+    "fps": 20.0,
+    "shape": [
+      160,
+      384,
+      3
+    ],
+    "first_camera_std": [
+      51.90509724987673,
+      50.173346662310266,
+      53.27439296520614
+    ]
+  },
+  "artifacts_relative_to_repo": "outputs/OpenDrawer/diffusion_human_left_3cam/smoke_seed_0_batch_2/robocasa_eval/pipeline_seed_3",
+  "pipeline_passed": true,
+  "pretrained_DP_pipeline_validated": false
+}

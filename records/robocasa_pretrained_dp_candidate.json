@@ -1,0 +1,117 @@
+{
+  "repo_id": "robocasa/robocasa365_checkpoints",
+  "revision": "c484448aba1a9b60a04c9b0ca117241518ea69f3",
+  "checkpoint_file": "diffusion_policy/17.40.09_train_diffusion_transformer_hybrid_pretrain_human300/checkpoints/latest.ckpt",
+  "checkpoint_size_bytes": 1697722871,
+  "checkpoint_weights_downloaded": true,
+  "released_config_inspected": true,
+  "pretraining_soup": "pretrain_human300",
+  "policy_class": "diffusion_policy.policy.diffusion_transformer_hybrid_image_policy.DiffusionTransformerHybridImagePolicy",
+  "native_implementation": "https://github.com/robocasa-benchmark/diffusion_policy",
+  "checkpoint_url": "https://huggingface.co/robocasa/robocasa365_checkpoints/blob/c484448aba1a9b60a04c9b0ca117241518ea69f3/diffusion_policy/17.40.09_train_diffusion_transformer_hybrid_pretrain_human300/checkpoints/latest.ckpt",
+  "config_url": "https://huggingface.co/robocasa/robocasa365_checkpoints/blob/c484448aba1a9b60a04c9b0ca117241518ea69f3/diffusion_policy/17.40.09_train_diffusion_transformer_hybrid_pretrain_human300/.hydra/config.yaml",
+  "observation_horizon": 2,
+  "prediction_horizon": 10,
+  "action_horizon": 8,
+  "denoising_steps": 100,
+  "shape_meta": {
+    "obs": {
+      "robot0_agentview_right_image": {
+        "shape": [
+          3,
+          256,
+          256
+        ],
+        "type": "rgb",
+        "lerobot_keys": [
+          "video.robot0_agentview_right"
+        ]
+      },
+      "robot0_agentview_left_image": {
+        "shape": [
+          3,
+          256,
+          256
+        ],
+        "type": "rgb",
+        "lerobot_keys": [
+          "video.robot0_agentview_left"
+        ]
+      },
+      "robot0_eye_in_hand_image": {
+        "shape": [
+          3,
+          256,
+          256
+        ],
+        "type": "rgb",
+        "lerobot_keys": [
+          "video.robot0_eye_in_hand"
+        ]
+      },
+      "robot0_base_to_eef_pos": {
+        "shape": [
+          3
+        ],
+        "lerobot_keys": [
+          "state.end_effector_position_relative"
+        ]
+      },
+      "robot0_base_to_eef_quat": {
+        "shape": [
+          4
+        ],
+        "lerobot_keys": [
+          "state.end_effector_rotation_relative"
+        ]
+      },
+      "robot0_gripper_qpos": {
+        "shape": [
+          2
+        ],
+        "lerobot_keys": [
+          "state.gripper_qpos"
+        ]
+      },
+      "lang_emb": {
+        "shape": [
+          768
+        ]
+      }
+    },
+    "action": {
+      "shape": [
+        12
+      ],
+      "lerobot_keys": [
+        "action.end_effector_position",
+        "action.end_effector_rotation",
+        "action.gripper_close",
+        "action.base_motion",
+        "action.control_mode"
+      ]
+    }
+  },
+  "crop_shape": [
+    224,
+    224
+  ],
+  "uses_ema": true,
+  "directly_compatible_with_current_lerobot_unet": false,
+  "finetuning_ready": false,
+  "remaining_work": [
+    "Prepare EMA-to-model initialization with fresh optimizer/counters",
+    "Preserve pretrained observation normalizer in native target fine-tuning",
+    "Choose fine-tuning hyperparameters and explicit final checkpoint schedule",
+    "Evaluate additional held-out left-drawer seeds after adaptation"
+  ],
+  "official_native_dataset_source_action_normalizer": "identity; strictly loaded EMA tensors and companion verified",
+  "note": "Native model/normalizer/one-episode interface and H50 official reader verified; seed3 zero-shot success=false. H50 visual source detail is128x128; RoboCasa365 benchmark generalization is not established.",
+  "weights_downloaded": true,
+  "native_policy_strict_loaded": true,
+  "native_one_episode_rollout_completed": true,
+  "zero_shot_success": false,
+  "target_dataset_official_reader_verified": true,
+  "fork_commit": "41212698b6f481ed92a55f0d5f1778ec56bea417",
+  "robomimic_commit": "7dc18461c4fc497095f1044f4c40cd44fff62e6a"
+}

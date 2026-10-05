@@ -1,0 +1,22 @@
+# Incremental native DP dependencies for an already working RoboCasa CUDA env.
+# Install diffusion_policy / robomimic forks with --no-deps at the commits in docs.
+# The legacy fork's torch/numpy pins differ from this actually verified CUDA runtime.
+diffusers==0.30.3
+transformers==4.51.3
+huggingface-hub==0.36.2
+hydra-core==1.3.7
+omegaconf==2.3.1
+dill==0.4.1
+zarr==2.18.7
+numcodecs==0.15.1
+einops==0.8.2
+wandb==0.17.9
+protobuf==3.19.6
+matplotlib==3.11.2
+termcolor==3.3.0
+tensorboard==2.20.0
+tensorboardX==2.6
+transforms3d==0.4.2
+numpydantic==1.10.0
+packaging==25.0
+# LeRobot 0.3.3 is installed separately with --no-deps (native utils only).
