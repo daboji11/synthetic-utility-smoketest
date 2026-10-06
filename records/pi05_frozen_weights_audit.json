@@ -1,0 +1,36 @@
+{
+  "device": "CPU only; tensorstore/numpy; no model inference",
+  "comparison": "frozen final weights vs pretrained weights cast to final stored dtype",
+  "archive": "/mnt/d/pi05_h50_lora_final_backup.tar",
+  "frozen": {
+    "vision": {
+      "arrays": 23,
+      "elements": 414803696,
+      "different_elements": 0
+    },
+    "llm_and_action_expert": {
+      "arrays": 20,
+      "elements": 2936464384,
+      "different_elements": 0
+    },
+    "action_heads": {
+      "arrays": 8,
+      "elements": 2165792,
+      "different_elements": 0
+    }
+  },
+  "adapters": {
+    "llm_and_action_expert": {
+      "arrays": 20,
+      "elements": 49987584,
+      "nonzero_elements": 49987584
+    }
+  },
+  "missing_base_keys": [],
+  "unexpected_non_adapter_keys": [],
+  "all_frozen_equal_after_dtype_cast": true,
+  "wall_seconds": 81.86,
+  "adapter_comparison_note": "Adapter values were counted, not compared with a pre-training adapter checkpoint. The original checkpoint has no adapters.",
+  "base_source_revision": "c484448aba1a9b60a04c9b0ca117241518ea69f3",
+  "code_revision": "5a6beda9ff99da30b4e1b59320f6a32971d7c397"
+}

@@ -1,0 +1,1993 @@
+{
+  "source_repo": "Keh0t0/dreamgen_robocasa_p3_init0_v2_droid",
+  "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+  "episodes": 60,
+  "layout": [
+    "left",
+    "right",
+    "wrist"
+  ],
+  "fps": 16,
+  "previews": [
+    {
+      "episode_index": "420",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_420_3cam.mp4",
+      "video_sha256": "5b130ca7ac1751acbe45af3ced240b8754fe5951c8cb9a0e66ed28d835f1104d",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10462.5,
+          "to_timestamp": 10479.9375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10462.5,
+          "to_timestamp": 10479.9375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10462.5,
+          "to_timestamp": 10479.9375
+        }
+      ]
+    },
+    {
+      "episode_index": "421",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_421_3cam.mp4",
+      "video_sha256": "44a1a152cfbdc89feb3753928869e1f6dc83fb1e7fe3d8e00e18aab874a725b0",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10479.9375,
+          "to_timestamp": 10497.375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10479.9375,
+          "to_timestamp": 10497.375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10479.9375,
+          "to_timestamp": 10497.375
+        }
+      ]
+    },
+    {
+      "episode_index": "422",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_422_3cam.mp4",
+      "video_sha256": "f6cf2c1bdf5cc23ecd88bb72e875658beacbdb066f5fe8b4ccb824cf153c0e14",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10497.375,
+          "to_timestamp": 10514.8125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10497.375,
+          "to_timestamp": 10514.8125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10497.375,
+          "to_timestamp": 10514.8125
+        }
+      ]
+    },
+    {
+      "episode_index": "423",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_423_3cam.mp4",
+      "video_sha256": "62917c7adc1b5bda38da0310f938d4ac09274bb0a6b9d39342bf898284cdb222",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10514.8125,
+          "to_timestamp": 10532.25
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10514.8125,
+          "to_timestamp": 10532.25
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10514.8125,
+          "to_timestamp": 10532.25
+        }
+      ]
+    },
+    {
+      "episode_index": "424",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_424_3cam.mp4",
+      "video_sha256": "05684d3d593dbfea5b3062650ce5c2441689a68b49620e3367812e45b9f6bb20",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10532.25,
+          "to_timestamp": 10549.6875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10532.25,
+          "to_timestamp": 10549.6875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10532.25,
+          "to_timestamp": 10549.6875
+        }
+      ]
+    },
+    {
+      "episode_index": "425",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_425_3cam.mp4",
+      "video_sha256": "cfd5578d6a45a38371e7c9ce7b69265b42c5118617c7779ce057627fd83705bf",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10549.6875,
+          "to_timestamp": 10567.125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10549.6875,
+          "to_timestamp": 10567.125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10549.6875,
+          "to_timestamp": 10567.125
+        }
+      ]
+    },
+    {
+      "episode_index": "426",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_426_3cam.mp4",
+      "video_sha256": "66fdc6eb7c5dee19ffb8bbf8d2337da239fc69aad28a013456ce67614b40ee0c",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10567.125,
+          "to_timestamp": 10584.5625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10567.125,
+          "to_timestamp": 10584.5625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10567.125,
+          "to_timestamp": 10584.5625
+        }
+      ]
+    },
+    {
+      "episode_index": "427",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_427_3cam.mp4",
+      "video_sha256": "060b231a5780fa0bade8f3ebf985b4cbeccf239b2d5f06031d366e3de78e6181",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10584.5625,
+          "to_timestamp": 10602.0
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10584.5625,
+          "to_timestamp": 10602.0
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10584.5625,
+          "to_timestamp": 10602.0
+        }
+      ]
+    },
+    {
+      "episode_index": "428",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_428_3cam.mp4",
+      "video_sha256": "64f4a3dce1f61b8590b3b0addf6afe7fe30eee80ad9e858de959d8006c822944",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10602.0,
+          "to_timestamp": 10619.4375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10602.0,
+          "to_timestamp": 10619.4375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10602.0,
+          "to_timestamp": 10619.4375
+        }
+      ]
+    },
+    {
+      "episode_index": "429",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_429_3cam.mp4",
+      "video_sha256": "7a7de5bfc31c3c1fe01aad0e09062d3e584594ea145aaaf9ea3a818d0c3985ce",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10619.4375,
+          "to_timestamp": 10636.875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10619.4375,
+          "to_timestamp": 10636.875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10619.4375,
+          "to_timestamp": 10636.875
+        }
+      ]
+    },
+    {
+      "episode_index": "430",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_430_3cam.mp4",
+      "video_sha256": "77dad3600ae85187435ce6c82a65ee78077f21c3fb71b67335b0d20ecb17895f",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10636.875,
+          "to_timestamp": 10654.3125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10636.875,
+          "to_timestamp": 10654.3125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10636.875,
+          "to_timestamp": 10654.3125
+        }
+      ]
+    },
+    {
+      "episode_index": "431",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_431_3cam.mp4",
+      "video_sha256": "0e4a1a29bd9623787ef3344d72daa0ea79e0ee0bc10f36b55960dbad098585e4",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10654.3125,
+          "to_timestamp": 10671.75
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10654.3125,
+          "to_timestamp": 10671.75
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10654.3125,
+          "to_timestamp": 10671.75
+        }
+      ]
+    },
+    {
+      "episode_index": "432",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_432_3cam.mp4",
+      "video_sha256": "c6f0c4eab0ad0ab6236b7d49beec21b86140745dc9b32500b2f05719f72e112e",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10671.75,
+          "to_timestamp": 10689.1875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10671.75,
+          "to_timestamp": 10689.1875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10671.75,
+          "to_timestamp": 10689.1875
+        }
+      ]
+    },
+    {
+      "episode_index": "433",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_433_3cam.mp4",
+      "video_sha256": "6ecaf540bc8dadae068776e1dc57133f74132b57fffe0146103ec9e2378e0794",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10689.1875,
+          "to_timestamp": 10706.625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10689.1875,
+          "to_timestamp": 10706.625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10689.1875,
+          "to_timestamp": 10706.625
+        }
+      ]
+    },
+    {
+      "episode_index": "434",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_434_3cam.mp4",
+      "video_sha256": "dfb2311cd923bf28d705d5bcb71d5beada4d87b28988cddc2672a86fca992bb3",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10706.625,
+          "to_timestamp": 10724.0625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10706.625,
+          "to_timestamp": 10724.0625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10706.625,
+          "to_timestamp": 10724.0625
+        }
+      ]
+    },
+    {
+      "episode_index": "435",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_435_3cam.mp4",
+      "video_sha256": "416dd5a7199e224441c853803af427f1c8424ac21c617140774dc82b7451eee2",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10724.0625,
+          "to_timestamp": 10741.5
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10724.0625,
+          "to_timestamp": 10741.5
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10724.0625,
+          "to_timestamp": 10741.5
+        }
+      ]
+    },
+    {
+      "episode_index": "436",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_436_3cam.mp4",
+      "video_sha256": "25d682317e7b8a6e976b8c31aadc0c720fcc07a68bad2ce912a8ae0a93eb346c",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10741.5,
+          "to_timestamp": 10758.9375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10741.5,
+          "to_timestamp": 10758.9375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10741.5,
+          "to_timestamp": 10758.9375
+        }
+      ]
+    },
+    {
+      "episode_index": "437",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_437_3cam.mp4",
+      "video_sha256": "a70cae94174d5d4805313a01eeb6fa2533c2efdce02fbae8f0a4a81bf5fbe203",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10758.9375,
+          "to_timestamp": 10776.375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10758.9375,
+          "to_timestamp": 10776.375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10758.9375,
+          "to_timestamp": 10776.375
+        }
+      ]
+    },
+    {
+      "episode_index": "438",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_438_3cam.mp4",
+      "video_sha256": "b7e66ce11f3c44ac58e92e9e69e7739f8f3d47f6bf0d86cd70b28cbc1ba38fc5",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10776.375,
+          "to_timestamp": 10793.8125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10776.375,
+          "to_timestamp": 10793.8125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10776.375,
+          "to_timestamp": 10793.8125
+        }
+      ]
+    },
+    {
+      "episode_index": "439",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_439_3cam.mp4",
+      "video_sha256": "6ac70b3fc05758f1d70570dbe59d21738d1125caa3e9073252232aec1004f700",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10793.8125,
+          "to_timestamp": 10811.25
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10793.8125,
+          "to_timestamp": 10811.25
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10793.8125,
+          "to_timestamp": 10811.25
+        }
+      ]
+    },
+    {
+      "episode_index": "440",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_440_3cam.mp4",
+      "video_sha256": "96c6774cee6ea5a790c3a998ffb170c561d55cf3e79547edc9ef5ce7450b73c3",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10811.25,
+          "to_timestamp": 10828.6875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10811.25,
+          "to_timestamp": 10828.6875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10811.25,
+          "to_timestamp": 10828.6875
+        }
+      ]
+    },
+    {
+      "episode_index": "441",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_441_3cam.mp4",
+      "video_sha256": "5593299d97c70851b2f09045fa055304ec7b848857dd00ec75603b785d7eef55",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10828.6875,
+          "to_timestamp": 10846.125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10828.6875,
+          "to_timestamp": 10846.125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10828.6875,
+          "to_timestamp": 10846.125
+        }
+      ]
+    },
+    {
+      "episode_index": "442",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_442_3cam.mp4",
+      "video_sha256": "cad90bb57522066884c3cd2243894dfb98299d43aa520987c93ab2623fce80b6",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10846.125,
+          "to_timestamp": 10863.5625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10846.125,
+          "to_timestamp": 10863.5625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10846.125,
+          "to_timestamp": 10863.5625
+        }
+      ]
+    },
+    {
+      "episode_index": "443",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_443_3cam.mp4",
+      "video_sha256": "5850b0bcb41a5c147527e6746a1ddaa9d673e0f0e364103c0927f9f3aaa4b24e",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10863.5625,
+          "to_timestamp": 10881.0
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10863.5625,
+          "to_timestamp": 10881.0
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10863.5625,
+          "to_timestamp": 10881.0
+        }
+      ]
+    },
+    {
+      "episode_index": "444",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_444_3cam.mp4",
+      "video_sha256": "306a6d46fd17b91609b1a439fd861ca62c6dd9cfdd98945da15826f7b27a04f3",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10881.0,
+          "to_timestamp": 10898.4375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10881.0,
+          "to_timestamp": 10898.4375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10881.0,
+          "to_timestamp": 10898.4375
+        }
+      ]
+    },
+    {
+      "episode_index": "445",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_445_3cam.mp4",
+      "video_sha256": "5853c9338eda9356c145df7952a9dafcf0ea9243d25aabbf9b54d6f5cc11bde8",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10898.4375,
+          "to_timestamp": 10915.875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10898.4375,
+          "to_timestamp": 10915.875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10898.4375,
+          "to_timestamp": 10915.875
+        }
+      ]
+    },
+    {
+      "episode_index": "446",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_446_3cam.mp4",
+      "video_sha256": "e7adfca6205e5426986d036b809347da187cae41b5ffa3bbb767efef84fff747",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10915.875,
+          "to_timestamp": 10933.3125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10915.875,
+          "to_timestamp": 10933.3125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10915.875,
+          "to_timestamp": 10933.3125
+        }
+      ]
+    },
+    {
+      "episode_index": "447",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_447_3cam.mp4",
+      "video_sha256": "3349691b7de8f3c59bb48ba66554e23655eee76aa900ba6bc515b883bab4ce2f",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10933.3125,
+          "to_timestamp": 10950.75
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10933.3125,
+          "to_timestamp": 10950.75
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10933.3125,
+          "to_timestamp": 10950.75
+        }
+      ]
+    },
+    {
+      "episode_index": "448",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_448_3cam.mp4",
+      "video_sha256": "0d34f94f67e66217ac3420234e2268e9da54ae0e015d573fc75646b8210d4562",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10950.75,
+          "to_timestamp": 10968.1875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10950.75,
+          "to_timestamp": 10968.1875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10950.75,
+          "to_timestamp": 10968.1875
+        }
+      ]
+    },
+    {
+      "episode_index": "449",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_449_3cam.mp4",
+      "video_sha256": "3fdcff0c8ab964929ef84a006400e8a6ae1ea7300d7ca727582c4f4e41f66bd1",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10968.1875,
+          "to_timestamp": 10985.625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10968.1875,
+          "to_timestamp": 10985.625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10968.1875,
+          "to_timestamp": 10985.625
+        }
+      ]
+    },
+    {
+      "episode_index": "450",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_450_3cam.mp4",
+      "video_sha256": "e16d717f07bd502a71af185aa0e53607b1772af2e5185a9c3803002c861bdced",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10985.625,
+          "to_timestamp": 11003.0625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10985.625,
+          "to_timestamp": 11003.0625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 10985.625,
+          "to_timestamp": 11003.0625
+        }
+      ]
+    },
+    {
+      "episode_index": "451",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_451_3cam.mp4",
+      "video_sha256": "1b9645520e132cf3797cee3952690d9b774230e31f0aacb2f3d6af36ace75de8",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11003.0625,
+          "to_timestamp": 11020.5
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11003.0625,
+          "to_timestamp": 11020.5
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11003.0625,
+          "to_timestamp": 11020.5
+        }
+      ]
+    },
+    {
+      "episode_index": "452",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_452_3cam.mp4",
+      "video_sha256": "2a034001e8f8d01698afbf0d0a35e2a385c2e7cf0ca0122722e9c566281f1d5a",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11020.5,
+          "to_timestamp": 11037.9375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11020.5,
+          "to_timestamp": 11037.9375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11020.5,
+          "to_timestamp": 11037.9375
+        }
+      ]
+    },
+    {
+      "episode_index": "453",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_453_3cam.mp4",
+      "video_sha256": "966fab3af5d7b193fe64d7136ee4941e244036897670a782ff9195d74c634662",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11037.9375,
+          "to_timestamp": 11055.375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11037.9375,
+          "to_timestamp": 11055.375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11037.9375,
+          "to_timestamp": 11055.375
+        }
+      ]
+    },
+    {
+      "episode_index": "454",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_454_3cam.mp4",
+      "video_sha256": "0ec357837907ca500ac7403b0fb73f1a45e3f8b8b0f404599c0924c2d4c44c91",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11055.375,
+          "to_timestamp": 11072.8125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11055.375,
+          "to_timestamp": 11072.8125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11055.375,
+          "to_timestamp": 11072.8125
+        }
+      ]
+    },
+    {
+      "episode_index": "455",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_455_3cam.mp4",
+      "video_sha256": "c5572c0dd411d5f9480b291b013f46565536e45b3f3f9413901b6eb9f002e570",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11072.8125,
+          "to_timestamp": 11090.25
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11072.8125,
+          "to_timestamp": 11090.25
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11072.8125,
+          "to_timestamp": 11090.25
+        }
+      ]
+    },
+    {
+      "episode_index": "456",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_456_3cam.mp4",
+      "video_sha256": "6581f4561d078422c71cd32c3636e3a97203e929e63312b09b5daefe88563e92",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11090.25,
+          "to_timestamp": 11107.6875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11090.25,
+          "to_timestamp": 11107.6875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11090.25,
+          "to_timestamp": 11107.6875
+        }
+      ]
+    },
+    {
+      "episode_index": "457",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_457_3cam.mp4",
+      "video_sha256": "70d6fc7fb321e7f7571148d449e1f945605c03caf9d885e5483d8e9f477ef1f3",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11107.6875,
+          "to_timestamp": 11125.125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11107.6875,
+          "to_timestamp": 11125.125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11107.6875,
+          "to_timestamp": 11125.125
+        }
+      ]
+    },
+    {
+      "episode_index": "458",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_458_3cam.mp4",
+      "video_sha256": "19f40bead954a0e768f97c02c25b3286d66033587ee0c78a284b68c86a1b0078",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11125.125,
+          "to_timestamp": 11142.5625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11125.125,
+          "to_timestamp": 11142.5625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11125.125,
+          "to_timestamp": 11142.5625
+        }
+      ]
+    },
+    {
+      "episode_index": "459",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_459_3cam.mp4",
+      "video_sha256": "72735929ab0ebf4ad5689ebd20a596326b3f9d38ebced87ba1c699da0ea947d4",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11142.5625,
+          "to_timestamp": 11160.0
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11142.5625,
+          "to_timestamp": 11160.0
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11142.5625,
+          "to_timestamp": 11160.0
+        }
+      ]
+    },
+    {
+      "episode_index": "460",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_460_3cam.mp4",
+      "video_sha256": "84a7ade6a313451488fbf6b583fc04ea0bfc10405fc28a0680759ee26a30aefe",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11160.0,
+          "to_timestamp": 11177.4375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11160.0,
+          "to_timestamp": 11177.4375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11160.0,
+          "to_timestamp": 11177.4375
+        }
+      ]
+    },
+    {
+      "episode_index": "461",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_461_3cam.mp4",
+      "video_sha256": "75808265062716464acff95a6e9c3916993c7031de165629242767438a95e0f4",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11177.4375,
+          "to_timestamp": 11194.875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11177.4375,
+          "to_timestamp": 11194.875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11177.4375,
+          "to_timestamp": 11194.875
+        }
+      ]
+    },
+    {
+      "episode_index": "462",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_462_3cam.mp4",
+      "video_sha256": "2696ce4624e5abc5bc7aee0a8eac63642568dc7a5a98c46dae83a0af84f6a86f",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11194.875,
+          "to_timestamp": 11212.3125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11194.875,
+          "to_timestamp": 11212.3125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11194.875,
+          "to_timestamp": 11212.3125
+        }
+      ]
+    },
+    {
+      "episode_index": "463",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_463_3cam.mp4",
+      "video_sha256": "dc39cdc50787186520c612a81b04e5727e28bfd03a0a902ed28699fe12a272cf",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11212.3125,
+          "to_timestamp": 11229.75
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11212.3125,
+          "to_timestamp": 11229.75
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11212.3125,
+          "to_timestamp": 11229.75
+        }
+      ]
+    },
+    {
+      "episode_index": "464",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_464_3cam.mp4",
+      "video_sha256": "21865c001351a1ae5e13348d3255291e4209e2d0d65dba503cdbcf415455f91c",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11229.75,
+          "to_timestamp": 11247.1875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11229.75,
+          "to_timestamp": 11247.1875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11229.75,
+          "to_timestamp": 11247.1875
+        }
+      ]
+    },
+    {
+      "episode_index": "465",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_465_3cam.mp4",
+      "video_sha256": "a991bf08bf154c175d2afb629b6a3da6b7a1ddff57b5930991ae71197ea48324",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11247.1875,
+          "to_timestamp": 11264.625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11247.1875,
+          "to_timestamp": 11264.625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11247.1875,
+          "to_timestamp": 11264.625
+        }
+      ]
+    },
+    {
+      "episode_index": "466",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_466_3cam.mp4",
+      "video_sha256": "4d3842a9019bfb9b2e731f246302cdc7d874a93047b05336bf0d6dad7c697a4d",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11264.625,
+          "to_timestamp": 11282.0625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11264.625,
+          "to_timestamp": 11282.0625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11264.625,
+          "to_timestamp": 11282.0625
+        }
+      ]
+    },
+    {
+      "episode_index": "467",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_467_3cam.mp4",
+      "video_sha256": "923ea3e727be7fe0b8780478de507097776648dc831cdd549a3c408b6ec14950",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11282.0625,
+          "to_timestamp": 11299.5
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11282.0625,
+          "to_timestamp": 11299.5
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11282.0625,
+          "to_timestamp": 11299.5
+        }
+      ]
+    },
+    {
+      "episode_index": "468",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_468_3cam.mp4",
+      "video_sha256": "78d5ac56b86754505002ee401808dc9db61e4d1f26ef33087b45ecc5313109fc",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11299.5,
+          "to_timestamp": 11316.9375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11299.5,
+          "to_timestamp": 11316.9375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11299.5,
+          "to_timestamp": 11316.9375
+        }
+      ]
+    },
+    {
+      "episode_index": "469",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_469_3cam.mp4",
+      "video_sha256": "9e80cb8f07b234efe8918ac740d4896f763198f9bd1226c113483e7140326bcd",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11316.9375,
+          "to_timestamp": 11334.375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11316.9375,
+          "to_timestamp": 11334.375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11316.9375,
+          "to_timestamp": 11334.375
+        }
+      ]
+    },
+    {
+      "episode_index": "470",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_470_3cam.mp4",
+      "video_sha256": "03be33269fb897ed8b5ecc8f31c9e604b15e8f854dbbefab457c31dee9a5c300",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11334.375,
+          "to_timestamp": 11351.8125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11334.375,
+          "to_timestamp": 11351.8125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11334.375,
+          "to_timestamp": 11351.8125
+        }
+      ]
+    },
+    {
+      "episode_index": "471",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_471_3cam.mp4",
+      "video_sha256": "b4c5ca17a73888a5067227b57201e36807292bc4f3b91e543b917127ab386e4a",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11351.8125,
+          "to_timestamp": 11369.25
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11351.8125,
+          "to_timestamp": 11369.25
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11351.8125,
+          "to_timestamp": 11369.25
+        }
+      ]
+    },
+    {
+      "episode_index": "472",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_472_3cam.mp4",
+      "video_sha256": "c1088c9795015e75a0fa41d4920eadab57c19066496145e3a00faae138b438be",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11369.25,
+          "to_timestamp": 11386.6875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11369.25,
+          "to_timestamp": 11386.6875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11369.25,
+          "to_timestamp": 11386.6875
+        }
+      ]
+    },
+    {
+      "episode_index": "473",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_473_3cam.mp4",
+      "video_sha256": "8a95e0d7c853f0b60f44825f1e1b5bf41691a54cd4feb02eabe96ee0362dc6b9",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11386.6875,
+          "to_timestamp": 11404.125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11386.6875,
+          "to_timestamp": 11404.125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11386.6875,
+          "to_timestamp": 11404.125
+        }
+      ]
+    },
+    {
+      "episode_index": "474",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_474_3cam.mp4",
+      "video_sha256": "bc21a14f09e06e32150d2cf3063dc0d00b76bbdc505c8b61e78f33edb925723f",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11404.125,
+          "to_timestamp": 11421.5625
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11404.125,
+          "to_timestamp": 11421.5625
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11404.125,
+          "to_timestamp": 11421.5625
+        }
+      ]
+    },
+    {
+      "episode_index": "475",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_475_3cam.mp4",
+      "video_sha256": "707229d4e9c29065775f3d6a934ed1914ed37f1a1fa95d77c020f0c44f96b468",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11421.5625,
+          "to_timestamp": 11439.0
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11421.5625,
+          "to_timestamp": 11439.0
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11421.5625,
+          "to_timestamp": 11439.0
+        }
+      ]
+    },
+    {
+      "episode_index": "476",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_476_3cam.mp4",
+      "video_sha256": "fed3f8cccf10adfdb8323c9a8be3933eb38566b726e69b17a955e72045f4447d",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11439.0,
+          "to_timestamp": 11456.4375
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11439.0,
+          "to_timestamp": 11456.4375
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11439.0,
+          "to_timestamp": 11456.4375
+        }
+      ]
+    },
+    {
+      "episode_index": "477",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_477_3cam.mp4",
+      "video_sha256": "caa42a0da99f5ffa7f23b658d743c7e73438a50ff3e594933dceb64fe492f30d",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11456.4375,
+          "to_timestamp": 11473.875
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11456.4375,
+          "to_timestamp": 11473.875
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11456.4375,
+          "to_timestamp": 11473.875
+        }
+      ]
+    },
+    {
+      "episode_index": "478",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_478_3cam.mp4",
+      "video_sha256": "ec5d4257aba5a5fd5b842975081e31e44aa8dbc21048f4672999a63c6a366511",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11473.875,
+          "to_timestamp": 11491.3125
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11473.875,
+          "to_timestamp": 11491.3125
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11473.875,
+          "to_timestamp": 11491.3125
+        }
+      ]
+    },
+    {
+      "episode_index": "479",
+      "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+      "layout": [
+        "left",
+        "right",
+        "wrist"
+      ],
+      "fps": 16,
+      "frames": 279,
+      "video_path": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_479_3cam.mp4",
+      "video_sha256": "46fdc0d21aff7237035c0bbafebc5322cb5d619c9315bea6643fa61a53b4e13b",
+      "camera_segments": [
+        {
+          "camera_key": "observation.images.robot0_agentview_left_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_left_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11491.3125,
+          "to_timestamp": 11508.75
+        },
+        {
+          "camera_key": "observation.images.robot0_agentview_right_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_agentview_right_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11491.3125,
+          "to_timestamp": 11508.75
+        },
+        {
+          "camera_key": "observation.images.robot0_eye_in_hand_image",
+          "source_video": "data/raw/huggingface/datasets--Keh0t0--dreamgen_robocasa_p3_init0_v2_droid/snapshots/686cd91d4502b0606e473b07adb73c920b05d4e3/videos/observation.images.robot0_eye_in_hand_image/chunk-000/file-000.mp4",
+          "from_timestamp": 11491.3125,
+          "to_timestamp": 11508.75
+        }
+      ]
+    }
+  ]
+}

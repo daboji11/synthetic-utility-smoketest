@@ -1,0 +1,433 @@
+{
+  "selection_status": "DRAFT_NOT_FOR_TRAINING",
+  "training_dataset_ready": false,
+  "training_dataset_note": "Source is 16 Hz, while prior human training/evaluation used 20 Hz; IDM action semantics and temporal conversion require separate preflight.",
+  "source_repo": "Keh0t0/dreamgen_robocasa_p3_init0_v2_droid",
+  "source_revision": "686cd91d4502b0606e473b07adb73c920b05d4e3",
+  "source_fps": 16,
+  "source_frames_per_episode": 279,
+  "method": "pairwise weighted state/action trajectory distance after 64-point progress alignment; not KL",
+  "distance_source": "results/dataset_inspection/OpenDrawer/trajectory_similarity/pairwise_distances.csv",
+  "distance_sha256": "a8cfabc912d712cecbe644496915d1aa23158e3275c6e49a49adbadb141f321a",
+  "labels_source": "records/opendrawer_dreamgen_motion_annotations.csv",
+  "labels_sha256": "f2c178884fab9045b9eb07ed1fc59046824433ffcdbc9f3c1004935999e0c11f",
+  "eligibility": "draft: provisional visual success with human override; final: human outcome success and motion reviewed",
+  "eligible_episodes": [
+    420,
+    421,
+    422,
+    423,
+    430,
+    431,
+    432,
+    433,
+    437,
+    439,
+    445,
+    455,
+    458,
+    463,
+    466,
+    467,
+    470,
+    471,
+    474,
+    476,
+    477,
+    479
+  ],
+  "provisional_success_count": 22,
+  "human_reviewed_success_and_motion_count": 0,
+  "group_count": 8,
+  "random_seed": 20261007,
+  "group_order": [
+    "redundant",
+    "diverse",
+    "random"
+  ],
+  "groups": {
+    "redundant": {
+      "episode_indices": [
+        420,
+        421,
+        422,
+        423,
+        432,
+        470,
+        471,
+        474
+      ],
+      "mean_pairwise_distance": 0.7386241067857143,
+      "overlap_with_other_groups": {
+        "diverse": [],
+        "random": [
+          422,
+          423,
+          470
+        ]
+      }
+    },
+    "diverse": {
+      "episode_indices": [
+        431,
+        437,
+        439,
+        455,
+        463,
+        466,
+        476,
+        479
+      ],
+      "mean_pairwise_distance": 1.2118371389285714,
+      "overlap_with_other_groups": {
+        "redundant": [],
+        "random": [
+          437,
+          439,
+          455
+        ]
+      }
+    },
+    "random": {
+      "episode_indices": [
+        422,
+        423,
+        430,
+        433,
+        437,
+        439,
+        455,
+        470
+      ],
+      "mean_pairwise_distance": 1.0632266214285715,
+      "overlap_with_other_groups": {
+        "redundant": [
+          422,
+          423,
+          470
+        ],
+        "diverse": [
+          437,
+          439,
+          455
+        ]
+      }
+    }
+  },
+  "dense_group_global_minimum": 0.7386241067857143,
+  "diverse_group_maximum_among_non_redundant_pool": 1.2118371389285714,
+  "records": [
+    {
+      "group": "redundant",
+      "episode_index": 420,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_420_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "redundant",
+      "episode_index": 421,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_421_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "redundant",
+      "episode_index": 422,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_422_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "redundant",
+      "episode_index": 423,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_423_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "redundant",
+      "episode_index": 432,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_432_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "redundant",
+      "episode_index": 470,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_470_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "redundant",
+      "episode_index": 471,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_471_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "redundant",
+      "episode_index": 474,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_474_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "diverse",
+      "episode_index": 431,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_431_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "diverse",
+      "episode_index": 437,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_437_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "diverse",
+      "episode_index": 439,
+      "outcome": "success",
+      "outcome_source": "human",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_439_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "diverse",
+      "episode_index": 455,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_455_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "diverse",
+      "episode_index": 463,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_463_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "diverse",
+      "episode_index": 466,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_466_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "diverse",
+      "episode_index": 476,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_476_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "diverse",
+      "episode_index": 479,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_479_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "random",
+      "episode_index": 422,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_422_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "random",
+      "episode_index": 423,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_423_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "random",
+      "episode_index": 430,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_430_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "random",
+      "episode_index": 433,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_433_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "random",
+      "episode_index": 437,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_437_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "random",
+      "episode_index": 439,
+      "outcome": "success",
+      "outcome_source": "human",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_439_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "random",
+      "episode_index": 455,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_455_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    },
+    {
+      "group": "random",
+      "episode_index": 470,
+      "outcome": "success",
+      "outcome_source": "provisional_visual",
+      "motion_reviewed": false,
+      "idm_action_validity": "not_evaluated",
+      "three_camera_preview": "results/dataset_inspection/OpenDrawer/synthetic_3cam/synthetic_episode_470_3cam.mp4",
+      "approach_side": "",
+      "approach_angle": "",
+      "contact_quality": "",
+      "trajectory_group": ""
+    }
+  ]
+}

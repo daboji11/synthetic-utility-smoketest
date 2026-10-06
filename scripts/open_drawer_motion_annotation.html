@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenDrawer · Synthetic 视频分类</title>
+<style>
+:root{font-family:system-ui,"Microsoft YaHei",sans-serif;color:#182e29;background:#eff3f1;--green:#22634d;--line:#d7e0dc}
+*{box-sizing:border-box}body{margin:0}header{padding:22px 28px;background:white;border-bottom:1px solid var(--line)}
+h1{font-size:23px;margin:0 0 8px}p{margin:5px 0;color:#5a6c64;font-size:13px;line-height:1.6}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px}
+button,select,textarea{font:inherit;border:1px solid var(--line);border-radius:8px;padding:9px 11px;background:white;color:inherit}
+button{cursor:pointer}button:hover{border-color:var(--green)}button.primary{background:var(--green);color:white}button:disabled{opacity:.5;cursor:default}
+#status{font-size:13px;margin-left:auto;color:var(--green)}#status.error{color:#ab352a}
+main{display:grid;grid-template-columns:160px minmax(470px,1.4fr) minmax(350px,1fr);gap:20px;padding:22px 28px;max-width:1850px;margin:auto}
+.panel{background:white;border:1px solid var(--line);border-radius:12px;padding:18px}
+aside{max-height:calc(100vh - 210px);overflow:auto}#episodes{display:flex;flex-direction:column;gap:7px}
+#episodes button{text-align:left;display:flex;justify-content:space-between;font-size:13px}
+#episodes button.active{background:#e3f1e9;border-color:var(--green)}.done{color:var(--green)}
+h2{font-size:19px;margin:0 0 8px}video{width:100%;background:#101814;aspect-ratio:3/1;max-height:none;object-fit:contain;border-radius:8px;margin-top:10px}
+.transport{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.badge{display:inline-block;border-radius:5px;padding:4px 8px;background:#e9f2ec;color:var(--green);font-size:12px}
+.view-labels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;margin-top:18px;font-size:13px;font-weight:600;color:var(--green)}#evidence{margin-top:12px;overflow-wrap:anywhere}#reason{font-size:12px;line-height:1.65;color:#52685d}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:16px}
+label.field{display:flex;flex-direction:column;gap:7px;font-size:13px}label.field select{width:100%}
+.full{grid-column:1/-1}textarea{width:100%;resize:vertical;min-height:85px}
+.check{display:flex;gap:9px;align-items:center;margin:15px 0}.check input{width:18px;height:18px}
+footer{padding:0 28px 24px;font-size:12px;color:#52685d;overflow-wrap:anywhere}
+details{margin-top:14px;font-size:12px;color:#52685d}summary{cursor:pointer}#empty{display:none;padding:25px}
+@media(max-width:1200px){main{grid-template-columns:150px 1fr}.annotation{grid-column:2}}
+@media(max-width:700px){main{display:flex;flex-direction:column;padding:14px}header{padding:18px}aside{max-height:160px}.fields{grid-template-columns:1fr}footer{padding:14px}#status{margin-left:0}}
+</style></head>
+<body>
+<header><h1>OpenDrawer · Synthetic 视频分类</h1>
+<p>60 条 DreamGen 视频 · 原目测标签：success 21 / failure 33 / uncertain 6。默认分类 success 候选。</p>
+<p>左侧、右侧、手腕三视角同步播放。下手角度做粗分，看不清选“无法判断”。原目测标签依据左侧视频，三视角复核结果另记。</p>
+<div class="toolbar">
+<select id="filter" aria-label="筛选原标签"><option value="success">原 success（21）</option><option value="all">全部 60 条</option><option value="failure">原 failure（33）</option><option value="uncertain">原 uncertain（6）</option></select>
+<select id="progress" aria-label="筛选标注进度"><option value="all">全部进度</option><option value="pending">仅待分类</option><option value="done">仅已分类</option></select>
+<button id="save" class="primary">保存 CSV</button><button id="export">导出 CSV 到本机</button>
+<button id="import">导入旧标注 CSV</button><input id="file" type="file" accept=".csv" hidden>
+<button id="restore">读取此前浏览器标注</button><span id="status" role="status">正在加载…</span>
+</div></header>
+<div id="empty">此筛选下没有视频，切换筛选即可继续。</div>
+<main>
+<aside class="panel"><p id="count"></p><div id="episodes"></div></aside>
+<section class="panel viewer"><h2 id="title"></h2><span class="badge" id="original"></span>
+<div class="view-labels"><span>左侧外部视角</span><span>右侧外部视角</span><span>手腕视角</span></div>
+<video id="video" controls playsinline preload="metadata" loop></video>
+<div class="transport"><button id="prev">← 上一条</button><button id="next">下一条 →</button>
+<button id="replay">从头播放</button>
+<select id="speed" aria-label="播放速度"><option value=".25">0.25×</option><option value=".5">0.5×</option><option value="1" selected>1×</option></select></div>
+<p id="meta"></p><details id="evidence"><summary>此前目测依据</summary><p id="reason"></p></details>
+</section>
+<section class="panel annotation"><h2>动作与下手方式</h2>
+<p>按你的判断选择。A–E 是你手动定义的轨迹组，含义可写在备注。</p>
+<div id="fields" class="fields"></div>
+<label class="check"><input id="reviewed" type="checkbox">这条已完成动作分类</label>
+<label class="field">备注 / 分组规则<textarea id="notes" placeholder="例如：从右上方斜切入，夹住右端，先上提再拉开"></textarea></label>
+</section></main>
+<footer>自动保存到：<span id="path"></span><br>“导出 CSV”可另存到 D 盘。分类不自动选择训练样本，也不代表 simulator 成功或 IDM 动作有效。</footer>
+<script>
+let rows=[],schema={},editable=[],revision="",current=null,dirty=false,saving=false,timer=null,blocked=false;
+const $=id=>document.getElementById(id), storageKey="open-drawer-dreamgen-motion-v2";
+function status(text,error=false){$("status").textContent=text;$("status").classList.toggle("error",error)}
+function subset(){return rows.filter(r=>($("filter").value==="all"||r.visual_label===$("filter").value)&&
+($("progress").value==="all"||($("progress").value==="done") === (r.motion_reviewed==="true")))}
+function remember(){try{localStorage.setItem(storageKey,JSON.stringify({revision,rows:rows.map(r=>({episode_index:r.episode_index,...Object.fromEntries(editable.map(k=>[k,r[k]||""]))})),dirty}))}catch(e){}}
+function changed(){dirty=true;remember();status("有修改，正在自动保存…");clearTimeout(timer);timer=setTimeout(save,450)}
+function renderList(){
+const list=subset();$("count").textContent=list.filter(r=>r.motion_reviewed==="true").length+" / "+list.length+" 已分类";
+$("episodes").replaceChildren();
+for(const r of list){const b=document.createElement("button");b.className=r.episode_index===current?"active":"";
+b.append(document.createTextNode("Episode "+r.episode_index));const marker=document.createElement("span");marker.className="done";marker.textContent=r.motion_reviewed==="true"?"✓":"";b.append(marker);
+b.onclick=()=>select(r.episode_index);$("episodes").append(b)}
+const index=list.findIndex(r=>r.episode_index===current);$("prev").disabled=index<=0;$("next").disabled=index<0||index===list.length-1;
+$("empty").style.display=list.length?"none":"block";document.querySelector(".viewer").style.display=list.length?"":"none";document.querySelector(".annotation").style.display=list.length?"":"none";
+}
+function select(id){
+current=id;const row=rows.find(r=>r.episode_index===id);if(!row){renderList();return}
+$("title").textContent="Episode "+id;$("original").textContent="原目测标签："+row.visual_label;
+$("video").pause();$("video").src="/video/"+id+"?layout=3cam";$("video").playbackRate=Number($("speed").value);
+$("meta").textContent="三视角：左侧 / 右侧 / 手腕 · 每路 128 × 128 · "+row.fps+" fps · "+(Number(row.preview_frames)/Number(row.fps)).toFixed(1)+" 秒";
+$("reason").textContent=row.reason+" | 证据时间："+row.evidence_time_s+" 秒";
+for(const k of Object.keys(schema))document.querySelector('[data-field="'+k+'"]').value=row[k]||"";
+$("notes").value=row.notes||"";$("reviewed").checked=row.motion_reviewed==="true";renderList();
+}
+function filterChanged(){const list=subset();select(list.some(r=>r.episode_index===current)?current:list[0]?.episode_index||null)}
+async function save(){
+clearTimeout(timer);if(saving||blocked||!dirty)return;saving=true;
+try{while(dirty&&!blocked){dirty=false;const patches=Object.fromEntries(rows.map(r=>[r.episode_index,Object.fromEntries(editable.map(k=>[k,r[k]||""]))]));
+const response=await fetch("/api/save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({revision,patches})});
+const result=await response.json();if(!response.ok){dirty=true;if(response.status===409)blocked=true;throw Error(result.error||"保存失败")}
+revision=result.revision;remember();status(dirty?"继续保存修改…":"已保存 CSV · "+new Date().toLocaleTimeString())}
+}catch(e){dirty=true;remember();status(e.message+"；可先导出 CSV 保留当前修改。",true)}finally{saving=false}
+}
+function csvCell(v){const s=String(v??"");return /[",\r\n]/.test(s)?'"'+s.replaceAll('"','""')+'"':s}
+$("export").onclick=()=>{if(!rows.length)return;
+if(!dirty&&!saving){const a=document.createElement("a");a.href="/annotations.csv";a.download="opendrawer_dreamgen_motion_annotations.csv";a.click();return}
+const fields=[...Object.keys(rows[0])];
+const csv="\ufeff"+[fields.join(","),...rows.map(r=>fields.map(k=>csvCell(r[k])).join(","))].join("\r\n")+"\r\n";
+const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));const a=document.createElement("a");a.href=url;a.download="opendrawer_dreamgen_motion_annotations.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+function parseCSV(text){
+const result=[];let row=[],cell="",quoted=false;
+text=text.replace(/^\ufeff/,"");
+for(let i=0;i<text.length;i++){const c=text[i];
+if(quoted){if(c==='"'){if(text[i+1]==='"'){cell+='"';i++}else quoted=false}else cell+=c}
+else if(c==='"'){if(cell)throw Error("CSV 引号格式错误");quoted=true}
+else if(c===","){row.push(cell);cell=""}
+else if(c==="\n"||c==="\r"){if(c==="\r"&&text[i+1]==="\n")i++;row.push(cell);if(row.some(x=>x))result.push(row);row=[];cell=""}
+else cell+=c}
+if(quoted)throw Error("CSV 引号未闭合");if(cell||row.length){row.push(cell);result.push(row)}
+if(!result.length)throw Error("CSV 为空");const fields=result.shift();if(new Set(fields).size!==fields.length)throw Error("CSV 表头重复");
+return result.map(values=>{if(values.length!==fields.length)throw Error("CSV 列数不一致");return Object.fromEntries(fields.map((k,i)=>[k,values[i]]))});
+}
+function importRows(items){
+const patches=[],seen=new Set();for(const item of items){
+const id=String(item.episode_index??item.episode_id??"");const target=rows.find(r=>r.episode_index===id);
+if(!target||seen.has(id))throw Error("无法匹配或重复的 episode："+id);seen.add(id);
+const patch={};for(const k of editable){let v=item[k];if(k==="manual_visual_label"&&v===undefined&&item.validity!==undefined)v=item.validity==="fail"?"failure":item.validity==="unclear"?"unclear":item.validity;
+if(v===undefined||v==="")continue;if(typeof v!=="string")throw Error("字段不是文本："+k);
+if(schema[k]&&!schema[k][1].some(([value])=>value===v))throw Error("不支持的分类："+k+"="+v);
+if(k==="motion_reviewed"&&!["true","false"].includes(v))throw Error("已分类标记格式错误");
+if(k==="notes"&&v.length>8000)throw Error("备注过长");patch[k]=v}
+if(Object.keys(patch).length)patches.push([target,patch])}
+if(!patches.length){status("没有可导入的动作标注");return}
+if(!confirm("导入 "+patches.length+" 条标注？CSV 中有值的动作字段将覆盖当前值，原目测标签保持不变。"))return;
+for(const [target,patch] of patches)Object.assign(target,patch);
+changed();select(current);status("已导入 "+patches.length+" 条，正在保存…");
+}
+$("import").onclick=()=>$("file").click();$("file").onchange=async e=>{try{importRows(parseCSV(await e.target.files[0].text()))}catch(error){status(error.message,true)}finally{e.target.value=""}};
+$("restore").onclick=()=>{try{const old=JSON.parse(localStorage.getItem("open-drawer-motion-annotations-v1")||"null");
+if(!old){status("此浏览器地址下没有旧标注。也可用“导入旧标注 CSV”。");return}
+importRows(Object.entries(old).map(([id,row])=>({episode_id:id,...row})));
+}catch(error){status(error.message,true)}};
+$("save").onclick=()=>{if(!dirty){status("CSV 已是最新");return}save()};
+$("filter").onchange=filterChanged;$("progress").onchange=filterChanged;
+$("prev").onclick=()=>{const list=subset(),i=list.findIndex(r=>r.episode_index===current);if(i>0)select(list[i-1].episode_index)};
+$("next").onclick=()=>{const list=subset(),i=list.findIndex(r=>r.episode_index===current);if(i>=0&&i+1<list.length)select(list[i+1].episode_index)};
+$("replay").onclick=()=>{$("video").currentTime=0;$("video").play().catch(e=>status("播放失败："+e.message,true))};
+$("speed").onchange=()=>{$("video").playbackRate=Number($("speed").value)};
+$("reviewed").onchange=()=>{const r=rows.find(r=>r.episode_index===current);r.motion_reviewed=$("reviewed").checked?"true":"false";changed();renderList()};
+$("notes").oninput=()=>{rows.find(r=>r.episode_index===current).notes=$("notes").value;changed()};
+window.addEventListener("beforeunload",e=>{if(dirty||saving){e.preventDefault();e.returnValue=""}});
+async function init(){
+try{const response=await fetch("/api/data");if(!response.ok)throw Error("无法加载标注");
+const data=await response.json();({rows,schema,editable,revision}=data);$("path").textContent=data.csv_path;
+for(const [key,[title,options]] of Object.entries(schema)){
+const label=document.createElement("label");label.className="field";label.append(document.createTextNode(title));const select=document.createElement("select");select.dataset.field=key;
+select.setAttribute("aria-label",title);const empty=document.createElement("option");empty.value="";empty.textContent="— 未标注 —";select.append(empty);
+for(const [value,text] of options){const o=document.createElement("option");o.value=value;o.textContent=text;select.append(o)}
+select.onchange=()=>{const r=rows.find(r=>r.episode_index===current);r[key]=select.value;r.manual_outcome_reviewed=r.manual_visual_label?"true":"";changed()};label.append(select);$("fields").append(label)}
+status("已加载 · 修改后自动保存");select(subset()[0]?.episode_index||null);
+try{const pending=JSON.parse(localStorage.getItem(storageKey)||"null");if(pending?.dirty&&pending.revision===revision){
+if(confirm("发现上次尚未保存的浏览器标注，是否恢复？"))importRows(pending.rows)}
+else if(pending?.dirty&&pending.revision!==revision)status("发现旧的未保存草稿；CSV 已更新。可读取此前导出的 CSV 合并。",true)}catch(e){status(e.message,true)}
+}catch(e){status(e.message,true)}
+}
+init();
+</script></body></html>
