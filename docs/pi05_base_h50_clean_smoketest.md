@@ -17,8 +17,8 @@ The scripts refuse to run on a non-4090 GPU and preserve an existing output dire
 
 - Start from the verified base params path above, not `pi05_pretrain_human300/75000`.
 - Train only LoRA matrices in PaliGemma and the action expert; freeze the vision backbone, all base weights and action/state heads. Adapter variants: `gemma_2b_lora` rank 16 alpha 16; `gemma_300m_lora` rank 32 alpha 32, attention and FFN.
-- Batch 4, 2000 optimizer steps, peak learning rate `5e-6`, warmup 200 steps, cosine to `5e-7`, seed 0, no EMA, AdamW from pinned RoboCasa config. About `8000/5916 = 1.35` sampled data passes. Save at 1000 and 2000, retaining the earlier checkpoint.
-- The previous H50-human300 LoRA used batch 4, 10000 steps and peak LR `1e-5`; that was a completed run, but its 8/20 did not beat human300 vanilla 10/20, so this run is deliberately shorter and lower LR.
+- Batch 4, 4000 optimizer steps, peak learning rate `5e-6`, warmup 200 steps, cosine to `5e-7`, seed 0, no EMA, AdamW from pinned RoboCasa config. About `16000/5916 = 2.70` sampled data passes. Save at 1000, 2000 and 4000, retaining earlier checkpoints. This is still a smoke test; the final result is not assumed to be best.
+- The previous H50-human300 LoRA used batch 4, 10000 steps and peak LR `1e-5`; that was a completed run, but its 8/20 did not beat human300 vanilla 10/20, so this run is deliberately shorter and lower LR. The 2000-step checkpoint remains available in case 4000 overfits.
 - Stop with an explicit error if first-ten-step loss exceeds 100. This catches the zero-variance normalization failure seen in the interrupted synthetic run.
 
 ## Fresh RunPod setup and manual ignition
@@ -70,11 +70,11 @@ cd /workspace/research/synthetic-utility-smoketest
 PY=/workspace/research/openpi-robocasa/.venv/bin/python
 RUN="$PWD/results/robocasa_eval/pi05_base_h50_smoketest"
 "$PY" -u scripts/finetune_pi05_base_h50_lora.py --train \
-  --batch-size 4 --steps 2000 --lr 5e-6 --seed 0 --num-workers 4 \
+  --batch-size 4 --steps 4000 --lr 5e-6 --seed 0 --num-workers 4 \
   2>&1 | tee "$RUN/train.log"
 ```
 
-The foreground log prints `TRAIN_STEP` every 10 steps and `CHECKPOINT_SAVED` at 1000 and 2000. Checkpoints and exact config go under `outputs/OpenDrawer/pi05_base_h50_left_lora/seed_0/`.
+The foreground log prints `TRAIN_STEP` every 10 steps and `CHECKPOINT_SAVED` at 1000, 2000 and 4000. Checkpoints and exact config go under `outputs/OpenDrawer/pi05_base_h50_left_lora/seed_0/`.
 
 ### C. Matched 20 rollouts: manually start after B completes
 
@@ -84,9 +84,9 @@ cd /workspace/research/synthetic-utility-smoketest
 PY=/workspace/research/openpi-robocasa/.venv/bin/python
 RUN="$PWD/results/robocasa_eval/pi05_base_h50_smoketest"
 "$PY" -u scripts/evaluate_pi05_base_open_drawer.py \
-  --lora --checkpoint "$PWD/outputs/OpenDrawer/pi05_base_h50_left_lora/seed_0/2000" \
-  --output "$RUN/lora_2000" 2>&1 | tee "$RUN/lora_2000.log"
+  --lora --checkpoint "$PWD/outputs/OpenDrawer/pi05_base_h50_left_lora/seed_0/4000" \
+  --output "$RUN/lora_4000" 2>&1 | tee "$RUN/lora_4000.log"
 "$PY" -u scripts/compare_pi05_base_h50.py
 ```
 
-The last command prints exactly `pi05_base: X/20` and `pi05_base + 28 human demos: Y/20`, and writes `paired_results.csv` plus `comparison.json`. If final performance is worse, evaluate the retained 1000-step checkpoint as a separate named exploratory run before considering synthetic experiments.
+The last command prints exactly `pi05_base: X/20` and `pi05_base + 28 human demos: Y/20`, and writes `paired_results.csv` plus `comparison.json`. If final performance is worse, evaluate the retained 2000-step checkpoint as a separate named exploratory run before considering synthetic experiments.

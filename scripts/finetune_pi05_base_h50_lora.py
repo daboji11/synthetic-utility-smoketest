@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Explicit 28-human-demo LoRA from untouched pi05_base; checkpoints at 1000/2000."""
+"""Explicit 28-human-demo LoRA from untouched pi05_base; checkpoints at 1000/2000/4000."""
 from __future__ import annotations
 
 import argparse
@@ -28,19 +28,19 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--train", action="store_true", help="Required to update parameters")
     parser.add_argument("--batch-size", type=int, default=4)
-    parser.add_argument("--steps", type=int, default=2000)
+    parser.add_argument("--steps", type=int, default=4000)
     parser.add_argument("--lr", type=float, default=5e-6)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--num-workers", type=int, default=4)
     args = parser.parse_args()
     if not args.train:
         parser.error("--train is required; preflight and baseline run separately")
-    if (args.batch_size, args.steps, args.lr, args.seed) != (4, 2000, 5e-6, 0):
-        parser.error("Clean smoke test fixes batch4, 2000 steps, peak LR5e-6, seed0")
+    if (args.batch_size, args.steps, args.lr, args.seed) != (4, 4000, 5e-6, 0):
+        parser.error("Clean smoke test fixes batch4, 4000 steps, peak LR5e-6, seed0")
     source = verify_source()
     gpu = verify_4090()
-    if shutil.disk_usage(ROOT).free < 32_000_000_000:
-        raise RuntimeError("Need at least 32 GB free for 1000/2000 checkpoints")
+    if shutil.disk_usage(ROOT).free < 45_000_000_000:
+        raise RuntimeError("Need at least 45 GB free for 1000/2000/4000 checkpoints")
     verify_dataset()
     base = verify_base_checkpoint()
     baseline_path = ROOT / "results/robocasa_eval/pi05_base_h50_smoketest/base/summary.json"
@@ -127,7 +127,7 @@ def main() -> None:
             if step <= 3 or step % cfg.log_interval == 0:
                 metrics.flush()
                 print("TRAIN_STEP " + json.dumps(row), flush=True)
-            if step % cfg.save_interval == 0 or step == cfg.num_train_steps:
+            if step in (1000, 2000, 4000):
                 checkpoints.save_state(manager, state, loader, step)
                 manager.wait_until_finished()
                 last = run / "last"
@@ -142,7 +142,8 @@ def main() -> None:
     manager.wait_until_finished()
     (run / "training_summary.json").write_text(json.dumps({
         "updates": cfg.num_train_steps, "checkpoint_1000": str(run / "1000"),
-        "final_checkpoint": str(run / "2000"), "wall_clock_s": time.perf_counter() - started,
+        "checkpoint_2000": str(run / "2000"),
+        "final_checkpoint": str(run / "4000"), "wall_clock_s": time.perf_counter() - started,
         "batch_size": cfg.batch_size, "only_lora": True,
     }, indent=2) + "\n")
     print("PI05_BASE_H50_LORA_COMPLETE", flush=True)

@@ -143,7 +143,7 @@ def observation(raw: dict, prompt: str = "open the left drawer") -> dict:
     return result
 
 
-def make_config(*, lora: bool, batch_size: int = 4, steps: int = 2000,
+def make_config(*, lora: bool, batch_size: int = 4, steps: int = 4000,
                 lr: float = 5e-6, seed: int = 0, exp_name: str = "seed_0", num_workers: int = 4):
     from flax import nnx
     from openpi.models.pi0_config import Pi0Config
@@ -171,7 +171,7 @@ def make_config(*, lora: bool, batch_size: int = 4, steps: int = 2000,
             warmup_steps=min(200, max(1, steps // 10)),
             peak_lr=lr, decay_steps=steps, decay_lr=lr / 10),
         checkpoint_base_dir=str(ROOT / "outputs/OpenDrawer"),
-        log_interval=10, save_interval=1000, keep_period=1000, wandb_enabled=False,
+        log_interval=10, save_interval=4000, keep_period=1000, wandb_enabled=False,
         policy_metadata={"task": "OpenDrawer", "instruction": "open the left drawer",
                          "training_data": "28 original H50 human demos" if lora else "none",
                          "base": official_base_params_uri(), "fps": 20, "lora_only": lora})
