@@ -36,7 +36,7 @@ def load_rows(path: Path) -> dict[int, dict[str, str]]:
 
 def effective_outcome(row: dict[str, str]) -> str:
     if yes(row["manual_outcome_reviewed"]):
-        if row["manual_visual_label"] not in {"success", "failure", "uncertain"}:
+        if row["manual_visual_label"] not in {"success", "failure", "uncertain", "partial"}:
             raise ValueError(f"Invalid manual outcome for {row['episode_index']}")
         return row["manual_visual_label"]
     return row["visual_label"]
@@ -83,7 +83,7 @@ def checksum(path: Path) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", choices=("draft", "final"), default="draft")
+    parser.add_argument("--mode", choices=("draft", "exploratory", "final"), default="draft")
     parser.add_argument("--seed", type=int, default=20261007)
     parser.add_argument("--count", type=int, default=8)
     args = parser.parse_args()
@@ -104,7 +104,7 @@ def main() -> None:
                       if yes(row["manual_outcome_reviewed"])
                       and row["manual_visual_label"] == "success"
                       and yes(row["motion_reviewed"]))
-    pool = provisional if args.mode == "draft" else reviewed
+    pool = reviewed if args.mode == "final" else provisional
     if len(pool) < 2 * args.count:
         raise ValueError(
             f"Need at least {2 * args.count} success episodes to make diverse and redundant disjoint; "
@@ -139,7 +139,9 @@ def main() -> None:
                 "trajectory_group": row["trajectory_group"],
             })
     report = {
-        "selection_status": "DRAFT_NOT_FOR_TRAINING" if args.mode == "draft" else "HUMAN_REVIEWED_SELECTION_ONLY",
+        "selection_status": {"draft": "DRAFT_NOT_FOR_TRAINING",
+                             "exploratory": "EXPLORATORY_HUMAN_OVERRIDES_AND_PROVISIONAL_VISUAL",
+                             "final": "HUMAN_REVIEWED_SELECTION_ONLY"}[args.mode],
         "training_dataset_ready": False,
         "training_dataset_note": "Source is 16 Hz, while prior human training/evaluation used 20 Hz; "
                                  "IDM action semantics and temporal conversion require separate preflight.",
@@ -152,7 +154,7 @@ def main() -> None:
         "distance_sha256": checksum(DISTANCES),
         "labels_source": str(LABELS.relative_to(ROOT)),
         "labels_sha256": checksum(LABELS),
-        "eligibility": "draft: provisional visual success with human override; "
+        "eligibility": "draft/exploratory: provisional visual success with human override; partial excluded; "
                        "final: human outcome success and motion reviewed",
         "eligible_episodes": pool,
         "provisional_success_count": len(provisional),
@@ -175,11 +177,11 @@ def main() -> None:
         "records": records,
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    stem = OUTPUT.name + ("_draft" if args.mode == "draft" else "_final_" + checksum(LABELS)[:8])
+    stem = OUTPUT.name + ("_draft" if args.mode == "draft" else f"_{args.mode}_" + checksum(LABELS)[:8])
     out_json = OUTPUT.with_name(stem + ".json")
     out_csv = OUTPUT.with_name(stem + ".csv")
     payload = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
-    if args.mode == "final" and out_json.exists() and out_json.read_text() != payload:
+    if args.mode != "draft" and out_json.exists() and out_json.read_text() != payload:
         raise FileExistsError(f"Preserving existing final selection: {out_json}")
     out_json.write_text(payload, encoding="utf-8")
     with out_csv.open("w", newline="", encoding="utf-8") as handle:

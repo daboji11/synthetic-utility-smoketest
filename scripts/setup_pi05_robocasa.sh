@@ -2,6 +2,7 @@
 # Isolated Linux CUDA environment; never modifies native DP/ACT environments.
 set -euo pipefail
 export GIT_LFS_SKIP_SMUDGE=1
+export UV_HTTP_TIMEOUT=300 UV_HTTP_RETRIES=10
 [ "$(uname -s)" = Linux ] || { echo "Run this on the Linux CUDA host (Mac is the SSH client)." >&2; exit 1; }
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SOURCE_ROOT="${PI05_SOURCE_ROOT:-$HOME/research}"
@@ -41,7 +42,7 @@ PY="$OPENPI_ROOT/.venv/bin/python"
 # Install the actually requested API; unused Aloha extra conflicts with RoboCasa MuJoCo.
 "$UV" pip install --python "$PY" --no-deps lerobot==0.3.3
 "$UV" pip uninstall --python "$PY" gym-aloha
-export MUJOCO_GL=egl PYNPUT_BACKEND=dummy HF_HUB_ENABLE_HF_TRANSFER=0
+export MUJOCO_GL=egl PYOPENGL_PLATFORM=egl PYNPUT_BACKEND=dummy HF_HUB_ENABLE_HF_TRANSFER=0
 export XLA_PYTHON_CLIENT_PREALLOCATE=false
 "$PY" -c 'import jax,torch; from openpi.training import config; devices=jax.devices(); assert any(d.platform=="gpu" for d in devices),devices; x=jax.numpy.ones((64,64)); (x@x).block_until_ready(); print("PI05_ENV_OK",devices,torch.__version__)'
 "$UV" pip check --python "$PY"
