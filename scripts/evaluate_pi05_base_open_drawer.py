@@ -80,6 +80,14 @@ def main() -> None:
         default=lambda value: value.tolist() if hasattr(value, "tolist") else str(value)) + "\n")
     episodes = []
     initial_conditions = []
+    base_initials = None
+    if args.lora:
+        baseline = args.output.parent / "base" / "initial_conditions.json"
+        if not baseline.is_file():
+            raise FileNotFoundError("Matched base initial conditions are missing")
+        base_initials = json.loads(baseline.read_text())
+        if len(base_initials) != len(SEEDS) or [item["seed"] for item in base_initials] != list(SEEDS):
+            raise ValueError("Incomplete or differently ordered base initial conditions")
     for seed in SEEDS:
         env = writer = None
         try:
@@ -98,6 +106,12 @@ def main() -> None:
             initial = {"seed": seed, "state": first["observation/state"].tolist(),
                        "image_sha256": image_sha,
                        "task": raw["annotation.human.task_description"]}
+            if base_initials is not None:
+                expected = base_initials[len(initial_conditions)]
+                if (expected["seed"] != seed or expected["task"] != initial["task"]
+                        or expected["image_sha256"] != image_sha
+                        or not np.allclose(expected["state"], initial["state"], rtol=0, atol=1e-5)):
+                    raise ValueError(f"Initial state or three-camera images differ at seed {seed}")
             initial_conditions.append(initial)
             (args.output / "initial_conditions.json").write_text(json.dumps(initial_conditions, indent=2) + "\n")
             ep_dir = args.output / f"seed_{seed}"
@@ -163,18 +177,6 @@ def main() -> None:
               "seeds": list(SEEDS), "checkpoint": str(checkpoint),
               "norm_sha256": base["norm_sha256"], "episode_stats": episodes}
     (args.output / "summary.json").write_text(json.dumps(report, indent=2) + "\n")
-    if args.lora:
-        baseline = args.output.parent / "base" / "initial_conditions.json"
-        if not baseline.is_file():
-            raise FileNotFoundError("Matched base initial conditions are missing")
-        first = json.loads(baseline.read_text())
-        if len(first) != 20:
-            raise ValueError("Incomplete base initial conditions")
-        for base_initial, lora_initial in zip(first, initial_conditions, strict=True):
-            if base_initial["seed"] != lora_initial["seed"] or base_initial["task"] != lora_initial["task"]:
-                raise ValueError("Seed or task mismatch")
-            if not np.allclose(base_initial["state"], lora_initial["state"], rtol=0, atol=1e-5):
-                raise ValueError(f"Initial state mismatch at seed {base_initial['seed']}")
     print(f"FINAL_EVAL model={protocol['model']} successes={report['successes']}/20 output={args.output}",
           flush=True)
 

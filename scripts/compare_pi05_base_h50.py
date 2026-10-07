@@ -31,6 +31,8 @@ def main() -> None:
             raise ValueError("Initial seed/task mismatch")
         if not np.allclose(first["state"], second["state"], rtol=0, atol=1e-5):
             raise ValueError(f"Initial state mismatch at seed {first['seed']}")
+        if first["image_sha256"] != second["image_sha256"]:
+            raise ValueError(f"Initial three-camera images mismatch at seed {first['seed']}")
     rows = [{"seed": seed, "pi05_base_success": bool(a["success"]),
              "pi05_base_h50_lora_success": bool(b["success"]),
              "pi05_base_steps": a["steps"], "pi05_base_h50_lora_steps": b["steps"]}
