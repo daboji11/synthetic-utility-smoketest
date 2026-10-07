@@ -1,0 +1,25 @@
+task_name,exact_instruction,h50_human_exact_episodes,mg30_exact_episodes,dreamgen_synthetic_episodes,dreamgen_success_count,dreamgen_success_rate,h50_status
+CloseDoubleDoor,close the cabinet doors,54,30,60,unknown,unverified,exact prompt matches only
+CoffeePressButton,press the button on the coffee machine to serve coffee,54,30,60,unknown,unverified,exact prompt matches only
+CoffeeServeMug,pick the mug from under the coffee machine dispenser and place it on the counter,54,30,60,unknown,unverified,exact prompt matches only
+CoffeeSetupMug,pick the mug from the counter and place it under the coffee machine dispenser,54,30,60,unknown,unverified,exact prompt matches only
+TurnOffMicrowave,press the stop button on the microwave,54,30,60,unknown,unverified,exact prompt matches only
+TurnOffSinkFaucet,turn off the sink faucet,54,30,60,unknown,unverified,exact prompt matches only
+TurnOnMicrowave,press the start button on the microwave,54,30,60,unknown,unverified,exact prompt matches only
+TurnOnSinkFaucet,turn on the sink faucet,54,30,60,unknown,unverified,exact prompt matches only
+OpenDoubleDoor,open the cabinet doors,53,30,60,unknown,unverified,exact prompt matches only
+CloseSingleDoor,close the microwave door,42,14,60,unknown,unverified,exact prompt matches only
+OpenSingleDoor,open the cabinet door,36,20,60,unknown,unverified,exact prompt matches only
+TurnSinkSpout,turn the sink spout to the right,35,22,60,unknown,unverified,exact prompt matches only
+OpenDrawer,open the left drawer,28,21,60,unknown,unverified,exact prompt matches only
+CloseDrawer,close the left drawer,25,17,60,unknown,unverified,exact prompt matches only
+TurnOffStove,turn off the rear right burner of the stove,12,8,60,unknown,unverified,exact prompt matches only
+TurnOnStove,turn on the rear left burner of the stove,11,5,60,unknown,unverified,exact prompt matches only
+PnPCounterToMicrowave,pick the sweet potato from the counter and place it in the microwave,3,3,60,unknown,unverified,exact prompt matches only
+PnPCounterToStove,pick the sweet potato from the plate and place it in the pan,3,2,60,unknown,unverified,exact prompt matches only
+PnPSinkToCounter,pick the lime from the sink and place it on the plate located on the counter,3,1,60,unknown,unverified,exact prompt matches only
+PnPStoveToCounter,pick the tomato from the pan and place it on the plate,3,1,60,unknown,unverified,exact prompt matches only
+PnPCounterToCab,pick the water bottle from the counter and place it in the cabinet,2,1,60,unknown,unverified,exact prompt matches only
+PnPMicrowaveToCounter,pick the sweet potato from the microwave and place it on plate located on the counter,2,1,60,unknown,unverified,exact prompt matches only
+PnPCabToCounter,pick the egg from the cabinet and place it on the counter,1,1,60,unknown,unverified,exact prompt matches only
+PnPCounterToSink,pick the avocado from the counter and place it in the sink,1,2,60,unknown,unverified,exact prompt matches only
