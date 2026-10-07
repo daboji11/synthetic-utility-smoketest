@@ -37,7 +37,7 @@ def observation(raw,prompt="open the left drawer"):
  if result["observation/state"].shape!=(16,) or not np.isfinite(result["observation/state"]).all():raise ValueError("Invalid 16D state")
  result["prompt"]=prompt
  return result
-def make_config(*,lora=True,dataset=DATASET,checkpoint=CHECKPOINT,batch_size=1,steps=10000,lr=1e-5,seed=0,exp_name="seed_0",num_workers=4):
+def make_config(*,lora=True,dataset=DATASET,checkpoint=CHECKPOINT,batch_size=1,steps=10000,lr=1e-5,seed=0,exp_name="seed_0",num_workers=4,lr_schedule_steps=None,save_interval=2500,keep_period=2500):
  from flax import nnx
  from openpi.models.pi0_config import Pi0Config
  from openpi.shared.nnx_utils import PathRegex
@@ -51,6 +51,6 @@ def make_config(*,lora=True,dataset=DATASET,checkpoint=CHECKPOINT,batch_size=1,s
     weight_loader=weight_loaders.CheckpointWeightLoader(str(Path(checkpoint)/"params")),
     # Freeze ALL non-adapter weights including SigLIP and state/action heads.
     freeze_filter=nnx.All(nnx.Param,nnx.Not(PathRegex(".*lora.*"))),ema_decay=None,batch_size=batch_size,num_train_steps=steps,num_workers=num_workers,seed=seed,
-    lr_schedule=optimizer.CosineDecaySchedule(warmup_steps=min(500,max(1,steps//10)),peak_lr=lr,decay_steps=steps,decay_lr=lr/10),
-    checkpoint_base_dir=str(ROOT/"outputs/OpenDrawer"),log_interval=10,save_interval=2500,keep_period=2500,wandb_enabled=False,
+    lr_schedule=optimizer.CosineDecaySchedule(warmup_steps=min(500,max(1,(lr_schedule_steps or steps)//10)),peak_lr=lr,decay_steps=lr_schedule_steps or steps,decay_lr=lr/10),
+    checkpoint_base_dir=str(ROOT/"outputs/OpenDrawer"),log_interval=10,save_interval=save_interval,keep_period=keep_period,wandb_enabled=False,
     policy_metadata={"task":"OpenDrawer","instruction":"open the left drawer","training_data":"28 H50 human left episodes","fps":20,"lora_only":lora})
