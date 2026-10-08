@@ -16,8 +16,10 @@ from pi05_base_faucet_config import (
 )
 
 NAME = "pi05_base_faucet_state_range_v2"
-DEFAULT_RUN = "human54_lr1e5_7000_seed0"
-SAVE_STEPS = (1000, 3000, 5000, 7000)
+DEFAULT_RUN = "human54_lr1e5_15000_seed0"
+TOTAL_STEPS = 15000
+SAVE_STEPS = (1000, 3000, 5000, 7000, 10000, 12000, 15000)
+REQUIRED_FREE_BYTES = 50_000_000_000
 
 
 def check_run_id(run_id: str) -> str:
@@ -94,7 +96,7 @@ def make_config(*, lora: bool = True, run_id: str = DEFAULT_RUN, probe: bool = F
     payload = norm_payload()
     norm = {key: normalize.NormStats(mean=np.asarray(row["mean"]), std=np.asarray(row["std"]))
             for key, row in payload["norm_stats"].items()}
-    cfg = original_config(lora=lora, batch_size=8, steps=7000, lr=1e-5,
+    cfg = original_config(lora=lora, batch_size=8, steps=TOTAL_STEPS, lr=1e-5,
                           seed=0, exp_name=check_run_id(run_id), num_workers=num_workers)
     # The pinned Groot reader interprets 2_demos as two seed-0-selected episodes.
     # Selection affects the probe only; its stats still come from all 54 humans.
@@ -104,27 +106,29 @@ def make_config(*, lora: bool = True, run_id: str = DEFAULT_RUN, probe: bool = F
     return dataclasses.replace(cfg, name=NAME + ("_probe" if probe else ""), data=data,
         keep_period=1000, save_interval=1000,
         lr_schedule=optimizer.CosineDecaySchedule(warmup_steps=200, peak_lr=1e-5,
-                                                 decay_steps=7000, decay_lr=1e-6),
+                                                 decay_steps=TOTAL_STEPS, decay_lr=1e-6),
         policy_metadata={**cfg.policy_metadata, "protocol": "faucet_state_range_v2",
                          "norm_fingerprint": norm_fingerprint(payload),
                          "state_scaling": "q01/q99 affine; constant dimensions scale=1",
                          "action_scaling": "unchanged human54 empirical z-score"})
 
 
-def require_probe(report: dict, fingerprint: str) -> None:
-    if (report.get("passed") is not True or report.get("norm_fingerprint") != fingerprint
+def require_probe(report: dict, fingerprint: str, *, allow_no_gain: bool = False) -> None:
+    if (type(report.get("passed")) is not bool
+            or (not allow_no_gain and report["passed"] is not True)
+            or report.get("norm_fingerprint") != fingerprint
             or report.get("base_params_uri") != official_base_params_uri()
             or report.get("source_commit") != SOURCE_COMMIT
             or report.get("probe_steps") != 300 or report.get("batch_size") != 8):
-        raise ValueError("A passing 300-step v2 probe from the same base and stats is required")
+        raise ValueError("A valid 300-step v2 probe from the same base and stats is required")
     before = report["before"]["normalized_first5_arm_mse"]
     after = report["after"]["normalized_first5_arm_mse"]
     if (not np.isfinite([before, after]).all() or before <= 0 or after < 0
-            or (before - after) / before < 0.10
+            or (not allow_no_gain and (before - after) / before < 0.10)
             or len(set(report.get("selected_episode_indices", []))) != 2
             or report["before"].get("noise_seeds") != [101, 102, 103]
             or report["after"].get("noise_seeds") != [101, 102, 103]):
-        raise ValueError("Probe metrics do not show the required fixed-noise action improvement")
+        raise ValueError("Invalid fixed-noise probe metrics or missing required action improvement")
 
 
 def audit_inputs() -> dict:
@@ -167,13 +171,13 @@ if __name__ == "__main__":
     verify_source()
     verify_base_checkpoint()
     import shutil
-    if shutil.disk_usage(ROOT).free < 30_000_000_000:
-        raise RuntimeError("Need 30 GB free before the probe/full-training pipeline")
+    if shutil.disk_usage(ROOT).free < REQUIRED_FREE_BYTES:
+        raise RuntimeError("Need 50 GB free for seven 15000-step-run checkpoint saves")
     audit = audit_inputs()
     cfg = make_config(run_id=args.run_id)
     print(json.dumps({"checkpoint": str((BASE / "params").resolve()),
         "official_base": official_base_params_uri(), "dataset": str(DATASET.resolve()),
-        "episodes": 54, "batch_size": 8, "steps": 7000,
+        "episodes": 54, "batch_size": 8, "steps": TOTAL_STEPS,
         "peak_lr": 1e-5, "tail_lr": 1e-6, "warmup_steps": 200,
         "save_steps": SAVE_STEPS, "only_lora": True, "vision_frozen": True,
         "norm_fingerprint": norm_fingerprint(), "input_audit": audit,

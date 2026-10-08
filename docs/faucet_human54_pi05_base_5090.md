@@ -1,4 +1,4 @@
-> Historical 3000-step protocol. For the new independent 7000-step diagnostic run, see [v2 instructions](faucet_human54_pi05_base_v2_7000.md).
+> Historical 3000-step protocol. For the new independent 15000-step diagnostic run, see [v2 instructions](faucet_human54_pi05_base_v2_15000.md).
 
 # TurnOnSinkFaucet: pi05_base + 54 human H50 demos
 

@@ -1,3 +1,5 @@
+> Superseded prepared budget. The current user-authorized run is [15000 steps](faucet_human54_pi05_base_v2_15000.md). To reproduce this original 7000-step plan, use commit `3c40b8f` and its scripts.
+
 # Faucet human54: fresh-base 7000-step diagnostic run
 
 Status: scripts prepared and CPU checks performed; GPU execution remains manual.

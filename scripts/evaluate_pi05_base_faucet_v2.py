@@ -42,7 +42,7 @@ def main() -> None:
     checkpoint = args.checkpoint.resolve()
     training_root = run_root(args.run_id).resolve()
     if checkpoint.parent != training_root or checkpoint.name not in {str(s) for s in SAVE_STEPS}:
-        parser.error("Checkpoint must be one of this v2 run's 1000/3000/5000/7000 saves")
+        parser.error("Checkpoint must be one of this v2 run's scheduled intermediate/final saves")
     actual = json.loads((training_root / "actual_config.json").read_text())
     if (actual["base_params_uri"] != official_base_params_uri()
             or actual["norm_fingerprint"] != norm_fingerprint()

@@ -55,9 +55,13 @@ class FaucetV2Tests(unittest.TestCase):
             report["after"]["normalized_first5_arm_mse"] = .95
             with self.assertRaises(ValueError):
                 v2.require_probe(report, "abc")
+            report["passed"] = False
+            v2.require_probe(report, "abc", allow_no_gain=True)
+            with self.assertRaises(ValueError):
+                v2.require_probe(report, "different", allow_no_gain=True)
             report["after"]["normalized_first5_arm_mse"] = float("nan")
             with self.assertRaises(ValueError):
-                v2.require_probe(report, "abc")
+                v2.require_probe(report, "abc", allow_no_gain=True)
 
     def test_training_requires_manual_train_flag(self):
         result = subprocess.run([sys.executable, str(ROOT / "scripts/finetune_pi05_base_faucet_v2.py")],
@@ -70,7 +74,7 @@ class FaucetV2Tests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 v2.run_root(name)
 
-    def test_launcher_stops_on_failed_probe_and_orders_successful_stages(self):
+    def test_launcher_stops_on_execution_failure_and_orders_successful_stages(self):
         import tempfile
         import shutil
         with tempfile.TemporaryDirectory() as temp:
@@ -105,7 +109,7 @@ class FaucetV2Tests(unittest.TestCase):
             self.assertIn("--probe", attempted[1])
             self.assertNotIn("--probe", attempted[2])
             self.assertIn("evaluate_pi05_base_faucet_v2.py", attempted[3])
-            self.assertIn("/7000", attempted[3])
+            self.assertIn("/15000", attempted[3])
 
     @unittest.skipUnless(importlib.util.find_spec("flax"), "Pinned OpenPI env required")
     def test_real_transform_roundtrip_schedule_and_freeze(self):
@@ -127,10 +131,14 @@ class FaucetV2Tests(unittest.TestCase):
                 self.assertFalse(data.use_quantile_norm)
                 self.assertEqual(cfg.weight_loader.params_path, str(base / "params"))
                 self.assertEqual(cfg.batch_size, 8)
+                self.assertEqual(cfg.num_train_steps, 15000)
+                self.assertEqual(v2.SAVE_STEPS, (1000, 3000, 5000, 7000, 10000, 12000, 15000))
                 schedule = cfg.lr_schedule.create()
                 self.assertAlmostEqual(float(schedule(200)), 1e-5, places=10)
                 self.assertGreater(float(schedule(5000)), 1e-6)
-                self.assertAlmostEqual(float(schedule(7000)), 1e-6, places=10)
+                self.assertGreater(float(schedule(7000)), 5e-6)
+                self.assertGreater(float(schedule(12000)), 1e-6)
+                self.assertAlmostEqual(float(schedule(15000)), 1e-6, places=10)
                 param = nnx.Param(np.zeros(1))
                 self.assertFalse(cfg.trainable_filter(("PaliGemma", "img", "kernel"), param))
                 self.assertFalse(cfg.trainable_filter(("action_out_proj", "kernel"), param))

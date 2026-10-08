@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fresh-base v2: two-demo learning probe, then human54 LoRA for 7000 steps."""
+"""Fresh-base v2: two-demo learning probe, then human54 LoRA for 15000 steps."""
 from __future__ import annotations
 
 import argparse
@@ -20,7 +20,7 @@ os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("MKL_NUM_THREADS", "1")
 
 from pi05_base_faucet_v2_config import (  # noqa: E402
-    BASE, DATASET, ROOT, SOURCE_COMMIT, DEFAULT_RUN, NAME, SAVE_STEPS, make_config,
+    BASE, DATASET, ROOT, SOURCE_COMMIT, DEFAULT_RUN, NAME, SAVE_STEPS, TOTAL_STEPS, REQUIRED_FREE_BYTES, make_config,
     norm_payload, norm_fingerprint, require_probe, official_base_params_uri,
     verify_base_checkpoint, verify_dataset, verify_source, verify_5090,
 )
@@ -30,6 +30,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--train", action="store_true", help="Required to update parameters")
     parser.add_argument("--probe", action="store_true", help="300 updates on two human demos")
+    parser.add_argument("--allow-probe-no-gain", action="store_true",
+                        help="Report finite low-gain probe results and continue the authorized long run")
     parser.add_argument("--run-id", default=DEFAULT_RUN)
     parser.add_argument("--num-workers", type=int, default=4)
     args = parser.parse_args()
@@ -40,17 +42,17 @@ def main() -> None:
     verify_dataset()
     verify_base_checkpoint()
     cfg = make_config(run_id=args.run_id, probe=args.probe, num_workers=args.num_workers)
-    budget = 300 if args.probe else 7000
+    budget = 300 if args.probe else TOTAL_STEPS
     fingerprint = norm_fingerprint()
     probe_root = ROOT / "outputs/TurnOnSinkFaucet" / (NAME + "_probe") / args.run_id
     script_sha = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     if not args.probe:
         report = json.loads((probe_root / "probe_summary.json").read_text())
-        require_probe(report, fingerprint)
+        require_probe(report, fingerprint, allow_no_gain=args.allow_probe_no_gain)
         if report.get("training_script_sha256") != script_sha:
             raise ValueError("Probe was run with different training code")
-        if shutil.disk_usage(ROOT).free < 30_000_000_000:
-            raise RuntimeError("Need 30 GB free for four v2 checkpoints; preserve old runs separately")
+        if shutil.disk_usage(ROOT).free < REQUIRED_FREE_BYTES:
+            raise RuntimeError("Need 50 GB free for seven v2 checkpoints; preserve old runs separately")
     if cfg.checkpoint_dir.exists():
         raise FileExistsError(f"Preserving existing experiment {cfg.checkpoint_dir}; use a new FAUCET_V2_RUN_ID")
 
@@ -92,7 +94,7 @@ def main() -> None:
         "dataset_filter": "2_demos, pinned seed0" if args.probe else None,
         "gpu": gpu, "fps": 20, "action_dim": 12, "state_dim": 16, "action_horizon": 50,
         "prompt": "turn on the sink faucet", "batch_size": 8, "steps": budget,
-        "peak_lr": 1e-5, "tail_lr": 1e-6, "warmup_steps": 200, "decay_steps": 7000,
+        "peak_lr": 1e-5, "tail_lr": 1e-6, "warmup_steps": 200, "decay_steps": TOTAL_STEPS,
         "only_lora": True, "vision_frozen": True, "ema_decay": None,
         "norm_fingerprint": fingerprint, "source_commit": SOURCE_COMMIT,
         "training_script_sha256": script_sha, "fresh_optimizer": True,
@@ -192,6 +194,8 @@ def main() -> None:
                 metrics.flush()
                 print("TRAIN_STEP " + json.dumps(row), flush=True)
             if not args.probe and step in SAVE_STEPS:
+                if shutil.disk_usage(ROOT).free < 7_000_000_000:
+                    raise RuntimeError(f"Under 7 GB free before checkpoint {step}; earlier saves remain intact")
                 checkpoints.save_state(manager, state, loader, step)
                 manager.wait_until_finished()
                 last = run / "last"
@@ -217,7 +221,9 @@ def main() -> None:
             "interpretation": "training-batch action learning response only; not a generalization test"}
         (run / "probe_summary.json").write_text(json.dumps(report, indent=2) + "\n")
         print("PROBE_RESULT " + json.dumps(report), flush=True)
-        if not passed:
+        if not passed and args.allow_probe_no_gain:
+            print("PROBE_LOW_GAIN: recorded; continuing the explicitly authorized 15000-step experiment", flush=True)
+        if not passed and not args.allow_probe_no_gain:
             raise RuntimeError("Probe action error did not improve by 10%; full training stopped. Inspect probe_summary.json")
         print("PI05_BASE_FAUCET_V2_PROBE_COMPLETE", flush=True)
     else:
@@ -225,7 +231,7 @@ def main() -> None:
         manager.close()
         (run / "training_summary.json").write_text(json.dumps({
             "updates": budget, "save_steps": SAVE_STEPS,
-            "final_checkpoint": str(run / "7000"), "wall_clock_s": time.perf_counter() - started,
+            "final_checkpoint": str(run / str(TOTAL_STEPS)), "wall_clock_s": time.perf_counter() - started,
             "batch_size": 8, "only_lora": True, "norm_fingerprint": fingerprint,
             "base_params_uri": official_base_params_uri(),
         }, indent=2) + "\n")
