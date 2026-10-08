@@ -1,3 +1,5 @@
+> Historical 3000-step protocol. For the new independent 7000-step diagnostic run, see [v2 instructions](faucet_human54_pi05_base_v2_7000.md).
+
 # TurnOnSinkFaucet: pi05_base + 54 human H50 demos
 
 This is the human-only validation before any synthetic selection experiment.

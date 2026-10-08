@@ -1,5 +1,18 @@
 # Synthetic trajectory utility smoke test
 
+
+## Faucet pi05_base human54 diagnostic run (v2)
+
+The prepared 7000-step run fixes state token saturation, uses a full-budget LR
+schedule, starts from the original pi05_base, checks learning on two demos,
+then trains all 54 humans and evaluates the final checkpoint over 20 rollouts.
+Vision remains frozen and only LoRA weights are updated. Intermediate saves
+are retained at 1000/3000/5000/7000. GPU execution is manual.
+
+- [Launch, logs and protocol](docs/faucet_human54_pi05_base_v2_7000.md)
+- [Learning audit and source evidence](docs/faucet_learning_audit_2026-10-09.md)
+
+
 **Project question:** Does downstream learning utility vary among synthetic robot trajectories even when they have similar validity?
 
 **Current stage:** official RoboCasa π0.5 with strictly LoRA-only adaptation on 28 H50 human
