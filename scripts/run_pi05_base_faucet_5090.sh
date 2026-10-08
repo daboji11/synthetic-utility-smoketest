@@ -17,6 +17,7 @@ export HF_HUB_ENABLE_HF_TRANSFER=0
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$ROOT/../../.cache}"
 export HF_HOME="${HF_HOME:-$XDG_CACHE_HOME/huggingface}"
 export UV_CACHE_DIR="${UV_CACHE_DIR:-$XDG_CACHE_HOME/uv}"
+export OPENPI_DATA_HOME="${OPENPI_DATA_HOME:-$XDG_CACHE_HOME/openpi}"
 
 stage="${1:-}"
 case "$stage" in
